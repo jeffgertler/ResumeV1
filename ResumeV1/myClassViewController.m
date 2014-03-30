@@ -7,6 +7,7 @@
 //
 
 #import "myClassViewController.h"
+#import "Entry.h"
 
 @interface myClassViewController ()
 
@@ -17,7 +18,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.myTextField.delegate = self;
+    [Entry entryOfType:@"Contact" withHeader:@"Jeff" andPrimary:@"jmg789@nyu.edu" andSecondary:@"(206)819-8815"];
+    [Entry entryOfType:@"Contact" withHeader:@"Jeff" andPrimary:@"jmg789@nyu.edu" andSecondary:@"(206)819-8815"];
+    [Entry entryOfType:@"Education" withHeader:@"Kelly" andPrimary:@"jmg789@nyu.edu" andSecondary:@"(206)819-8815"];
+    [Entry entryOfType:@"Employment" withHeader:@"Jeff" andPrimary:@"jmg789@nyu.edu" andSecondary:@"(206)819-8815"];
+    [Entry entryOfType:@"Skills" withHeader:@"Jeff" andPrimary:@"jmg789@nyu.edu" andSecondary:@"(206)819-8815"];
+    [Entry entryOfType:@"Publications" withHeader:@"Jeff" andPrimary:@"jmg789@nyu.edu" andSecondary:@"(206)819-8815"];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
 }
 
 - (void)didReceiveMemoryWarning

@@ -22,6 +22,10 @@
 		644D709518E350840081B378 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644D707418E350840081B378 /* UIKit.framework */; };
 		644D709D18E350840081B378 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 644D709B18E350840081B378 /* InfoPlist.strings */; };
 		644D709F18E350840081B378 /* ResumeV1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 644D709E18E350840081B378 /* ResumeV1Tests.m */; };
+		644D70AA18E362800081B378 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 644D70A918E362800081B378 /* Entry.m */; };
+		644D70AD18E36BA20081B378 /* addEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644D70AC18E36BA20081B378 /* addEntryViewController.m */; };
+		644D70B318E380940081B378 /* reviewEntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644D70B218E380940081B378 /* reviewEntriesViewController.m */; };
+		64778FA818E6923A00BBABDB /* entryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64778FA718E6923A00BBABDB /* entryDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,14 @@
 		644D709A18E350840081B378 /* ResumeV1Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ResumeV1Tests-Info.plist"; sourceTree = "<group>"; };
 		644D709C18E350840081B378 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		644D709E18E350840081B378 /* ResumeV1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeV1Tests.m; sourceTree = "<group>"; };
+		644D70A818E362800081B378 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		644D70A918E362800081B378 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		644D70AB18E36BA20081B378 /* addEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addEntryViewController.h; sourceTree = "<group>"; };
+		644D70AC18E36BA20081B378 /* addEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addEntryViewController.m; sourceTree = "<group>"; };
+		644D70B118E380940081B378 /* reviewEntriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reviewEntriesViewController.h; sourceTree = "<group>"; };
+		644D70B218E380940081B378 /* reviewEntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reviewEntriesViewController.m; sourceTree = "<group>"; };
+		64778FA618E6923A00BBABDB /* entryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entryDetailViewController.h; sourceTree = "<group>"; };
+		64778FA718E6923A00BBABDB /* entryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = entryDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +132,16 @@
 				644D708518E350840081B378 /* Main_iPad.storyboard */,
 				644D708818E350840081B378 /* myClassViewController.h */,
 				644D708918E350840081B378 /* myClassViewController.m */,
+				644D70AB18E36BA20081B378 /* addEntryViewController.h */,
+				644D70AC18E36BA20081B378 /* addEntryViewController.m */,
+				644D70B118E380940081B378 /* reviewEntriesViewController.h */,
+				644D70B218E380940081B378 /* reviewEntriesViewController.m */,
+				64778FA618E6923A00BBABDB /* entryDetailViewController.h */,
+				64778FA718E6923A00BBABDB /* entryDetailViewController.m */,
 				644D708B18E350840081B378 /* Images.xcassets */,
 				644D707718E350840081B378 /* Supporting Files */,
+				644D70A818E362800081B378 /* Entry.h */,
+				644D70A918E362800081B378 /* Entry.m */,
 			);
 			path = ResumeV1;
 			sourceTree = "<group>";
@@ -254,8 +274,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				644D70AA18E362800081B378 /* Entry.m in Sources */,
 				644D708A18E350840081B378 /* myClassViewController.m in Sources */,
 				644D707D18E350840081B378 /* main.m in Sources */,
+				644D70B318E380940081B378 /* reviewEntriesViewController.m in Sources */,
+				644D70AD18E36BA20081B378 /* addEntryViewController.m in Sources */,
+				64778FA818E6923A00BBABDB /* entryDetailViewController.m in Sources */,
 				644D708118E350840081B378 /* myClassAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +499,7 @@
 				644D70A418E350840081B378 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		644D70A518E350840081B378 /* Build configuration list for PBXNativeTarget "ResumeV1Tests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +508,7 @@
 				644D70A718E350840081B378 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

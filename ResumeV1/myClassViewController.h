@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface myClassViewController : UIViewController
+@interface myClassViewController : UIViewController <UITextFieldDelegate>
 
+@property (strong, nonatomic) IBOutlet UITextField *myTextField;
+    
 @end
