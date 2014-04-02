@@ -74,7 +74,7 @@
 }
 
 -(void) printEntry {
-    NSLog([NSString stringWithFormat:@"%@, %@, %@, %@", self.type, self.header, self.primary, self.secondary]);
+    NSLog([NSString stringWithFormat:@"%@, %@, %@, %@\n", self.type, self.header, self.primary, self.secondary]);
 }
 
 +(void) printEntries {

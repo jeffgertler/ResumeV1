@@ -7,12 +7,14 @@
 //
 
 #import "addEntryViewController.h"
+#import "Entry.h"
 
 @interface addEntryViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *TextField;
 @property (weak, nonatomic) IBOutlet UILabel *SectionLabel;
 @property int currentSection;
-@property NSArray *Sections;
+@property NSArray *sections;
+@property NSMutableArray *entryData;
 
 
 @end
@@ -23,7 +25,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.sections = [[NSArray alloc] initWithObjects:@"Type", @"Header", @"Primary", @"Secondary", nil];
+    self.entryData= [[NSMutableArray alloc] initWithCapacity:self.sections.count];
+    self.currentSection = 0;
+    self.SectionLabel.text = self.sections[self.currentSection];
+	
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -32,8 +38,20 @@
 }
 
 - (IBAction)nextPressed:(id)sender {
-    _currentSection++;
+    if(self.currentSection == [self.sections count]-1){
+        [self.entryData addObject:self.TextField.text];
+        [Entry entryOfType:self.entryData[0] withHeader:self.entryData[1] andPrimary:self.entryData[2] andSecondary:self.entryData[3]];
+        [Entry printEntries];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else if (![self.TextField.text isEqualToString:nil]){
+        [self.entryData addObject:self.TextField.text];
+        self.TextField.text = @"";
+        self.currentSection++;
+        self.SectionLabel.text = self.sections[self.currentSection];
+    }
 }
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

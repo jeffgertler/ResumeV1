@@ -32,7 +32,7 @@
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableCell"];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"tableCell"];
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tableCell"];
     }
@@ -49,12 +49,14 @@
         destViewController.header= entry.header;
         destViewController.primary = entry.primary;
         destViewController.secondary = entry.secondary;
-        NSLog(destViewController.header);
-        NSLog(entry.header);
     }
 }
 
-- (IBAction)unwindToRoot:(UIStoryboardSegue *)segue{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return self.validTypes[section];
+}
+
+- (IBAction)unwindToReview:(UIStoryboardSegue *)segue{
 }
 
 

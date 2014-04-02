@@ -11,5 +11,8 @@
 @interface myClassViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *myTextField;
+
+- (IBAction)unwindToRoot:(UIStoryboardSegue *)segue;
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
     
 @end
