@@ -1,26 +1,29 @@
 //
-//  reviewEntriesViewController.m
+//  makeViewController.m
 //  ResumeV1
 //
-//  Created by Jeffrey Gertler on 3/26/14.
+//  Created by Jeffrey Gertler on 4/2/14.
 //  Copyright (c) 2014 Jeffrey Gertler. All rights reserved.
 //
 
-#import "reviewEntriesViewController.h"
-#import "entryDetailViewController.h"
+#import "makeViewController.h"
 #import "Entry.h"
 
-@interface reviewEntriesViewController ()
+@interface makeViewController ()
+
+@property NSMutableArray *addedEntries;
 
 @end
 
-@implementation reviewEntriesViewController
+@implementation makeViewController
 @synthesize tableView;
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.validTypes = [[NSArray alloc] initWithObjects:@"Contact", @"Education", @"Employment", @"Skills", @"Publications", nil];
+    self.addedEntries= [[NSMutableArray alloc] init];
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
@@ -44,29 +47,34 @@
     return self.validTypes[section];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"DetailSegue"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        entryDetailViewController *destViewController = segue.destinationViewController;
-        Entry *entry = [[Entry entriesWithType:self.validTypes[indexPath.section]] objectAtIndex:indexPath.row];
-        destViewController.header= entry.header;
-        destViewController.primary = entry.primary;
-        destViewController.secondary = entry.secondary;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    BOOL isSelected = (tableCell.accessoryType == UITableViewCellAccessoryCheckmark);
+    if (isSelected) {
+        [self.addedEntries removeObject:[[Entry entriesWithType:self.validTypes[indexPath.section]] objectAtIndex:indexPath.row]];
+        tableCell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    else {
+        [self.addedEntries addObject:[[Entry entriesWithType:self.validTypes[indexPath.section]] objectAtIndex:indexPath.row]];
+        tableCell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
 }
 
-- (IBAction)unwindToReview:(UIStoryboardSegue *)segue{
+- (IBAction)makePressed:(id)sender {
+    for(Entry *entry in self.addedEntries){
+        NSLog(entry.header);
+    }
 }
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
     return self;
 }
+
 
 - (void)didReceiveMemoryWarning
 {

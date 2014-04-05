@@ -13,7 +13,7 @@
 @property (strong, nonatomic) NSArray *validTypes;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-- (IBAction)unwindToRoot:(UIStoryboardSegue *)segue;
+- (IBAction)unwindToReview:(UIStoryboardSegue *)segue;
 
 
 @end
