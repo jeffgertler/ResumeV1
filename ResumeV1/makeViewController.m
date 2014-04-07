@@ -8,6 +8,7 @@
 
 #import "makeViewController.h"
 #import "Entry.h"
+#import "GlobalData.h"
 
 @interface makeViewController ()
 
@@ -22,16 +23,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.validTypes = [[NSArray alloc] initWithObjects:@"Contact", @"Education", @"Employment", @"Skills", @"Publications", nil];
     self.addedEntries= [[NSMutableArray alloc] init];
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
-    return [self.validTypes count];
+    return [GlobalData typesSize];
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [Entry numEntriesWithType: self.validTypes[section]];
+    return [Entry numEntriesWithType: [GlobalData getTypeAt:section]];
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -39,12 +39,12 @@
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tableCell"];
     }
-    cell.textLabel.text = [[[Entry entriesWithType:self.validTypes[indexPath.section]] objectAtIndex:indexPath.row] getTitle];
+    cell.textLabel.text = [[[Entry entriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row] getTitle];
     return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return self.validTypes[section];
+    return [GlobalData getTypeAt:section];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -52,11 +52,11 @@
     UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:indexPath];
     BOOL isSelected = (tableCell.accessoryType == UITableViewCellAccessoryCheckmark);
     if (isSelected) {
-        [self.addedEntries removeObject:[[Entry entriesWithType:self.validTypes[indexPath.section]] objectAtIndex:indexPath.row]];
+        [self.addedEntries removeObject:[[Entry entriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row]];
         tableCell.accessoryType = UITableViewCellAccessoryNone;
     }
     else {
-        [self.addedEntries addObject:[[Entry entriesWithType:self.validTypes[indexPath.section]] objectAtIndex:indexPath.row]];
+        [self.addedEntries addObject:[[Entry entriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row]];
         tableCell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
 }

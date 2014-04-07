@@ -26,6 +26,7 @@
 		644D70AD18E36BA20081B378 /* addEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644D70AC18E36BA20081B378 /* addEntryViewController.m */; };
 		644D70B318E380940081B378 /* reviewEntriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644D70B218E380940081B378 /* reviewEntriesViewController.m */; };
 		64778FA818E6923A00BBABDB /* entryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64778FA718E6923A00BBABDB /* entryDetailViewController.m */; };
+		647FB97A18F2089400185596 /* GlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 647FB97918F2089400185596 /* GlobalData.m */; };
 		64CB4CC318EC969F00563966 /* makeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64CB4CC218EC969F00563966 /* makeViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,8 @@
 		644D70B218E380940081B378 /* reviewEntriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reviewEntriesViewController.m; sourceTree = "<group>"; };
 		64778FA618E6923A00BBABDB /* entryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entryDetailViewController.h; sourceTree = "<group>"; };
 		64778FA718E6923A00BBABDB /* entryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = entryDetailViewController.m; sourceTree = "<group>"; };
+		647FB97818F2089400185596 /* GlobalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalData.h; sourceTree = "<group>"; };
+		647FB97918F2089400185596 /* GlobalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalData.m; sourceTree = "<group>"; };
 		64CB4CC118EC969F00563966 /* makeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = makeViewController.h; sourceTree = "<group>"; };
 		64CB4CC218EC969F00563966 /* makeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = makeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,6 +150,8 @@
 				644D707718E350840081B378 /* Supporting Files */,
 				644D70A818E362800081B378 /* Entry.h */,
 				644D70A918E362800081B378 /* Entry.m */,
+				647FB97818F2089400185596 /* GlobalData.h */,
+				647FB97918F2089400185596 /* GlobalData.m */,
 			);
 			path = ResumeV1;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				644D70AA18E362800081B378 /* Entry.m in Sources */,
 				644D708A18E350840081B378 /* myClassViewController.m in Sources */,
 				644D707D18E350840081B378 /* main.m in Sources */,
+				647FB97A18F2089400185596 /* GlobalData.m in Sources */,
 				644D70B318E380940081B378 /* reviewEntriesViewController.m in Sources */,
 				64CB4CC318EC969F00563966 /* makeViewController.m in Sources */,
 				644D70AD18E36BA20081B378 /* addEntryViewController.m in Sources */,

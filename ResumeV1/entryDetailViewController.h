@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface entryDetailViewController : UIViewController
-@property (strong, nonatomic) NSArray *validTypes;
 @property (weak, nonatomic) IBOutlet UITextView *HeaderText;
 @property (weak, nonatomic) IBOutlet UITextView *PrimaryText;
 @property (weak, nonatomic) IBOutlet UITextView *SecondaryText;

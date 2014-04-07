@@ -33,6 +33,6 @@ static NSMutableArray *_entries;
 -(void) printEntry;
 +(void) printEntries;
 -(NSString *) getTitle;
-
++(void) clearEntries;
 
 @end

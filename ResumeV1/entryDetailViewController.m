@@ -28,11 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.validTypes = [[NSArray alloc] initWithObjects:@"Contact", @"Education", @"Employment", @"Skills", @"Publications", nil];
     self.HeaderText.text = _header;
     self.PrimaryText.text = _primary;
     self.SecondaryText.text = _secondary;
-    
 }
 
 

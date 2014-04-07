@@ -88,4 +88,8 @@
     return self.header;
 }
 
++(void) clearEntries {
+    _entries = [[NSMutableArray alloc] init];
+}
+
 @end

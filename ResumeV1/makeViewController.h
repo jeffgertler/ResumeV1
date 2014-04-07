@@ -10,8 +10,6 @@
 
 @interface makeViewController : UIViewController
 
-
-@property (strong, nonatomic) NSArray *validTypes;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
