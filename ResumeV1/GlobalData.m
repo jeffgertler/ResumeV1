@@ -3,7 +3,7 @@
 //  ResumeV1
 //
 //  Created by Jeffrey Gertler on 4/6/14.
-//  Copyright (c) 2014 Jeffrey Gertler. All rights reserved.
+//  Copyright (c) 2014 Jeffrey Gertler & George Wong. All rights reserved.
 //
 
 #import "GlobalData.h"
@@ -11,12 +11,11 @@
 
 @implementation GlobalData
 
-
-+(BOOL) addType:(NSString *) newType{
-    if(_types == NULL){
++ (BOOL)addType:(NSString *) newType{
+    if (_types == NULL) {
         _types =[[NSMutableArray alloc] init];
     }
-    for(NSString *type in _types){
+    for(NSString *type in _types) {
         if([type isEqualToString:newType]){
             return NO;
         }
@@ -25,20 +24,24 @@
     return YES;
 }
 
-+(int) typesSize {
++ (int)messageSize {
+    return _MSG_SIZE;
+}
+
++ (int)typesSize {
     return [_types count];
 }
 
-+(NSString *) getTypeAt:(int)index{
++ (NSString *)getTypeAt:(int)index{
     return [_types objectAtIndex:index];
 }
 
-+(void) saveEntries{
++ (void)saveEntries{
     [self resetDefaults];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@"yes" forKey:@"isDataSaved"];
     [defaults setObject:[NSString stringWithFormat:@"%d", [Entry entriesSize]] forKey:@"numEntries"];
-    for(int i=0; i<[Entry entriesSize]; i++){
+    for (int i=0; i<[Entry entriesSize]; i++) {
         [defaults setObject:[Entry getObjectAt:i].type forKey:[NSString stringWithFormat:@"entry%dtype", i]];
         [defaults setObject:[Entry getObjectAt:i].header forKey:[NSString stringWithFormat:@"entry%dheader", i]];
         [defaults setObject:[Entry getObjectAt:i].primary forKey:[NSString stringWithFormat:@"entry%dprimary", i]];
@@ -47,11 +50,11 @@
     [defaults synchronize];
 }
 
-+(void) loadEntries{
++ (void)loadEntries{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if([[defaults objectForKey:@"isDataSaved"] isEqualToString:@"yes"]){
+    if ([[defaults objectForKey:@"isDataSaved"] isEqualToString:@"yes"]) {
         [Entry clearEntries];
-        for(int i=0; i<[[defaults objectForKey:@"numEntries"] intValue]; i++){
+        for (int i=0; i<[[defaults objectForKey:@"numEntries"] intValue]; i++) {
             NSString *type = [defaults objectForKey:[NSString stringWithFormat:@"entry%dtype", i]];
             NSString *header = [defaults objectForKey:[NSString stringWithFormat:@"entry%dheader", i]];
             NSString *primary = [defaults objectForKey:[NSString stringWithFormat:@"entry%dprimary", i]];
@@ -61,7 +64,7 @@
     }
 }
 
-+(void) resetDefaults {
++ (void)resetDefaults {
     NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
     NSDictionary * dict = [defs dictionaryRepresentation];
     for (id key in dict) {
@@ -70,7 +73,7 @@
     [defs synchronize];
 }
 
-+(NSString *)versionNumber {
++ (NSString *)versionNumber {
     NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
     return [info objectForKey:@"CFBundleShortVersionString"];
 }

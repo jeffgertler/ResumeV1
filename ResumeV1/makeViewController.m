@@ -63,7 +63,7 @@
 
 - (IBAction)makePressed:(id)sender {
     for(Entry *entry in self.addedEntries){
-        NSLog(entry.header);
+        NSLog(@"%@", entry.header);
     }
 }
 
