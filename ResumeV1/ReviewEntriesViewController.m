@@ -9,6 +9,8 @@
 #import "reviewEntriesViewController.h"
 #import "entryDetailViewController.h"
 #import "Entry.h"
+#import "NetworkComm.h"
+#import "GlobalData.h"
 
 @interface reviewEntriesViewController ()
 
@@ -56,6 +58,10 @@
 }
 
 - (IBAction)unwindToReview:(UIStoryboardSegue *)segue{
+    //[networkComm sendMessage:@"test message"];
+    
+    NSLog(@"%@", [NetworkComm sendMessage:@"TST MSG SYS"]);
+    
 }
 
 
