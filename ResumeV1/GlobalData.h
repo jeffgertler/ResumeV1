@@ -20,4 +20,6 @@ static NSMutableArray *_types;
 +(void) loadEntries;
 +(void)resetDefaults;
 
++(NSString *)versionNumber;
+
 @end

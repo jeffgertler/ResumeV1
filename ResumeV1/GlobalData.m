@@ -70,4 +70,9 @@
     [defs synchronize];
 }
 
++(NSString *)versionNumber {
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+    return [info objectForKey:@"CFBundleShortVersionString"];
+}
+
 @end
