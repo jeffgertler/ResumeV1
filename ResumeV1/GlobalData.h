@@ -12,10 +12,14 @@ static NSMutableArray *_types;
 
 @interface GlobalData : NSObject
 
+// Initialization
 +(BOOL) addType:(NSString *) newType;
 +(int) typesSize;
+
+// Getters
 +(NSString *) getTypeAt:(int)index;
 
+// Saving and loading
 +(void) saveEntries;
 +(void) loadEntries;
 +(void)resetDefaults;

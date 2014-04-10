@@ -8,6 +8,7 @@
 
 #import "entryDetailViewController.h"
 #import "reviewEntriesViewController.h"
+#import "editEntryViewController.h"
 #import "Entry.h"
 
 @interface entryDetailViewController ()
@@ -28,9 +29,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.HeaderText.text = _header;
-    self.PrimaryText.text = _primary;
-    self.SecondaryText.text = _secondary;
+    self.HeaderText.text = self.entry.header;
+    self.PrimaryText.text = self.entry.primary;
+    self.SecondaryText.text = self.entry.secondary;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    self.HeaderText.text = self.entry.header;
+    self.PrimaryText.text = self.entry.primary;
+    self.SecondaryText.text = self.entry.secondary;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"EditSegue"]) {
+        editEntryViewController *destViewController = segue.destinationViewController;
+        destViewController.entry = self.entry;
+    }
+}
+
+- (IBAction)removeEntry:(id)sender {
+    [Entry removeEntry:self.entry];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 

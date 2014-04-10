@@ -41,7 +41,6 @@
     if(self.currentSection == [self.sections count]-1){
         [self.entryData addObject:self.TextField.text];
         [Entry entryOfType:self.entryData[0] withHeader:self.entryData[1] andPrimary:self.entryData[2] andSecondary:self.entryData[3]];
-        [Entry printEntries];
         [self dismissViewControllerAnimated:YES completion:nil];
     } else if (![self.TextField.text isEqualToString:nil]){
         [self.entryData addObject:self.TextField.text];

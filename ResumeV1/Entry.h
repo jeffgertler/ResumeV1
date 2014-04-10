@@ -18,6 +18,7 @@ static NSMutableArray *_entries;
 @property NSString *primary;
 @property NSString *secondary;
 
+// Initialization and adding
 +(BOOL) entryOfType: (NSString *) type
          withHeader: (NSString *) header
          andPrimary: (NSString *) primary
@@ -26,13 +27,22 @@ static NSMutableArray *_entries;
             withHeader: (NSString *) header
             andPrimary: (NSString *) primary
           andSecondary: (NSString *) secondary;
+
+// Editing
++(void) removeEntry: (Entry *) entry;
++(void) clearEntries;
+
+// Getters
 +(int) entriesSize;
 +(Entry *) getObjectAt: (int) index;
 +(NSArray *) entriesWithType: (NSString *) type;
 +(int) numEntriesWithType: (NSString *) type;
+-(NSString *) getTitle;
+
+// Diagnostics
 -(void) printEntry;
 +(void) printEntries;
--(NSString *) getTitle;
-+(void) clearEntries;
+
+
 
 @end

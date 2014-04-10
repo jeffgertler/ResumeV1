@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6447D2A218F5E37B00FDF629 /* editEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6447D2A118F5E37B00FDF629 /* editEntryViewController.m */; };
+		6447D2A518F60E3A00FDF629 /* checkSecondariesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6447D2A418F60E3A00FDF629 /* checkSecondariesViewController.m */; };
 		644D707118E350840081B378 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644D707018E350840081B378 /* Foundation.framework */; };
 		644D707318E350840081B378 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644D707218E350840081B378 /* CoreGraphics.framework */; };
 		644D707518E350840081B378 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644D707418E350840081B378 /* UIKit.framework */; };
@@ -41,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6447D2A018F5E37B00FDF629 /* editEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = editEntryViewController.h; sourceTree = "<group>"; };
+		6447D2A118F5E37B00FDF629 /* editEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = editEntryViewController.m; sourceTree = "<group>"; };
+		6447D2A318F60E3A00FDF629 /* checkSecondariesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checkSecondariesViewController.h; sourceTree = "<group>"; };
+		6447D2A418F60E3A00FDF629 /* checkSecondariesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = checkSecondariesViewController.m; sourceTree = "<group>"; };
 		644D706D18E350840081B378 /* ResumeV1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResumeV1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		644D707018E350840081B378 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		644D707218E350840081B378 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -138,14 +144,18 @@
 				644D708518E350840081B378 /* Main_iPad.storyboard */,
 				644D708818E350840081B378 /* myClassViewController.h */,
 				644D708918E350840081B378 /* myClassViewController.m */,
-				644D70AB18E36BA20081B378 /* addEntryViewController.h */,
-				644D70AC18E36BA20081B378 /* addEntryViewController.m */,
 				644D70B118E380940081B378 /* reviewEntriesViewController.h */,
 				644D70B218E380940081B378 /* reviewEntriesViewController.m */,
 				64778FA618E6923A00BBABDB /* entryDetailViewController.h */,
 				64778FA718E6923A00BBABDB /* entryDetailViewController.m */,
+				6447D2A018F5E37B00FDF629 /* editEntryViewController.h */,
+				6447D2A118F5E37B00FDF629 /* editEntryViewController.m */,
+				644D70AB18E36BA20081B378 /* addEntryViewController.h */,
+				644D70AC18E36BA20081B378 /* addEntryViewController.m */,
 				64CB4CC118EC969F00563966 /* makeViewController.h */,
 				64CB4CC218EC969F00563966 /* makeViewController.m */,
+				6447D2A318F60E3A00FDF629 /* checkSecondariesViewController.h */,
+				6447D2A418F60E3A00FDF629 /* checkSecondariesViewController.m */,
 				644D708B18E350840081B378 /* Images.xcassets */,
 				644D707718E350840081B378 /* Supporting Files */,
 				644D70A818E362800081B378 /* Entry.h */,
@@ -289,7 +299,9 @@
 				644D707D18E350840081B378 /* main.m in Sources */,
 				647FB97A18F2089400185596 /* GlobalData.m in Sources */,
 				644D70B318E380940081B378 /* reviewEntriesViewController.m in Sources */,
+				6447D2A218F5E37B00FDF629 /* editEntryViewController.m in Sources */,
 				64CB4CC318EC969F00563966 /* makeViewController.m in Sources */,
+				6447D2A518F60E3A00FDF629 /* checkSecondariesViewController.m in Sources */,
 				644D70AD18E36BA20081B378 /* addEntryViewController.m in Sources */,
 				64778FA818E6923A00BBABDB /* entryDetailViewController.m in Sources */,
 				644D708118E350840081B378 /* myClassAppDelegate.m in Sources */,
