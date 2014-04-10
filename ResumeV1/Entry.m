@@ -3,17 +3,12 @@
 //  ResumeV1
 //
 //  Created by Jeffrey Gertler on 3/26/14.
-//  Copyright (c) 2014 Jeffrey Gertler. All rights reserved.
+//  Copyright (c) 2014 Jeffrey Gertler & George Wong. All rights reserved.
 //
 
 #import "Entry.h"
 
 @implementation Entry
-//@synthesize type;
-//@synthesize header;
-//@synthesize primary;
-//@synthesize secondary;
-
 
 // Initialization and adding
 +(BOOL) entryOfType: (NSString *) type
@@ -23,9 +18,11 @@
     if(_entries == NULL){
         _entries = [[NSMutableArray alloc] init];
     }
+    
     Entry *entry = [[Entry alloc] init];
     [entry setEntryOfType:type withHeader:header andPrimary:primary andSecondary:secondary];
     [_entries addObject:entry];
+    
     return YES;
 }
 -(void) setEntryOfType:(NSString *) type
@@ -57,8 +54,8 @@
 }
 +(NSArray *) entriesWithType: (NSString *) type {
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    for(int i=0; i<[_entries count]; i++){
-        if([[self getObjectAt:i].type isEqualToString:type]){
+    for (int i=0; i<[_entries count]; i++) {
+        if ([[self getObjectAt:i].type isEqualToString:type]) {
             [array addObject:[self getObjectAt:i]];
         }
     }
@@ -66,8 +63,8 @@
 }
 +(int) numEntriesWithType: (NSString *) type {
     int count = 0;
-    for(Entry* entry in _entries){
-        if([entry.type isEqualToString:type]){
+    for (Entry* entry in _entries) {
+        if ([entry.type isEqualToString:type]) {
             count++;
         }
     }
@@ -83,9 +80,9 @@
     NSLog([NSString stringWithFormat:@"%@, %@, %@, %@\n", self.type, self.header, self.primary, self.secondary]);
 }
 
-+(void) printEntries {
++ (void)printEntries {
     NSLog(@"entries:");
-    for(Entry* entry in _entries){
+    for (Entry* entry in _entries) {
         [entry printEntry];
     }
 }
