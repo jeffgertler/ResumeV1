@@ -10,6 +10,7 @@
 
 @implementation Entry
 
+
 // Initialization and adding
 +(BOOL) entryOfType: (NSString *) type
              withHeader: (NSString *) header
@@ -25,10 +26,11 @@
     
     return YES;
 }
--(void) setEntryOfType:(NSString *) type
-            withHeader: (NSString *) header
-            andPrimary: (NSString *) primary
-          andSecondary: (NSString *) secondary {
+
+- (void)setEntryOfType:(NSString *) type
+            withHeader:(NSString *) header
+            andPrimary:(NSString *) primary
+          andSecondary:(NSString *) secondary {
     self.type = type;
     self.header = header;
     self.primary = primary;
@@ -49,10 +51,12 @@
 +(int) entriesSize {
     return [_entries count];
 }
-+(Entry *) getObjectAt: (int) index {
+
++ (Entry *)getObjectAt:(int)index {
     return _entries[index];
 }
-+(NSArray *) entriesWithType: (NSString *) type {
+
++ (NSArray *)entriesWithType:(NSString *)type {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     for (int i=0; i<[_entries count]; i++) {
         if ([[self getObjectAt:i].type isEqualToString:type]) {
@@ -61,7 +65,9 @@
     }
     return array;
 }
-+(int) numEntriesWithType: (NSString *) type {
+
+
++ (int)numEntriesWithType:(NSString *)type {
     int count = 0;
     for (Entry* entry in _entries) {
         if ([entry.type isEqualToString:type]) {
@@ -86,6 +92,5 @@
         [entry printEntry];
     }
 }
-
 
 @end

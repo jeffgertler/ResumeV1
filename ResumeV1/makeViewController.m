@@ -62,9 +62,10 @@
 }
 
 - (IBAction)makePressed:(id)sender {
-    for(Entry *entry in self.addedEntries){
-        NSLog(@"%@", entry.header);
-    }
+    [GlobalData setReadyEntries:self.addedEntries];
+}
+
+- (IBAction)unwindToMake:(UIStoryboardSegue *)segue{
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {

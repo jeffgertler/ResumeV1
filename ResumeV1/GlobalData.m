@@ -24,6 +24,10 @@
     return YES;
 }
 
++ (void)setReadyEntries:(NSMutableArray *)entries{
+    _readyEntries = entries;
+}
+
 + (int)messageSize {
     return _MSG_SIZE;
 }
@@ -34,6 +38,35 @@
 
 + (NSString *)getTypeAt:(int)index{
     return [_types objectAtIndex:index];
+}
+
++(int) readyEntriesSize {
+    return [_readyEntries count];
+}
+
++ (Entry *)getReadyObjectAt:(int)index {
+    return _readyEntries[index];
+}
+
++ (NSArray *)readyEntriesWithType:(NSString *)type {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int i=0; i<[_readyEntries count]; i++) {
+        if ([[self getReadyObjectAt:i].type isEqualToString:type]) {
+            [array addObject:[self getReadyObjectAt:i]];
+        }
+    }
+    return array;
+}
+
+
++ (int)numReadyEntriesWithType:(NSString *)type {
+    int count = 0;
+    for (Entry* entry in _readyEntries) {
+        if ([entry.type isEqualToString:type]) {
+            count++;
+        }
+    }
+    return count;
 }
 
 + (void)saveEntries{

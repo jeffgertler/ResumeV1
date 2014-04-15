@@ -10,6 +10,7 @@
 #import "entryDetailViewController.h"
 #import "Entry.h"
 #import "GlobalData.h"
+#import "NetworkComm.h"
 
 @interface reviewEntriesViewController ()
 
