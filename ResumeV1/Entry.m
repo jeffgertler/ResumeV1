@@ -10,16 +10,13 @@
 
 @implementation Entry
 
+
+// Initialization and adding
 +(BOOL) entryOfType: (NSString *) type
              withHeader: (NSString *) header
              andPrimary: (NSString *) primary
            andSecondary: (NSString *) secondary {
-//    NSArray const *validTypes = @[@"Contact", @"Education", @"Employment", @"Skills", @"Publications"];
-//    if(~[validTypes containsObject:type]){
-//        return NO;
-//    }
-    
-    if (_entries == NULL) {
+    if(_entries == NULL){
         _entries = [[NSMutableArray alloc] init];
     }
     
@@ -40,7 +37,18 @@
     self.secondary = secondary;
 }
 
-+ (int)entriesSize {
+
+// Editing
++(void) removeEntry: (Entry *) entry{
+    [_entries removeObject:entry];
+}
++(void) clearEntries {
+    _entries = [[NSMutableArray alloc] init];
+}
+
+
+// Getters
++(int) entriesSize {
     return [_entries count];
 }
 
@@ -68,9 +76,14 @@
     }
     return count;
 }
+-(NSString *) getTitle {
+    return self.header;
+}
 
-- (void) printEntry {
-    NSLog(@"%@", [NSString stringWithFormat:@"%@, %@, %@, %@\n", self.type, self.header, self.primary, self.secondary]);
+
+// Diagnostics
+-(void) printEntry {
+    NSLog([NSString stringWithFormat:@"%@, %@, %@, %@\n", self.type, self.header, self.primary, self.secondary]);
 }
 
 + (void)printEntries {
@@ -78,14 +91,6 @@
     for (Entry* entry in _entries) {
         [entry printEntry];
     }
-}
-
-- (NSString *)getTitle {
-    return self.header;
-}
-
-+ (void)clearEntries {
-    _entries = [[NSMutableArray alloc] init];
 }
 
 @end

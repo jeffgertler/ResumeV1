@@ -1,37 +1,29 @@
 //
-//  makeViewController.m
+//  checkSecondariesViewController.m
 //  ResumeV1
 //
-//  Created by Jeffrey Gertler on 4/2/14.
+//  Created by Jeffrey Gertler on 4/9/14.
 //  Copyright (c) 2014 Jeffrey Gertler. All rights reserved.
 //
 
-#import "makeViewController.h"
+#import "checkSecondariesViewController.h"
 #import "Entry.h"
 #import "GlobalData.h"
 
-@interface makeViewController ()
+@interface checkSecondariesViewController ()
 
-@property NSMutableArray *addedEntries;
+@property NSMutableArray *entriesNeedingSecondaries;
 
 @end
 
-@implementation makeViewController
-@synthesize tableView;
-
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.addedEntries= [[NSMutableArray alloc] init];
-}
+@implementation checkSecondariesViewController
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
     return [GlobalData typesSize];
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [Entry numEntriesWithType: [GlobalData getTypeAt:section]];
+    return [GlobalData numReadyEntriesWithType: [GlobalData getTypeAt:section]];
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -39,7 +31,7 @@
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tableCell"];
     }
-    cell.textLabel.text = [[[Entry entriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row] getTitle];
+    cell.textLabel.text = [[[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row] getTitle];
     return cell;
 }
 
@@ -52,23 +44,24 @@
     UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:indexPath];
     BOOL isSelected = (tableCell.accessoryType == UITableViewCellAccessoryCheckmark);
     if (isSelected) {
-        [self.addedEntries removeObject:[[Entry entriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row]];
+        [self.entriesNeedingSecondaries removeObject:[[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row]];
         tableCell.accessoryType = UITableViewCellAccessoryNone;
     }
     else {
-        [self.addedEntries addObject:[[Entry entriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row]];
+        [self.entriesNeedingSecondaries addObject:[[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row]];
         tableCell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
 }
 
-- (IBAction)makePressed:(id)sender {
-    [GlobalData setReadyEntries:self.addedEntries];
+- (IBAction)selectTemplatePressed:(id)sender {
+    for(Entry *entry in self.entriesNeedingSecondaries){
+        NSLog(entry.header);
+    }
 }
 
-- (IBAction)unwindToMake:(UIStoryboardSegue *)segue{
-}
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -76,6 +69,11 @@
     return self;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.entriesNeedingSecondaries = [[NSMutableArray alloc] init];
+}
 
 - (void)didReceiveMemoryWarning
 {

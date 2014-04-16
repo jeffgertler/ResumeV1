@@ -9,8 +9,8 @@
 #import "reviewEntriesViewController.h"
 #import "entryDetailViewController.h"
 #import "Entry.h"
-#import "NetworkComm.h"
 #import "GlobalData.h"
+#import "NetworkComm.h"
 
 @interface reviewEntriesViewController ()
 
@@ -22,15 +22,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.validTypes = [[NSArray alloc] initWithObjects:@"Contact", @"Education", @"Employment", @"Skills", @"Publications", nil];
+    [self.tableView reloadData];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self.tableView reloadData];
+    [super viewDidAppear:YES];
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
-    return [self.validTypes count];
+    return [GlobalData typesSize];
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [Entry numEntriesWithType: self.validTypes[section]];
+    return [Entry numEntriesWithType: [GlobalData getTypeAt:section]];
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -38,22 +43,20 @@
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tableCell"];
     }
-    cell.textLabel.text = [[[Entry entriesWithType:self.validTypes[indexPath.section]] objectAtIndex:indexPath.row] getTitle];
+    cell.textLabel.text = [[[Entry entriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row] getTitle];
     return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return self.validTypes[section];
+    return [GlobalData getTypeAt:section];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"DetailSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         entryDetailViewController *destViewController = segue.destinationViewController;
-        Entry *entry = [[Entry entriesWithType:self.validTypes[indexPath.section]] objectAtIndex:indexPath.row];
-        destViewController.header= entry.header;
-        destViewController.primary = entry.primary;
-        destViewController.secondary = entry.secondary;
+        Entry *entry = [[Entry entriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row];
+        destViewController.entry = entry;
     }
 }
 

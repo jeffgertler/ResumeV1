@@ -10,10 +10,8 @@
 
 @interface reviewEntriesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) NSArray *validTypes;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)unwindToReview:(UIStoryboardSegue *)segue;
-
 
 @end

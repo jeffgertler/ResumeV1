@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Entry.h"
 
 @interface entryDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextView *HeaderText;
 @property (weak, nonatomic) IBOutlet UITextView *PrimaryText;
 @property (weak, nonatomic) IBOutlet UITextView *SecondaryText;
-@property NSString *header;
-@property NSString *primary;
-@property NSString *secondary;
+@property Entry *entry;
 
 
 
