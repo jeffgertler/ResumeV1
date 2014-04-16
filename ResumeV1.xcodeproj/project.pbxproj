@@ -30,6 +30,7 @@
 		64778FA818E6923A00BBABDB /* entryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64778FA718E6923A00BBABDB /* entryDetailViewController.m */; };
 		647FB97A18F2089400185596 /* GlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 647FB97918F2089400185596 /* GlobalData.m */; };
 		64CB4CC318EC969F00563966 /* makeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64CB4CC218EC969F00563966 /* makeViewController.m */; };
+		64EA797D18FF094F00C36A3A /* settingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EA797C18FF094F00C36A3A /* settingsViewController.m */; };
 		66A5426018F4C8B3003A295C /* NetworkComm.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A5425F18F4C8B3003A295C /* NetworkComm.m */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,8 @@
 		647FB97918F2089400185596 /* GlobalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalData.m; sourceTree = "<group>"; };
 		64CB4CC118EC969F00563966 /* makeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = makeViewController.h; sourceTree = "<group>"; };
 		64CB4CC218EC969F00563966 /* makeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = makeViewController.m; sourceTree = "<group>"; };
+		64EA797B18FF094F00C36A3A /* settingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsViewController.h; sourceTree = "<group>"; };
+		64EA797C18FF094F00C36A3A /* settingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingsViewController.m; sourceTree = "<group>"; };
 		66A5425E18F4C8B3003A295C /* NetworkComm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkComm.h; sourceTree = "<group>"; };
 		66A5425F18F4C8B3003A295C /* NetworkComm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkComm.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +162,8 @@
 				64CB4CC218EC969F00563966 /* makeViewController.m */,
 				6447D2A318F60E3A00FDF629 /* checkSecondariesViewController.h */,
 				6447D2A418F60E3A00FDF629 /* checkSecondariesViewController.m */,
+				64EA797B18FF094F00C36A3A /* settingsViewController.h */,
+				64EA797C18FF094F00C36A3A /* settingsViewController.m */,
 				644D708B18E350840081B378 /* Images.xcassets */,
 				644D707718E350840081B378 /* Supporting Files */,
 				644D70A818E362800081B378 /* Entry.h */,
@@ -303,6 +308,7 @@
 				644D708A18E350840081B378 /* myClassViewController.m in Sources */,
 				644D707D18E350840081B378 /* main.m in Sources */,
 				647FB97A18F2089400185596 /* GlobalData.m in Sources */,
+				64EA797D18FF094F00C36A3A /* settingsViewController.m in Sources */,
 				66A5426018F4C8B3003A295C /* NetworkComm.m in Sources */,
 				644D70B318E380940081B378 /* reviewEntriesViewController.m in Sources */,
 				6447D2A218F5E37B00FDF629 /* editEntryViewController.m in Sources */,

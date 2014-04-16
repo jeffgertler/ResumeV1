@@ -11,7 +11,7 @@
 
 @interface addEntryViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *TextField;
-@property (weak, nonatomic) IBOutlet UILabel *SectionLabel;
+@property (weak, nonatomic) IBOutlet UINavigationItem *TitleText;
 @property int currentSection;
 @property NSArray *sections;
 @property NSMutableArray *entryData;
@@ -28,7 +28,7 @@
     self.sections = [[NSArray alloc] initWithObjects:@"Type", @"Header", @"Primary", @"Secondary", nil];
     self.entryData= [[NSMutableArray alloc] initWithCapacity:self.sections.count];
     self.currentSection = 0;
-    self.SectionLabel.text = self.sections[self.currentSection];
+    self.TitleText.title = self.sections[self.currentSection];
 	
 }
 
@@ -46,7 +46,7 @@
         [self.entryData addObject:self.TextField.text];
         self.TextField.text = @"";
         self.currentSection++;
-        self.SectionLabel.text = self.sections[self.currentSection];
+        self.TitleText.title = self.sections[self.currentSection];
     }
 }
 
