@@ -11,5 +11,6 @@
 @interface checkSecondariesViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)unwindToCheckSecondaries:(UIStoryboardSegue *)segue;
 
 @end

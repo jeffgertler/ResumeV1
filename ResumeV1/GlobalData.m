@@ -58,7 +58,6 @@
     return array;
 }
 
-
 + (int)numReadyEntriesWithType:(NSString *)type {
     int count = 0;
     for (Entry* entry in _readyEntries) {
@@ -68,6 +67,14 @@
     }
     return count;
 }
+
++ (void)setTemplateNumber:(int)number{
+    _templateNumber = number;
+}
++ (int)getTemplateNumber{
+    return _templateNumber;
+}
+
 
 + (void)saveEntries{
     [self resetDefaults];

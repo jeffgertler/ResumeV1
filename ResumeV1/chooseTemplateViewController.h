@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface chooseTemplateViewController : UIViewController
+
+@interface chooseTemplateViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDataSource>
+
+- (IBAction)unwindToChooseTemplate:(UIStoryboardSegue *)segue;
 
 @end
