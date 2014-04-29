@@ -41,7 +41,7 @@
     NSString *imagePath = [NSString stringWithFormat:@"template%d", indexPath.row+1];
     cell.cellImage.image = [UIImage imageNamed:imagePath];
     [cell.layer setBorderWidth:2.0f];
-    [cell.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [cell.layer setBorderColor:[UIColor blackColor].CGColor];
     return cell;
     
 }
@@ -49,13 +49,13 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     for(int i=0; i<[self.templateData count]; i++){
         collectionCell *cell = (collectionCell *)[collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-        cell.window.backgroundColor = [UIColor grayColor];
-        cell.backgroundColor = [UIColor grayColor];
+        cell.window.backgroundColor = [UIColor blackColor];
+        cell.backgroundColor = [UIColor blackColor];
     }
     
     self.selectedCell = (collectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    self.selectedCell.window.backgroundColor = [UIColor whiteColor];
-    self.selectedCell.backgroundColor = [UIColor whiteColor];
+    self.selectedCell.window.backgroundColor = [UIColor blueColor];
+    self.selectedCell.backgroundColor = [UIColor blueColor];
     self.selectedNumber = indexPath.row+1;
     [GlobalData setTemplateNumber: self.selectedNumber];
 }

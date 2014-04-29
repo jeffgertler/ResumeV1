@@ -626,15 +626,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7t0-3L-t6C">
-                                                    <rect key="frame" x="0.0" y="174" width="150" height="21"/>
+                                                    <rect key="frame" x="5" y="166" width="140" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.45849609375" green="0.45849609375" blue="0.45849609375" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.77144191576086962" green="0.77144191576086962" blue="0.77144191576086962" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M6G-Qk-sIR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="175"/>
+                                                    <rect key="frame" x="5" y="5" width="140" height="161"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
