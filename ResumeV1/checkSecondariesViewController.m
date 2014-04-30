@@ -53,12 +53,6 @@
     }
 }
 
-- (IBAction)selectTemplatePressed:(id)sender {
-    for(Entry *entry in self.entriesNeedingSecondaries){
-        NSLog(entry.header);
-    }
-}
-
 - (IBAction)unwindToCheckSecondaries:(UIStoryboardSegue *)segue{
 }
 

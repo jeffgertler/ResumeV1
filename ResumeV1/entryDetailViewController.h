@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *SecondaryText;
 @property Entry *entry;
 
+- (IBAction)unwindToEntryDetail:(UIStoryboardSegue *)segue;
+
 
 
 @end

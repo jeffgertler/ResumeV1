@@ -9,8 +9,9 @@
 #import "makeViewController.h"
 #import "Entry.h"
 #import "GlobalData.h"
+#import "checkSecondariesViewController.h"
 
-@interface makeViewController ()
+@interface makeViewController () 
 
 @property NSMutableArray *addedEntries;
 
@@ -24,6 +25,24 @@
 {
     [super viewDidLoad];
     self.addedEntries= [[NSMutableArray alloc] init];
+    //UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(nextPressed:)];
+    
+    self.navBar = [[UINavigationBar alloc] init];
+    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"Select Information"];
+    UIBarButtonItem *Next = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextPressed:)];
+    UIBarButtonItem *Back = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backPressed:)];
+    navItem.rightBarButtonItem = Next;
+    navItem.leftBarButtonItem = Back;
+    self.navBar.items = [NSArray arrayWithObject:navItem];
+    [self.view addSubview:self.navBar];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    self.navBar.frame = CGRectMake(0, 20, self.view.frame.size.width, 44);
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    self.navBar.frame = CGRectMake(0, 20, self.view.frame.size.width, 44);
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
@@ -61,8 +80,14 @@
     }
 }
 
-- (IBAction)makePressed:(id)sender {
+- (IBAction)nextPressed:(id)sender {
     [GlobalData setReadyEntries:self.addedEntries];
+    [self performSegueWithIdentifier:@"secondariesSegue" sender:sender];
+}
+
+- (IBAction)backPressed:(id)sender {
+    //[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:Nil];
 }
 
 - (IBAction)unwindToMake:(UIStoryboardSegue *)segue{

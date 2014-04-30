@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface makeViewController : UIViewController
+@interface makeViewController : UIViewController <UINavigationBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)unwindToMake:(UIStoryboardSegue *)segue;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property UINavigationBar *navBar;
 
 @end

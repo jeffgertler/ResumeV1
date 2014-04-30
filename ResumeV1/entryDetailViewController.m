@@ -53,6 +53,9 @@
     
 }
 
+- (IBAction)unwindToEntryDetail:(UIStoryboardSegue *)segue{
+}
+
 
 
 - (void)didReceiveMemoryWarning
