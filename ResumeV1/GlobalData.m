@@ -146,6 +146,12 @@
 }
 
 // Configuration stuff
++ (void)setUseSecondaryEmail:(BOOL)use {
+    _useSecondaryEmail = use;
+}
++ (BOOL)useSecondaryEmail {
+    return _useSecondaryEmail;
+}
 + (void)setPrimaryEmail:(NSString *)s {
     // This may not be the best way to do this
     _primaryEmail = [[NSMutableString alloc] initWithString:s];
