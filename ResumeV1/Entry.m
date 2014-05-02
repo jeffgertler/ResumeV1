@@ -81,8 +81,14 @@
 }
 
 
+// I/O
+- (NSString *)entryString {
+    return [NSString stringWithFormat:@"%@, %@, %@, %@\n", self.type, self.header, self.primary, self.secondary];
+}
+
+
 // Diagnostics
--(void) printEntry {
+- (void)printEntry {
     NSLog([NSString stringWithFormat:@"%@, %@, %@, %@\n", self.type, self.header, self.primary, self.secondary]);
 }
 

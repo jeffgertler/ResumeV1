@@ -37,6 +37,20 @@
     NSString *imagePath = [NSString stringWithFormat:@"template%d", [GlobalData getTemplateNumber]];
     dot.image= [UIImage imageNamed:imagePath];
     [self.view addSubview:dot];
+    
+    NSLog([GlobalData stringForServer]);
+    
+    /*
+    for (int i=0; i<[GlobalData readyEntriesSize]; i++) {
+        NSLog([GlobalData getReadyObjectAt:i]);
+    } */
+    
+    //NSLog([GlobalData ] );
+    //NSLog([]);
+}
+
+- (void)printReadyEntries {
+    
 }
 
 - (void)didReceiveMemoryWarning

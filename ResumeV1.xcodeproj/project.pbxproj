@@ -38,6 +38,7 @@
 		64EA798418FF246C00C36A3A /* template3.png in Resources */ = {isa = PBXBuildFile; fileRef = 64EA798018FF246C00C36A3A /* template3.png */; };
 		64EA798518FF246C00C36A3A /* template2.png in Resources */ = {isa = PBXBuildFile; fileRef = 64EA798118FF246C00C36A3A /* template2.png */; };
 		64EA798818FF252800C36A3A /* chooseTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EA798718FF252800C36A3A /* chooseTemplateViewController.m */; };
+		6678B6201912057C009A36C4 /* webPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6678B61F1912057C009A36C4 /* webPreviewViewController.m */; };
 		66A5426018F4C8B3003A295C /* NetworkComm.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A5425F18F4C8B3003A295C /* NetworkComm.m */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,8 @@
 		64EA798118FF246C00C36A3A /* template2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = template2.png; path = Resources/template2.png; sourceTree = SOURCE_ROOT; };
 		64EA798618FF252800C36A3A /* chooseTemplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chooseTemplateViewController.h; sourceTree = "<group>"; };
 		64EA798718FF252800C36A3A /* chooseTemplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chooseTemplateViewController.m; sourceTree = "<group>"; };
+		6678B61E1912057C009A36C4 /* webPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webPreviewViewController.h; sourceTree = "<group>"; };
+		6678B61F1912057C009A36C4 /* webPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = webPreviewViewController.m; sourceTree = "<group>"; };
 		66A5425E18F4C8B3003A295C /* NetworkComm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkComm.h; sourceTree = "<group>"; };
 		66A5425F18F4C8B3003A295C /* NetworkComm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkComm.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				64589322190850EA00474CBE /* Main_iPhone.storyboard */,
+				6678B61E1912057C009A36C4 /* webPreviewViewController.h */,
+				6678B61F1912057C009A36C4 /* webPreviewViewController.m */,
 				644D708518E350840081B378 /* Main_iPad.storyboard */,
 				644D707F18E350840081B378 /* myClassAppDelegate.h */,
 				644D708018E350840081B378 /* myClassAppDelegate.m */,
@@ -340,6 +345,7 @@
 				6455FF5219045BE9002E3DB8 /* collectionCell.m in Sources */,
 				644D707D18E350840081B378 /* main.m in Sources */,
 				647FB97A18F2089400185596 /* GlobalData.m in Sources */,
+				6678B6201912057C009A36C4 /* webPreviewViewController.m in Sources */,
 				64EA797D18FF094F00C36A3A /* settingsViewController.m in Sources */,
 				66A5426018F4C8B3003A295C /* NetworkComm.m in Sources */,
 				64A526CC190DBBC9009D85E4 /* templateDetailViewController.m in Sources */,

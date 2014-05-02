@@ -118,4 +118,47 @@
     return [info objectForKey:@"CFBundleShortVersionString"];
 }
 
++ (NSString *)stringForServer {
+    NSMutableString *s = [[NSMutableString alloc]init];
+
+    // Add config information
+    [s appendString:[NSString stringWithFormat:@"[Template, %d]", [GlobalData getTemplateNumber]]];
+    
+    [s appendString:[NSString stringWithFormat:@"[P_email, %@]", [GlobalData primaryEmail]]];
+    if ([[GlobalData secondaryEmail] length] != 0) {
+        [s appendString:[NSString stringWithFormat:@"[S_email, %@]", [GlobalData secondaryEmail]]];
+    }
+    
+    // Add relevant entries
+    for (int i=0; i<[_readyEntries count]; i++) {
+        [s appendString:@"["];
+        [s appendString:[_readyEntries[i] entryString]];
+        [s appendString:@"]"];
+    }
+    
+    return [NSString stringWithString:s];
+}
+
++ (void)printReadyEntries {
+    for (int i=0; i<[_readyEntries count]; i++) {
+        [_readyEntries[i] printEntry];
+    }
+}
+
+// Configuration stuff
++ (void)setPrimaryEmail:(NSString *)s {
+    // This may not be the best way to do this
+    _primaryEmail = [[NSMutableString alloc] initWithString:s];
+}
++ (void)setSecondaryEmail:(NSString *)s {
+    _secondaryEmail = [[NSMutableString alloc] initWithString:s]; // Ditto
+}
++ (NSString *)primaryEmail {
+    return _primaryEmail;
+}
++ (NSString *)secondaryEmail {
+    return _secondaryEmail;
+}
+
+
 @end

@@ -13,6 +13,8 @@ static NSMutableArray *_types;
 static NSMutableArray *_readyEntries;
 static int _templateNumber;
 static int _MSG_SIZE = 1020; // 1024 minus safety room
+static NSMutableString *_primaryEmail;
+static NSMutableString *_secondaryEmail;
 
 
 @interface GlobalData : NSObject
@@ -26,12 +28,16 @@ static int _MSG_SIZE = 1020; // 1024 minus safety room
 + (int)messageSize;
 + (NSString *)versionNumber;
 + (void)setReadyEntries:(NSMutableArray *)entries;
-+(int) readyEntriesSize;
++ (int)readyEntriesSize;
 + (Entry *)getReadyObjectAt:(int)index;
 + (NSArray *)readyEntriesWithType:(NSString *)type;
 + (int)numReadyEntriesWithType:(NSString *)type;
 + (void)setTemplateNumber:(int)number;
 + (int)getTemplateNumber;
++ (void)setPrimaryEmail:(NSString *)s;
++ (void)setSecondaryEmail:(NSString *)s;
++ (NSString *)primaryEmail;
++ (NSString *)secondaryEmail;
 
 // Saving and loading
 +(void) saveEntries;
@@ -42,6 +48,9 @@ static int _MSG_SIZE = 1020; // 1024 minus safety room
 @property NSMutableArray *entriesNeedingSecondaries; //ints, indexes
 @property NSArray *info; //strings
 
+// Utility methods
++ (NSString *) stringForServer;
++ (void)printReadyEntries;
 
 @end
 

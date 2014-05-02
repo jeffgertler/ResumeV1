@@ -39,6 +39,9 @@ static NSMutableArray *_entries;
 +(int) numEntriesWithType: (NSString *) type;
 -(NSString *) getTitle;
 
+// I/O
+- (NSString *)entryString;
+
 // Diagnostics
 -(void) printEntry;
 +(void) printEntries;

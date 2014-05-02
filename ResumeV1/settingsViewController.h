@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Entry.h"
+#import "GlobalData.h"
 
 @interface settingsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *primaryEmailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *secondaryEmailTextField;
+@property (weak, nonatomic) IBOutlet UISwitch *secondaryEmailUseSwitch;
 @end
