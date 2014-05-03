@@ -25,12 +25,12 @@
     self.secondaryEmailTextField.delegate = self;
     
     self.primaryEmailTextField.text = [GlobalData primaryEmail];
-    
     self.secondaryEmailTextField.text = [GlobalData secondaryEmail];
-    if ([[GlobalData secondaryEmail] length] == 0) {
-        [self.secondaryEmailUseSwitch setOn:NO];
+    
+    if ([GlobalData useSecondaryEmail]) {
+        [[self secondaryEmailUseSwitch] setOn:YES];
     } else {
-        [self.secondaryEmailUseSwitch setOn:YES];
+        [[self secondaryEmailUseSwitch] setOn:NO];
     }
 }
 
@@ -53,8 +53,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [GlobalData setPrimaryEmail:[[self primaryEmailTextField] text]];
+    [GlobalData setSecondaryEmail:[[self secondaryEmailTextField] text]];
     if ([[self secondaryEmailUseSwitch] isOn]) {
-        [GlobalData setSecondaryEmail:[[self secondaryEmailTextField] text]];
+        [GlobalData setUseSecondaryEmail:YES];
+    } else {
+        [GlobalData setUseSecondaryEmail:NO];
     }
 }
 

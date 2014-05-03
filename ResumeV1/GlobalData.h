@@ -15,6 +15,7 @@ static int _templateNumber;
 static int _MSG_SIZE = 1020; // 1024 minus safety room
 static NSMutableString *_primaryEmail;
 static NSMutableString *_secondaryEmail;
+static BOOL _useSecondaryEmail;
 
 
 @interface GlobalData : NSObject
@@ -36,8 +37,10 @@ static NSMutableString *_secondaryEmail;
 + (int)getTemplateNumber;
 + (void)setPrimaryEmail:(NSString *)s;
 + (void)setSecondaryEmail:(NSString *)s;
++ (void)setUseSecondaryEmail:(BOOL)use;
 + (NSString *)primaryEmail;
 + (NSString *)secondaryEmail;
++ (BOOL)useSecondaryEmail;
 
 // Saving and loading
 +(void) saveEntries;
@@ -49,7 +52,7 @@ static NSMutableString *_secondaryEmail;
 @property NSArray *info; //strings
 
 // Utility methods
-+ (NSString *) stringForServer;
++ (NSString *)stringForServer;
 + (void)printReadyEntries;
 
 @end
