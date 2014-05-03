@@ -1,4 +1,10 @@
-
+#
+#  formats.py
+#  ResumeV1 (server)
+#
+#  Created by George Wong on 5/3/14.
+#  Copyright (c) 2014 Jeffrey Gertler & George Wong. All rights reserved.
+#
 
 ### Style of template one
 def styleOne(secondaries, contact, education, experience, skills, others):

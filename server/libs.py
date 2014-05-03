@@ -1,3 +1,10 @@
+#
+#  formats.py
+#  ResumeV1 (server)
+#
+#  Created by George Wong on 5/3/14.
+#  Copyright (c) 2014 Jeffrey Gertler & George Wong. All rights reserved.
+#
 
 inputString1 = "{{template:2},{p_email:(null)},{secondaries:(1,2,3,4,5,6,7,8)},{{type:Contact},{header:John Smith},{primary:johnsmith@gmail.com \
 (111)111-1111},{secondary:123 Broadway \
@@ -40,6 +47,95 @@ def parseJson(working):
 
 #print parseJson(inputString[1:-1])
 
+
+
+### Take JSON, sort, and format according to style
+def populateTypes(s):
+
+  secondaries = []
+  contact = []
+  education = []
+  experience = []
+  skills = []
+  # publications = []    # Not used for this template
+
+  others = {}
+  
+  # Load JSON to print
+  for l in s:
+    # Ignore template and email
+    if ((l[0] == "template") or (l[0] == "p_email") or (l[0] == "s_email")):
+      continue
+    # Load secondaries
+    if (l[0] == "secondaries"):
+      secondaries = l[1][1:-1].split(',')
+      for i in range(len(secondaries)):
+        secondaries[i] = int(secondaries[i])
+    # Continue (if not a list-like field)
+    if (type(l[0]) != type(["",""])):
+      continue
+    # Take care of contact stuff
+    if (l[0][1] == "Contact"):
+      contact.append(l[1][1].upper()) # Name
+      tmp = l[2][1]
+      try:
+        tmp += " \\\\ \n"
+        tmp += l[3][1]
+      except:
+        pass
+      contact.append(tmp)
+    elif (l[0][1] == "Education"):
+      tmp = ["","","",""]  # TODO (take care of date things)
+      for m in l:
+        if (m[0] == "header"):
+          tmp[0] = m[1]
+        elif (m[0] == "primary"):
+          tmp[1] = m[1]
+        elif (m[0] == "secondary"):
+          tmp[2] = m[1]
+      education.append(tmp)
+    elif (l[0][1] == "Skills"):
+      tmp = ["topic"]
+      for m in l:
+        if (m[0] == "header"):
+          tmp[0] = m[1]
+        elif (m[0] == "primary"):
+          tmp.append(m[1])
+        else:
+          continue # TODO
+      skills.append(tmp)
+    elif (l[0][1] == "Experience" or l[0][1] == "Employment"):
+      tmp = ["company","position","responsibliy","dat?"]
+      for m in l:
+        if (m[0] == "header"):
+          tmp[0] = m[1]
+          continue
+        elif (m[0] == "primary"):
+          tmp[1] = m[1]
+        elif (m[0] == "secondary"):
+          tmp[2] = m[1]
+        else:
+          continue  # TODO
+      experience.append(tmp)
+    else:
+      # Add type to "others" 
+      if (not l[0][1] in others):
+        others[l[0][1]] = []
+      # Add as always
+      tmp = ["","","","",""]
+      myType = ""
+      for m in l:
+        if (m[0] == "type"):
+          myType = m[1]
+        elif (m[0] == "header"):
+          tmp[0] = m[1]
+        elif (m[0] == "primary"):
+          tmp[1] = m[1]
+        elif (m[0] == "secondary"):
+          tmp[2] = m[1]
+      others[myType].append(tmp)
+
+  return [secondaries, contact, education, experience, skills, others]
 
 
 
