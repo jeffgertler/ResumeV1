@@ -1,5 +1,5 @@
 #
-#  formats.py
+#  libs.py
 #  ResumeV1 (server)
 #
 #  Created by George Wong on 5/3/14.
@@ -17,6 +17,15 @@ inputString2 = "{{template:2},{p_email:(null)},{secondaries:(6,4,5,2,3,0,1)},{{t
 Developed iall IFPS programs used for financial reports.}}{{type:Employment},{header:Psychology Department, Rensselaer Polytechnic Institute},{primary:Research Programmer, Summer 2013},{secondary:Performed Computer Aided Statistical analysis of data}}{{type:Education},{header:New York University, New York, NY, expected May 2014},{primary:Bachelor of Science, Computer Science},{secondary:Minor: Management}}}"
 
 
+# Splits input into array with elements of size given
+def splitToArray(longString, n):
+  a = []
+  while (len(longString) > 0):
+    a.append(longString[0:n])
+    longString = longString[n:]
+  return a
+
+  
 # Parse the input string
 def parseJson(working):
   json_array = []
@@ -57,7 +66,7 @@ def populateTypes(s):
   education = []
   experience = []
   skills = []
-  # publications = []    # Not used for this template
+  publications = []    # Not used for this template
 
   others = {}
   
@@ -77,10 +86,9 @@ def populateTypes(s):
     # Take care of contact stuff
     if (l[0][1] == "Contact"):
       contact.append(l[1][1].upper()) # Name
-      tmp = l[2][1]
+      tmp = [l[2][1]]
       try:
-        tmp += " \\\\ \n"
-        tmp += l[3][1]
+        tmp.append( l[3][1] )
       except:
         pass
       contact.append(tmp)
@@ -135,7 +143,7 @@ def populateTypes(s):
           tmp[2] = m[1]
       others[myType].append(tmp)
 
-  return [secondaries, contact, education, experience, skills, others]
+  return [secondaries, contact, education, experience, skills, publications, others]
 
 
 
