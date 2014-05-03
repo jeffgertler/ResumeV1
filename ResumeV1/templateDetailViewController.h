@@ -10,4 +10,6 @@
 
 @interface templateDetailViewController : UIViewController
 
+- (IBAction)unwindToTemplateDetail:(UIStoryboardSegue *)segue;
+
 @end
