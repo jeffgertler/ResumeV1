@@ -17,6 +17,7 @@ static NSMutableArray *_entries;
 @property NSString *header;
 @property NSString *primary;
 @property NSString *secondary;
+@property BOOL addressIsTemporary;
 
 // Initialization and adding
 +(BOOL) entryOfType: (NSString *) type

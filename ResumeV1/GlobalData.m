@@ -28,6 +28,18 @@
     _readyEntries = entries;
 }
 
++ (void)setDefaultTypes {
+    
+    // Make note of our special "default" types
+    _specialTypes = @[@"Education", @"Employment", @"Skills"];
+    
+    // Set everything up pretty-like
+    _specialTypeOverrides = @{@"Education"  : @[@"Institution Name", @"Degree", @"More Info"],
+                              @"Employment" : @[@"Company", @"Position", @"Other Info"],
+                              @"Skills"     : @[@"Header", @"Other Info", @"NULL"]
+                              };
+}
+
 + (int)messageSize {
     return _MSG_SIZE;
 }
@@ -133,6 +145,17 @@
     
 }
 
+
+
++ (NSArray *)specialTypes {
+    return _specialTypes;
+}
+
++ (NSDictionary *)specialTypeOverrides {
+    return _specialTypeOverrides;
+}
+
+
 + (void)resetDefaults {
     NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
     NSDictionary * dict = [defs dictionaryRepresentation];
@@ -140,6 +163,65 @@
         [defs removeObjectForKey:key];
     }
     [defs synchronize];
+}
+
++(void) makeSample:(int)version {
+    [GlobalData resetDefaults];
+    
+    if (version == 0) {
+        [GlobalData addType:@"Contact"];
+        [GlobalData addType:@"Education"];
+        [GlobalData addType:@"Employment"];
+        [GlobalData addType:@"Skills"];
+        [GlobalData addType:@"Publications"];
+        [GlobalData addType:@"Awards"];
+        [GlobalData addType:@"Honors"];
+        
+        [Entry entryOfType:@"Contact"
+                withHeader:@"Roger Darling"
+                andPrimary:@"johnsmith@gmail.com\n(111) 111-1111"
+              andSecondary:@"123 Broadway\n New York, NY, 12345"];
+        
+        [Entry entryOfType:@"Contact"
+                withHeader:@"Roger Darling"
+                andPrimary:@"johnsmith@gmail.com\n(111) 111-1111"
+              andSecondary:@"19 Tibbits Avenue\n Troy, NY, 12180"];
+        
+        [Entry entryOfType:@"Education"
+                withHeader:@"Rensselaer Polytechnic Institute, Troy, NY"
+                andPrimary:@"B.S., Electrical Engineering"
+              andSecondary:@""];
+        
+        [Entry entryOfType:@"Employment"
+                withHeader:@"A & P Supermarket, Madison, NJ"
+                andPrimary:@"Meat Department Assistant"
+              andSecondary:@"Assisted department manager with ordering, pricing, and maintaining department inventory."];
+        
+        [Entry entryOfType:@"Skills"
+                withHeader:@"Languages and Software"
+                andPrimary:@"COBOL, IFPS, Focus, Megacalc, Pascal, Modula2, C, APL, SNOBOL, FORTRAN, LISP, SPIRES, BASIC, VSPC Autotab"
+              andSecondary:@""];
+        
+        [Entry entryOfType:@"Honors"
+                withHeader:@"Dean's List"
+                andPrimary:@"Rensselaer Polytechnic Institute"
+              andSecondary:@""];
+        
+        [Entry entryOfType:@"Honors"
+                withHeader:@"Clayton and Mary Shelley Scholarship"
+                andPrimary:@"Rensselaer Polytechnic Institute"
+              andSecondary:@""];
+        
+        [Entry entryOfType:@"Honors"
+                withHeader:@"United Food and Commercial Workers Union Scholarship"
+                andPrimary:@"National Honor Society"
+              andSecondary:@""];
+        
+        [Entry entryOfType:@"Awards"
+                withHeader:@"Salutatorian Medal"
+                andPrimary:@"Mayfield Central School, NY"
+              andSecondary:@"2010, 2011, 2012"];
+    }
 }
 
 + (NSString *)versionNumber {

@@ -7,18 +7,10 @@
 //
 
 #import "entryDetailViewController.h"
-#import "reviewEntriesViewController.h"
-#import "editEntryViewController.h"
-#import "Entry.h"
-
-@interface entryDetailViewController ()
-
-@end
 
 @implementation entryDetailViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -26,18 +18,36 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.HeaderText.text = self.entry.header;
     self.PrimaryText.text = self.entry.primary;
     self.SecondaryText.text = self.entry.secondary;
+    [self setLabels];
 }
 
--(void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     self.HeaderText.text = self.entry.header;
     self.PrimaryText.text = self.entry.primary;
     self.SecondaryText.text = self.entry.secondary;
+    [self setLabels];
+}
+
+- (void)setLabels {
+    if ([[GlobalData specialTypes] containsObject:self.entry.type]) {
+        self.headerLabel.text = [[[GlobalData specialTypeOverrides] objectForKey:self.entry.type] objectAtIndex:0];
+        self.primaryLabel.text  = [[[GlobalData specialTypeOverrides] objectForKey:self.entry.type] objectAtIndex:1];
+        self.secondaryLabel.text = [[[GlobalData specialTypeOverrides] objectForKey:self.entry.type] objectAtIndex:2];
+        if (self.secondaryLabel.text == @"NULL") {
+            self.secondaryLabel.hidden = YES;
+            self.SecondaryText.hidden = YES;
+        }
+    } else {
+        self.headerLabel.text = @"Header";
+        self.primaryLabel.text = @"Primary";
+        self.secondaryLabel.text = @"Secondary";
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -53,10 +63,8 @@
     
 }
 
-- (IBAction)unwindToEntryDetail:(UIStoryboardSegue *)segue{
+- (IBAction)unwindToEntryDetail:(UIStoryboardSegue *)segue {
 }
-
-
 
 - (void)didReceiveMemoryWarning
 {

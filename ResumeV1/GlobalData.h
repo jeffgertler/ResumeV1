@@ -18,17 +18,21 @@ static NSMutableString *_primaryEmail;
 static NSMutableString *_secondaryEmail;
 static BOOL _useSecondaryEmail;
 
+static NSArray *_specialTypes;
+static NSDictionary *_specialTypeOverrides;
+
 
 @interface GlobalData : NSObject
 
 @property NSArray *info; //strings
 
 // Initialization
-+(BOOL) addType:(NSString *) newType;
-+(int) typesSize;
++ (BOOL)addType:(NSString *) newType;
++ (int)typesSize;
++ (void)setDefaultTypes;
 
 // Getters
-+(NSString *) getTypeAt:(int)index;
++ (NSString *)getTypeAt:(int)index;
 + (int)messageSize;
 + (NSString *)versionNumber;
 + (int)readyEntriesSize;
@@ -39,6 +43,8 @@ static BOOL _useSecondaryEmail;
 + (NSString *)primaryEmail;
 + (NSString *)secondaryEmail;
 + (BOOL)useSecondaryEmail;
++ (NSArray *)specialTypes;
++ (NSDictionary *)specialTypeOverrides;
 
 // Setters
 + (void)setReadyEntries:(NSMutableArray *)entries;
@@ -49,9 +55,10 @@ static BOOL _useSecondaryEmail;
 + (void)setEntriesNeedingSecondaries:(NSMutableArray *)entries;
 
 // Saving and loading
-+(void) saveState;
-+(void) loadState;
-+(void) resetDefaults;
++ (void)saveState;
++ (void)loadState;
++ (void)resetDefaults;
++ (void)makeSample:(int)version;
 
 // Utility methods
 + (NSString *)stringForServer;

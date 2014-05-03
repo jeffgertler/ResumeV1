@@ -21,11 +21,12 @@
     [super viewDidLoad];
     self.myTextField.delegate = self;
     
+    [GlobalData setDefaultTypes];
+    
     [GlobalData addType:@"Contact"];
     [GlobalData addType:@"Education"];
     [GlobalData addType:@"Employment"];
     [GlobalData addType:@"Skills"];
-    [GlobalData addType:@"Publications"];
     [GlobalData addType:@"Awards"];
     
     [Entry entryOfType:@"Contact" withHeader:@"John Smith" andPrimary:@"johnsmith@gmail.com\n(111) 111-1111" andSecondary:@"123 Broadway\n New York, NY, 12345"];
@@ -37,6 +38,8 @@
     
     [Entry entryOfType:@"Awards" withHeader:@"Dean's List" andPrimary:@"2014, 2015" andSecondary:@""];
     [Entry entryOfType:@"Awards" withHeader:@"Salutatorian Medal" andPrimary:@"Mayfield Central School, NY" andSecondary:@"2010, 2011, 2012"];
+    
+    [GlobalData makeSample:0];
     
 }
 - (IBAction)saveData:(id)sender {

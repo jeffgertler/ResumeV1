@@ -10,6 +10,7 @@
 
 @implementation Entry
 
+@synthesize addressIsTemporary;
 
 // Initialization and adding
 +(BOOL) entryOfType: (NSString *) type
