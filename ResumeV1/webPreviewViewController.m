@@ -31,6 +31,9 @@
     
     rootURL = [NetworkComm sendMessage:[GlobalData stringForServer]];
     
+    //NSLog([[GlobalData getReadyObjectAt:1] stringWithFullInformationForSendingToServer]);
+//           entry stringWithFullInformationForSendingToServer]);
+    
     [self changeURLTo:@"http://latex.wong1275.com/"];
 }
 

@@ -85,6 +85,33 @@
 - (NSString *)entryString {
     return [NSString stringWithFormat:@"%@, %@, %@, %@\n", self.type, self.header, self.primary, self.secondary];
 }
+- (NSString *)stringWithFullInformationForSendingToServer {
+    NSMutableString *goodString = [[NSMutableString alloc] init];
+    [goodString appendString:@"{"];
+    
+    // Type
+    [goodString appendString:@"{type:"];
+    [goodString appendString:[self type]];
+    [goodString appendString:@"},"];
+    
+    // Header
+    [goodString appendString:@"{header:"];
+    [goodString appendString:[self header]];
+    [goodString appendString:@"},"];
+    
+    // Primary
+    [goodString appendString:@"{primary:"];
+    [goodString appendString:[self primary]];
+    [goodString appendString:@"},"];
+    
+    // Secondary
+    [goodString appendString:@"{secondary:"];
+    [goodString appendString:[self secondary]];
+    [goodString appendString:@"}}"];
+    
+    // [NSString stringWithString:goodString]
+    return [NSString stringWithString:goodString];
+}
 
 
 // Diagnostics

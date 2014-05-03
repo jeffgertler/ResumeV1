@@ -41,6 +41,7 @@ static NSMutableArray *_entries;
 
 // I/O
 - (NSString *)entryString;
+- (NSString *)stringWithFullInformationForSendingToServer;
 
 // Diagnostics
 -(void) printEntry;
