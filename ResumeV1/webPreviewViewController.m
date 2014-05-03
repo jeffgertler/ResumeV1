@@ -27,9 +27,9 @@
     //NSLog(@"%@", [NetworkComm sendMessage:@"TST MSG SYS"]);
     
 
-    NSLog([GlobalData stringForServer]);
+    //NSLog([GlobalData stringForServer]);
     
-    //rootURL = [NetworkComm sendMessage:@"TST MSG SYS"];
+    rootURL = [NetworkComm sendMessage:[GlobalData stringForServer]];
     
     [self changeURLTo:@"http://latex.wong1275.com/"];
 }

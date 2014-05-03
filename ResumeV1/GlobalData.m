@@ -76,10 +76,11 @@
 }
 
 
-+ (void)saveEntries{
++ (void)saveState{
     [self resetDefaults];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@"yes" forKey:@"isDataSaved"];
+    // Saving _entries
     [defaults setObject:[NSString stringWithFormat:@"%d", [Entry entriesSize]] forKey:@"numEntries"];
     for (int i=0; i<[Entry entriesSize]; i++) {
         [defaults setObject:[Entry getObjectAt:i].type forKey:[NSString stringWithFormat:@"entry%dtype", i]];
@@ -87,11 +88,25 @@
         [defaults setObject:[Entry getObjectAt:i].primary forKey:[NSString stringWithFormat:@"entry%dprimary", i]];
         [defaults setObject:[Entry getObjectAt:i].secondary forKey:[NSString stringWithFormat:@"entry%dsecondary", i]];
     }
+    // Saving _types
+    [defaults setObject:[NSString stringWithFormat:@"%d", [self typesSize]] forKey:@"numTypes"];
+    for (int i=0; i<[self typesSize]; i++){
+        [defaults setObject:[self getTypeAt:i] forKey:[NSString stringWithFormat:@"type%d", i]];
+    }
+    //Saving _primaryEmail, _secondaryEmail, _useSecondaryEmail
+    [defaults setObject:_primaryEmail forKey:@"primaryEmail"];
+    [defaults setObject:_secondaryEmail forKey:@"secondaryEmail"];
+    if(_useSecondaryEmail){
+        [defaults setObject:@"YES" forKey:@"useSecondaryEmail"];
+    } else {
+        [defaults setObject:@"NO" forKey:@"useSecondaryEmail"];
+    }
     [defaults synchronize];
 }
 
-+ (void)loadEntries{
++ (void)loadState{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    // Loading entries
     if ([[defaults objectForKey:@"isDataSaved"] isEqualToString:@"yes"]) {
         [Entry clearEntries];
         for (int i=0; i<[[defaults objectForKey:@"numEntries"] intValue]; i++) {
@@ -102,6 +117,9 @@
             [Entry entryOfType:type withHeader:header andPrimary:primary andSecondary:secondary];
         }
     }
+    // Loading _types
+    
+    
 }
 
 + (void)resetDefaults {

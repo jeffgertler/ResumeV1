@@ -165,8 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				64589322190850EA00474CBE /* Main_iPhone.storyboard */,
-				6678B61E1912057C009A36C4 /* webPreviewViewController.h */,
-				6678B61F1912057C009A36C4 /* webPreviewViewController.m */,
 				644D708518E350840081B378 /* Main_iPad.storyboard */,
 				644D707F18E350840081B378 /* myClassAppDelegate.h */,
 				644D708018E350840081B378 /* myClassAppDelegate.m */,
@@ -188,6 +186,8 @@
 				64EA798718FF252800C36A3A /* chooseTemplateViewController.m */,
 				64A526CA190DBBC9009D85E4 /* templateDetailViewController.h */,
 				64A526CB190DBBC9009D85E4 /* templateDetailViewController.m */,
+				6678B61E1912057C009A36C4 /* webPreviewViewController.h */,
+				6678B61F1912057C009A36C4 /* webPreviewViewController.m */,
 				64EA797B18FF094F00C36A3A /* settingsViewController.h */,
 				64EA797C18FF094F00C36A3A /* settingsViewController.m */,
 				644D708B18E350840081B378 /* Images.xcassets */,

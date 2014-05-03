@@ -30,6 +30,7 @@
 - (IBAction)nextPressed:(id)sender {
     // Handle "type" picker
     if ([self currentSection] == 0) {
+        [GlobalData addType:self.TextField.text];
         [self.entryData addObject:self.TextField.text];
         self.TextField.text = @"";
         self.typePicker.hidden = YES;

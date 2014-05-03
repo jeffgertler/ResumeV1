@@ -34,10 +34,10 @@
     [Entry entryOfType:@"Skills" withHeader:@"Languages and Software:" andPrimary:@"COBOL, IFPS, Focus, Megacalc, Pascal, Modula2, C, APL, SNOBOL, FORTRAN, LISP, SPIRES, BASIC, VSPC Autotab" andSecondary:@"Operating Systems: MTS, TSO, UNIX"];
 }
 - (IBAction)saveData:(id)sender {
-    [GlobalData saveEntries];
+    [GlobalData saveState];
 }
 - (IBAction)loadData:(id)sender {
-    [GlobalData loadEntries];
+    [GlobalData loadState];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

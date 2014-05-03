@@ -20,36 +20,38 @@ static BOOL _useSecondaryEmail;
 
 @interface GlobalData : NSObject
 
+// Resume ready data
+@property NSMutableArray *entriesNeedingSecondaries; //ints, indexes
+@property NSArray *info; //strings
+
 // Initialization
 +(BOOL) addType:(NSString *) newType;
 +(int) typesSize;
 
-// Getters and Setters
+// Getters
 +(NSString *) getTypeAt:(int)index;
 + (int)messageSize;
 + (NSString *)versionNumber;
-+ (void)setReadyEntries:(NSMutableArray *)entries;
 + (int)readyEntriesSize;
 + (Entry *)getReadyObjectAt:(int)index;
 + (NSArray *)readyEntriesWithType:(NSString *)type;
 + (int)numReadyEntriesWithType:(NSString *)type;
-+ (void)setTemplateNumber:(int)number;
 + (int)getTemplateNumber;
-+ (void)setPrimaryEmail:(NSString *)s;
-+ (void)setSecondaryEmail:(NSString *)s;
-+ (void)setUseSecondaryEmail:(BOOL)use;
 + (NSString *)primaryEmail;
 + (NSString *)secondaryEmail;
 + (BOOL)useSecondaryEmail;
 
-// Saving and loading
-+(void) saveEntries;
-+(void) loadEntries;
-+(void) resetDefaults;
+// Setters
++ (void)setReadyEntries:(NSMutableArray *)entries;
++ (void)setTemplateNumber:(int)number;
++ (void)setPrimaryEmail:(NSString *)s;
++ (void)setSecondaryEmail:(NSString *)s;
++ (void)setUseSecondaryEmail:(BOOL)use;
 
-// Resume ready data
-@property NSMutableArray *entriesNeedingSecondaries; //ints, indexes
-@property NSArray *info; //strings
+// Saving and loading
++(void) saveState;
++(void) loadState;
++(void) resetDefaults;
 
 // Utility methods
 + (NSString *)stringForServer;
