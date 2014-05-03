@@ -45,6 +45,7 @@
     BOOL isSelected = (tableCell.accessoryType == UITableViewCellAccessoryCheckmark);
     if (isSelected) {
         [self.entriesNeedingSecondaries removeObject:[[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row]];
+        
         tableCell.accessoryType = UITableViewCellAccessoryNone;
     }
     else {

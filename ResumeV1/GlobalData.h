@@ -11,6 +11,7 @@
 
 static NSMutableArray *_types;
 static NSMutableArray *_readyEntries;
+static NSMutableArray *_entriesNeedingSecondaries; //ints, indexes in readyEntries
 static int _templateNumber;
 static int _MSG_SIZE = 1020; // 1024 minus safety room
 static NSMutableString *_primaryEmail;
@@ -20,8 +21,6 @@ static BOOL _useSecondaryEmail;
 
 @interface GlobalData : NSObject
 
-// Resume ready data
-@property NSMutableArray *entriesNeedingSecondaries; //ints, indexes
 @property NSArray *info; //strings
 
 // Initialization
@@ -47,6 +46,7 @@ static BOOL _useSecondaryEmail;
 + (void)setPrimaryEmail:(NSString *)s;
 + (void)setSecondaryEmail:(NSString *)s;
 + (void)setUseSecondaryEmail:(BOOL)use;
++ (void)setEntriesNeedingSecondaries:(NSMutableArray *)entries;
 
 // Saving and loading
 +(void) saveState;

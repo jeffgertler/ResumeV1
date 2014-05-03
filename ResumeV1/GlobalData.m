@@ -106,9 +106,10 @@
 
 + (void)loadState{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    // Loading entries
+    
     if ([[defaults objectForKey:@"isDataSaved"] isEqualToString:@"yes"]) {
         [Entry clearEntries];
+        // Loading entries
         for (int i=0; i<[[defaults objectForKey:@"numEntries"] intValue]; i++) {
             NSString *type = [defaults objectForKey:[NSString stringWithFormat:@"entry%dtype", i]];
             NSString *header = [defaults objectForKey:[NSString stringWithFormat:@"entry%dheader", i]];
@@ -116,8 +117,18 @@
             NSString *secondary = [defaults objectForKey:[NSString stringWithFormat:@"entry%dsecondary", i]];
             [Entry entryOfType:type withHeader:header andPrimary:primary andSecondary:secondary];
         }
+        // Loading _types
+        for (int i=0; i<[[defaults objectForKey:@"numTypes"] intValue]; i++) {
+            [self addType:[defaults objectForKey:[NSString stringWithFormat:@"type%d", i]]];
+        }
+        // Loading _primaryEmail, _secondaryEmail, _useSecondaryEmail
+        _primaryEmail = [defaults objectForKey:@"primaryEmail"];
+        _secondaryEmail = [defaults objectForKey:@"secondaryEmail"];
+        _useSecondaryEmail = [[defaults objectForKey:@"useSecondaryEmail"] isEqual:@"YES"];
+    } else {
+        NSLog(@"Nothing saved");
     }
-    // Loading _types
+    
     
     
 }
@@ -177,6 +188,14 @@
 + (void)setSecondaryEmail:(NSString *)s {
     _secondaryEmail = [[NSMutableString alloc] initWithString:s]; // Ditto
 }
+
++ (void)setEntriesNeedingSecondaries:(NSMutableArray *)entries {
+    _entriesNeedingSecondaries =[[NSMutableArray alloc] init];
+    for(Entry *entry in entries){
+        [_entriesNeedingSecondaries addObject: [NSNumber numberWithInt:[_readyEntries indexOfObject:entry]]];
+    }
+}
+
 + (NSString *)primaryEmail {
     return _primaryEmail;
 }
