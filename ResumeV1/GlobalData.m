@@ -158,8 +158,9 @@
     if ([[GlobalData secondaryEmail] length] != 0) {
         [s appendString:[NSString stringWithFormat:@"{S_email:%@},", [GlobalData secondaryEmail]]];
     }
-    [s appendString:@"{secondaries:(1,2,3,4,5,6,7,8)},"];
-    //[s appendString:[_entriesNeedingSecondaries componentsJoinedByString:@","]];
+    [s appendString:@"{secondaries:("];
+    [s appendString:[_entriesNeedingSecondaries componentsJoinedByString:@","]];
+    [s appendString:@")},"];
     
     // Add relevant entries
     for (int i=0; i<[_readyEntries count]; i++) {
