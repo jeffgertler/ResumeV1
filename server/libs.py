@@ -20,12 +20,19 @@ Developed iall IFPS programs used for financial reports.}}{{type:Employment},{he
 # Splits input into array with elements of size given
 def splitToArray(longString, n):
   a = []
-  while (len(longString) > 0):
-    a.append(longString[0:n])
-    longString = longString[n:]
+  splitString = longString.split(" ")
+  while (len(splitString) > 0):
+    tmp = ""
+    while (len(tmp)+len(splitString[0]) <= n):
+      tmp += splitString[0] + " "
+      splitString.remove(splitString[0])
+      if (len(splitString) == 0):
+        break
+    a.append(tmp)
+
   return a
 
-  
+
 # Parse the input string
 def parseJson(working):
   json_array = []

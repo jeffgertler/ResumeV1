@@ -114,7 +114,7 @@ def styleTwo(secondaries, contact, education, experience, skills, publications, 
     #print l
 
   # Add custom fields
-  text += "\n\n% Other sections"  # \n\\section{EXPERIENCE}\n"
+  text += "\n\n% Other sections"
   for l in others:
     text += "\n\\section{" + l.upper() + "}\n"
     for m in others[l]:
@@ -136,7 +136,6 @@ def styleTwo(secondaries, contact, education, experience, skills, publications, 
   return text
 
 
-
 ### Style for template three
 def styleThree(secondaries, contact, education, experience, skills, publications, others):
 
@@ -146,15 +145,9 @@ def styleThree(secondaries, contact, education, experience, skills, publications
 
   # Write name & address
   text += "\\name{" + contact[0] + " \\\\ [12pt]}\n"
-  """
-  \address{\bf  PRESENT ADDRESS\\193 5th Avenue\\Troy, NY 12180\\(518) 274-1234}
-\address{\bf PERMANENT ADDRESS \\ 110 Brant Avenue \\  Upper Saddle
-         River,   NJ 07458 \\  (201) 555-9509}
-               
-  """
-  text += "\\begin{resume}\n\n"
-  
+  text += "" # TODO (present etc. address) \address{\bf  PRESENT ADDRESS\\193 5th Avenue\\Troy, NY 12180\\(518) 274-1234}
 
+  text += "\\begin{resume}\n\n"
 
   # Write Education section
   text += "\n% Education section\n\\section{EDUCATION}\n"
@@ -213,6 +206,68 @@ def styleThree(secondaries, contact, education, experience, skills, publications
 
   return text
 
+
+### Style for template four
+def styleFour(secondaries, contact, education, experience, skills, publications, others):
+
+  # Set up header
+  text = ""
+  text += "\\documentclass[margin,11pt]{res}\n\\begin{document}\n\n"
+
+  # Write name & address
+  text += "\\name{" + contact[0] + "\\\\[12pt]}\n\n"
+  text += "\\address{{\\bf Permanent} \\\\" + contact[1][1] + " \\\\ "+ contact[1][0] + "}\n"
+  # TODO, fix
+  text += "\n\\begin{resume}\n"
+
+  # Write Education section
+  text += "\n% Education section\n\\section{EDUCATION}\n"
+  for l in education:
+    text += "  " + l[1] + " \\\\ \n"
+    text += "  " + l[0] + " \\\\ \n"
+    text += "  " + l[2] + " \\\\ \n"
+    text += "\n" # TODO (date)
+
+  # Write Experience section
+  text += "\n% Experience section\n\\section{EXPERIENCE}\n"
+  for l in experience:
+    position = splitToArray(l[1], 32)
+    text += "  {\\bf " + l[0] + "} \\\\ \n"
+    text += "  \\begin{ncolumn}{2}\n  \\underline{"
+    text += position[0] + "} & " + "TODO DATE "  # TODO (date)
+    for m in range(len(position)-1):
+      text += "\\\\\n  \\underline{" + position[m+1] + "}"
+    text += "\n  \\end{ncolumn}\n\n"
+    text += l[2] + "\n\n"
+  
+  # Write Skills section
+  text += "\n% Skills section\n\\section{SKILLS}\n"
+  for l in skills:
+    text += "  " + l[0] + " \\vspace{0.1em} \n  \\begin{itemize}"
+    text += "\n    \item[] " + l[1] + "\n  \\end{itemize}\n\n"
+    #text += "      " + l[2] + " \n\n"
+
+  # Add custom fields
+  text += "\n\n% Other sections"  # \n\\section{EXPERIENCE}\n"
+  for l in others:
+    text += "\n\\section{" + l.upper() + "}\n"
+    for m in others[l]:
+      if (len(m[0]) != 0):
+        text += "\n\\begin{tabular}{p{3in} r}\n"
+        text += m[0]
+        text += "\n\\end{tabular}\n"
+      if (len(m[1]) != 0):
+        text += "\\begin{itemize}\n  \\vspace{0.2em}\n"
+        text += "  \\item[] " + m[1]
+        text += "\n\\end{itemize}\n"
+      else:
+        continue
+        # Not handled
+
+  # Write end
+  text += "\n\n\\end{resume}\n\\end{document}"
+
+  return text
 
 
 ### Generalized style template
