@@ -139,20 +139,24 @@
 + (NSString *)stringForServer {
     NSMutableString *s = [[NSMutableString alloc]init];
 
-    // Add config information
-    [s appendString:[NSString stringWithFormat:@"[Template, %d]", [GlobalData getTemplateNumber]]];
+    [s appendString:@"{"];
     
-    [s appendString:[NSString stringWithFormat:@"[P_email, %@]", [GlobalData primaryEmail]]];
+    // Add config information
+    [s appendString:[NSString stringWithFormat:@"{template:%d},", [GlobalData getTemplateNumber]]];
+    [s appendString:[NSString stringWithFormat:@"{p_email:%@},", [GlobalData primaryEmail]]];
     if ([[GlobalData secondaryEmail] length] != 0) {
-        [s appendString:[NSString stringWithFormat:@"[S_email, %@]", [GlobalData secondaryEmail]]];
+        [s appendString:[NSString stringWithFormat:@"{S_email:%@},", [GlobalData secondaryEmail]]];
     }
+    [s appendString:@"{secondaries:{1,2,3,4,5,6,7,8}},"];
+    //[s appendString:[NSString stringWithFormat:@"", ]];
     
     // Add relevant entries
     for (int i=0; i<[_readyEntries count]; i++) {
-        [s appendString:@"["];
-        [s appendString:[_readyEntries[i] entryString]];
-        [s appendString:@"]"];
+        [s appendString:[_readyEntries[i] stringWithFullInformationForSendingToServer]];
     }
+    
+    // Close
+    [s appendString:@"}"];
     
     return [NSString stringWithString:s];
 }
