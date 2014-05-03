@@ -37,13 +37,7 @@
     }
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component {
-    if (row < ([GlobalData typesSize])) {
-        self.TextField.text = [GlobalData getTypeAt:row];
-    } else {
-        self.TextField.text = @"";
-        self.typePicker.hidden = YES;
-        self.TextField.hidden = NO;
-    }
+
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
