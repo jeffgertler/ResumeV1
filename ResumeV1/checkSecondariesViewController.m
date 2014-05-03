@@ -45,11 +45,12 @@
     BOOL isSelected = (tableCell.accessoryType == UITableViewCellAccessoryCheckmark);
     if (isSelected) {
         [self.entriesNeedingSecondaries removeObject:[[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row]];
-        
+        [GlobalData setEntriesNeedingSecondaries:self.entriesNeedingSecondaries];
         tableCell.accessoryType = UITableViewCellAccessoryNone;
     }
     else {
         [self.entriesNeedingSecondaries addObject:[[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row]];
+        [GlobalData setEntriesNeedingSecondaries:self.entriesNeedingSecondaries];
         tableCell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
 }
