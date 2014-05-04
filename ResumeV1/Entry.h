@@ -17,15 +17,16 @@ static NSMutableArray *_entries;
 @property NSString *header;
 @property NSString *primary;
 @property NSString *secondary;
-@property NSArray *times; // [startingDay, startingMonth, startingYear, endDay, endMonth, endYear] empty fields will have a "-" instead of a normal string
+@property NSArray *times;
+// [startingDay, startingMonth, startingYear, endDay, endMonth, endYear] empty fields will have a "-" instead of a normal string
 @property BOOL addressIsTemporary;
 
 // Initialization and adding
-+(BOOL) entryOfType: (NSString *) type
++ (BOOL)entryOfType: (NSString *) type
          withHeader: (NSString *) header
          andPrimary: (NSString *) primary
        andSecondary: (NSString *) secondary;
--(void) setEntryOfType:(NSString *) type
+- (void)setEntryOfType:(NSString *) type
             withHeader: (NSString *) header
             andPrimary: (NSString *) primary
           andSecondary: (NSString *) secondary;
