@@ -15,4 +15,10 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *datePicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *secondaryDatePicker;
 
+@property NSMutableArray *days;
+@property NSArray *months;
+@property NSMutableArray *years;
+@property Entry *entry;
+@property NSMutableArray *times; //this is modified throughout and returned to Entry
+
 @end

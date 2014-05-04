@@ -37,6 +37,10 @@
     self.secondary = secondary;
 }
 
+- (void)setTime:(NSArray *)times{
+    self.times = times;
+}
+
 
 // Editing
 +(void) removeEntry: (Entry *) entry{
