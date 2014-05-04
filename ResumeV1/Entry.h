@@ -41,6 +41,8 @@ static NSMutableArray *_entries;
 +(NSArray *) entriesWithType: (NSString *) type;
 +(int) numEntriesWithType: (NSString *) type;
 -(NSString *) getTitle;
+-(NSString *) getStartTimeString;
+-(NSString *) getEndTimeString;
 
 // I/O
 - (NSString *)entryString;

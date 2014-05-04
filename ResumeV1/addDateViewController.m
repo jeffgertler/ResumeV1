@@ -80,6 +80,9 @@
         }
     }
 }
+- (IBAction)donePressed:(id)sender {
+    [self.entry setTime:self.times];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -20,10 +20,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.HeaderText.text = self.entry.header;
     self.PrimaryText.text = self.entry.primary;
     self.SecondaryText.text = self.entry.secondary;
+    self.startDateLabel.text = [self.entry getStartTimeString];
+    self.endDateLabel.text = [self.entry getEndTimeString];
     [self setLabels];
 }
 
@@ -31,6 +32,8 @@
     self.HeaderText.text = self.entry.header;
     self.PrimaryText.text = self.entry.primary;
     self.SecondaryText.text = self.entry.secondary;
+    self.startDateLabel.text = [self.entry getStartTimeString];
+    self.endDateLabel.text = [self.entry getEndTimeString];
     [self setLabels];
 }
 
