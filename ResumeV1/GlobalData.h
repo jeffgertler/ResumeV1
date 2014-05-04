@@ -59,6 +59,7 @@ static NSDictionary *_specialTypeOverrides;
 + (void)loadState;
 + (void)resetDefaults;
 + (void)makeSample:(int)version;
++ (void)clearData;
 
 // Utility methods
 + (NSString *)stringForServer;

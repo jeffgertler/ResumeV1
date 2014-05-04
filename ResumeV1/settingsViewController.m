@@ -36,6 +36,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    [GlobalData saveState];
     return NO;
 }
 
@@ -43,6 +44,10 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.primaryEmailTextField resignFirstResponder];
     [self.secondaryEmailTextField resignFirstResponder];
+}
+
+- (IBAction)resetPressed:(id)sender {
+    [GlobalData resetDefaults];
 }
 
 

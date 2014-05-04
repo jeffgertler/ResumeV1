@@ -27,6 +27,7 @@
     [super viewDidAppear:YES];
     if(self.dateRecieved){
         [self dismissViewControllerAnimated: YES completion: nil];
+        [GlobalData saveState];
     }
 }
 

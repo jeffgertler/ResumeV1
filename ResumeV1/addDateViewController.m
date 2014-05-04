@@ -19,6 +19,8 @@
     [super viewDidLoad];
     self.datePicker.delegate = self;
     self.secondaryDatePicker.delegate = self;
+    
+    // Creating and populating arrays for display
     self.days = [[NSMutableArray alloc] initWithObjects:@"-", nil];
     self.months = [[NSMutableArray alloc] init];
     self.years = [[NSMutableArray alloc] init];
@@ -31,9 +33,36 @@
         [self.years addObject:[NSString stringWithFormat:@"%d", i]];
     }
     [self.years addObject:@"-"];
-    [self.datePicker selectRow:114 inComponent:2 animated:YES];
-    [self.secondaryDatePicker selectRow:121 inComponent:2 animated:YES];
-    self.times = [[NSMutableArray alloc] initWithObjects:@"-", @"-", @"2014", @"-", @"-", @"-", nil];
+    
+    // Moving the date selector to the correct starting positions
+    if(self.cameFromEditEntry){
+        self.times = [NSMutableArray arrayWithArray:[self.entry getTimes]];
+        if([self.times[0] isEqualToString:@""]){ [self.datePicker selectRow:0 inComponent:0 animated:YES];
+        } else { [self.datePicker selectRow:[self.times[0] intValue] inComponent:0 animated:YES];}
+        if([self.times[1] isEqualToString:@""]){ [self.datePicker selectRow:0 inComponent:1 animated:YES];
+        } else { [self.datePicker selectRow:([self.months indexOfObject:self.times[1]]) inComponent:1 animated:YES];}
+        if([self.times[2] isEqualToString:@""]){ [self.datePicker selectRow:121 inComponent:2 animated:YES];
+        } else { [self.datePicker selectRow:([self.times[2] intValue]-1900) inComponent:2 animated:YES];}
+        if([self.times[3] isEqualToString:@""]){ [self.secondaryDatePicker selectRow:0 inComponent:0 animated:YES];
+        } else { [self.secondaryDatePicker selectRow:[self.times[3] intValue] inComponent:0 animated:YES];}
+        if([self.times[4] isEqualToString:@""]){ [self.secondaryDatePicker selectRow:0 inComponent:1 animated:YES];
+        } else { [self.secondaryDatePicker selectRow:([self.months indexOfObject:self.times[4]]) inComponent:1 animated:YES];}
+        if([self.times[5] isEqualToString:@""]){ [self.secondaryDatePicker selectRow:121 inComponent:2 animated:YES];
+        } else { [self.secondaryDatePicker selectRow:([self.times[5] intValue]-1900) inComponent:2 animated:YES];}
+    } else {
+        [self.datePicker selectRow:114 inComponent:2 animated:YES];
+        [self.secondaryDatePicker selectRow:121 inComponent:2 animated:YES];
+        self.times = [[NSMutableArray alloc] initWithObjects:@"-", @"-", @"2014", @"-", @"-", @"-", nil];
+    }
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    //Checking to see if the entry doesn't need a date
+    if([self.entry.type isEqualToString:@"Contact"]){
+        [self.entry setTime:@[@"", @"", @"", @"", @"", @""]];
+        [self dismissViewControllerAnimated: YES completion: nil];
+    }
 }
 
 
@@ -82,6 +111,11 @@
 }
 
 - (IBAction)donePressed:(id)sender {
+    for(int i=0; i<[self.times count]; i++){
+        if([self.times[i] isEqualToString:@"-"]){
+            self.times[i] = @"";
+        }
+    }
     [self.entry setTime:self.times];
     [self dismissViewControllerAnimated: YES completion: nil];
 }

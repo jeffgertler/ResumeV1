@@ -25,6 +25,12 @@
     self.SecondaryText.text = self.entry.secondary;
     self.startDateLabel.text = [self.entry getStartTimeString];
     self.endDateLabel.text = [self.entry getEndTimeString];
+    if([[self.entry getStartTimeString] isEqualToString:@"  "]){
+        self.startDateLabel.text = @"None";
+    }
+    if([[self.entry getEndTimeString] isEqualToString:@"  "]){
+        self.endDateLabel.text = @"None";
+    }
     [self setLabels];
 }
 
@@ -34,6 +40,12 @@
     self.SecondaryText.text = self.entry.secondary;
     self.startDateLabel.text = [self.entry getStartTimeString];
     self.endDateLabel.text = [self.entry getEndTimeString];
+    if([[self.entry getStartTimeString] isEqualToString:@"  "]){
+        self.startDateLabel.text = @"None";
+    }
+    if([[self.entry getEndTimeString] isEqualToString:@"  "]){
+        self.endDateLabel.text = @"None";
+    }
     [self setLabels];
 }
 

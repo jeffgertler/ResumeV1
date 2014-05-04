@@ -23,6 +23,24 @@
     
     Entry *entry = [[Entry alloc] init];
     [entry setEntryOfType:type withHeader:header andPrimary:primary andSecondary:secondary];
+    [entry setTime:@[@"", @"", @"", @"", @"", @""]];
+    [_entries addObject:entry];
+    
+    return YES;
+}
+
++(BOOL) entryOfType: (NSString *) type
+         withHeader: (NSString *) header
+         andPrimary: (NSString *) primary
+       andSecondary: (NSString *) secondary
+           andTimes: (NSArray *) times{
+    if(_entries == NULL){
+        _entries = [[NSMutableArray alloc] init];
+    }
+    
+    Entry *entry = [[Entry alloc] init];
+    [entry setEntryOfType:type withHeader:header andPrimary:primary andSecondary:secondary];
+    [entry setTime:times];
     [_entries addObject:entry];
     
     return YES;
@@ -106,7 +124,7 @@
     return count;
 }
 -(NSString *) getTitle {
-    if(self.times[2] == nil){
+    if([self.times[2] isEqualToString: @""]){
         return self.header;
     }
     if([self.header length] > 30){
@@ -116,13 +134,17 @@
 }
 
 - (NSString *)getStartTimeString {
-    [self formatTimes];
+    //[self formatTimes];
     return [NSString stringWithFormat:@"%@ %@ %@", self.times[1], self.times[0], self.times[2]];
 }
 
 - (NSString *)getEndTimeString {
-    [self formatTimes];
+    //[self formatTimes];
     return [NSString stringWithFormat:@"%@ %@ %@", self.times[4], self.times[3], self.times[5]];
+}
+
+- (NSArray *)getTimes{
+    return self.times;
 }
 
 // I/O

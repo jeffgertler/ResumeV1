@@ -17,7 +17,7 @@ static NSMutableArray *_entries;
 @property NSString *header;
 @property NSString *primary;
 @property NSString *secondary;
-@property NSArray *times;
+@property NSMutableArray *times;
 // [startingDay, startingMonth, startingYear, endDay, endMonth, endYear] empty fields will have a "-" instead of a normal string
 @property BOOL addressIsTemporary;
 
@@ -26,6 +26,11 @@ static NSMutableArray *_entries;
          withHeader: (NSString *) header
          andPrimary: (NSString *) primary
        andSecondary: (NSString *) secondary;
++(BOOL) entryOfType: (NSString *) type
+         withHeader: (NSString *) header
+         andPrimary: (NSString *) primary
+       andSecondary: (NSString *) secondary
+           andTimes: (NSArray *) times;
 - (void)setEntryOfType:(NSString *) type
             withHeader: (NSString *) header
             andPrimary: (NSString *) primary
@@ -45,6 +50,7 @@ static NSMutableArray *_entries;
 -(NSString *) getTitle;
 -(NSString *) getStartTimeString;
 -(NSString *) getEndTimeString;
+- (NSArray *)getTimes;
 
 // I/O
 - (NSString *)entryString;

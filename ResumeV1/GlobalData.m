@@ -31,10 +31,11 @@
 + (void)setDefaultTypes {
     
     // Make note of our special "default" types
-    _specialTypes = @[@"Education", @"Employment", @"Skills"];
+    _specialTypes = @[@"Contact", @"Education", @"Employment", @"Skills"];
     
     // Set everything up pretty-like
-    _specialTypeOverrides = @{@"Education"  : @[@"Institution Name", @"Degree", @"More Info"],
+    _specialTypeOverrides = @{@"Contact"    : @[@"Name", @"Email and Phone Number", @"Address"],
+                              @"Education"  : @[@"Institution Name", @"Degree", @"More Info"],
                               @"Employment" : @[@"Company", @"Position", @"Other Info"],
                               @"Skills"     : @[@"Header", @"Other Info", @"NULL"]
                               };
@@ -99,6 +100,12 @@
         [defaults setObject:[Entry getObjectAt:i].header forKey:[NSString stringWithFormat:@"entry%dheader", i]];
         [defaults setObject:[Entry getObjectAt:i].primary forKey:[NSString stringWithFormat:@"entry%dprimary", i]];
         [defaults setObject:[Entry getObjectAt:i].secondary forKey:[NSString stringWithFormat:@"entry%dsecondary", i]];
+        [defaults setObject:[Entry getObjectAt:i].times[0] forKey:[NSString stringWithFormat:@"entry%dtime0", i]];
+        [defaults setObject:[Entry getObjectAt:i].times[1] forKey:[NSString stringWithFormat:@"entry%dtime1", i]];
+        [defaults setObject:[Entry getObjectAt:i].times[2] forKey:[NSString stringWithFormat:@"entry%dtime2", i]];
+        [defaults setObject:[Entry getObjectAt:i].times[3] forKey:[NSString stringWithFormat:@"entry%dtime3", i]];
+        [defaults setObject:[Entry getObjectAt:i].times[4] forKey:[NSString stringWithFormat:@"entry%dtime4", i]];
+        [defaults setObject:[Entry getObjectAt:i].times[5] forKey:[NSString stringWithFormat:@"entry%dtime5", i]];
     }
     // Saving _types
     [defaults setObject:[NSString stringWithFormat:@"%d", [self typesSize]] forKey:@"numTypes"];
@@ -118,16 +125,25 @@
 
 + (void)loadState{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [Entry clearEntries];
     
     if ([[defaults objectForKey:@"isDataSaved"] isEqualToString:@"yes"]) {
         [Entry clearEntries];
+        [Entry printEntries];
+        [self clearData];
         // Loading entries
         for (int i=0; i<[[defaults objectForKey:@"numEntries"] intValue]; i++) {
             NSString *type = [defaults objectForKey:[NSString stringWithFormat:@"entry%dtype", i]];
             NSString *header = [defaults objectForKey:[NSString stringWithFormat:@"entry%dheader", i]];
             NSString *primary = [defaults objectForKey:[NSString stringWithFormat:@"entry%dprimary", i]];
             NSString *secondary = [defaults objectForKey:[NSString stringWithFormat:@"entry%dsecondary", i]];
-            [Entry entryOfType:type withHeader:header andPrimary:primary andSecondary:secondary];
+            NSArray *times = @[[defaults objectForKey:[NSString stringWithFormat:@"entry%dtime0", i]],
+                               [defaults objectForKey:[NSString stringWithFormat:@"entry%dtime1", i]],
+                               [defaults objectForKey:[NSString stringWithFormat:@"entry%dtime2", i]],
+                               [defaults objectForKey:[NSString stringWithFormat:@"entry%dtime3", i]],
+                               [defaults objectForKey:[NSString stringWithFormat:@"entry%dtime4", i]],
+                               [defaults objectForKey:[NSString stringWithFormat:@"entry%dtime5", i]]];
+            [Entry entryOfType:type withHeader:header andPrimary:primary andSecondary:secondary andTimes:times];
         }
         // Loading _types
         for (int i=0; i<[[defaults objectForKey:@"numTypes"] intValue]; i++) {
@@ -137,12 +153,17 @@
         _primaryEmail = [defaults objectForKey:@"primaryEmail"];
         _secondaryEmail = [defaults objectForKey:@"secondaryEmail"];
         _useSecondaryEmail = [[defaults objectForKey:@"useSecondaryEmail"] isEqual:@"YES"];
+        [Entry printEntries];
     } else {
         NSLog(@"Nothing saved");
     }
-    
-    
-    
+}
+
++ (void)clearData {
+    _types =[[NSMutableArray alloc] init];
+    _primaryEmail = nil;
+    _secondaryEmail = nil;
+    _useSecondaryEmail = nil;
 }
 
 
@@ -166,8 +187,6 @@
 }
 
 +(void) makeSample:(int)version {
-    [GlobalData resetDefaults];
-    
     if (version == 0) {
         [GlobalData addType:@"Contact"];
         [GlobalData addType:@"Education"];
@@ -185,7 +204,6 @@
                 withHeader:@"Roger Darling"
                 andPrimary:@"johnsmith@gmail.com\n(111) 111-1111"
               andSecondary:@"19 Tibbits Avenue\n Troy, NY, 12180"];
-        [[Entry getObjectAt:[Entry entriesSize]-1] setTime:@[@"1", @"January", @"2004", @"1", @"January", @"2010"]];
         
         [Entry entryOfType:@"Education"
                 withHeader:@"Rensselaer Polytechnic Institute, Troy, NY"

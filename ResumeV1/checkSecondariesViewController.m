@@ -32,6 +32,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tableCell"];
     }
     cell.textLabel.text = [[[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row] getTitle];
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    for(Entry *entry in self.entriesNeedingSecondaries){
+        if([cell.textLabel.text isEqualToString:[entry getTitle]]){
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+    }
+    
     return cell;
 }
 
