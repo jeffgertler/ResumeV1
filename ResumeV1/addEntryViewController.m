@@ -14,8 +14,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.typePicker.delegate = self;
-    self.sections = [[NSArray alloc] initWithObjects:@"Type", @"Header", @"Primary", @"Secondary", nil];
-    self.entryData= [[NSMutableArray alloc] initWithCapacity:self.sections.count];
+    self.sections  = [[NSMutableArray alloc] initWithObjects:@"Type", @"Header", @"Primary", @"Secondary", nil];
+    self.entryData = [[NSMutableArray alloc] initWithCapacity:self.sections.count];
     self.currentSection = 0;
     self.TitleText.title = self.sections[self.currentSection];
     self.TextField.hidden = YES;
@@ -32,6 +32,14 @@
     if ([self currentSection] == 0) {
         [GlobalData addType:self.TextField.text];
         [self.entryData addObject:self.TextField.text];
+        
+        // Handle special information for default types
+        if ([[GlobalData specialTypes] containsObject:self.TextField.text]) {
+            [[self sections] replaceObjectAtIndex:1 withObject:[[[GlobalData specialTypeOverrides] objectForKey:self.TextField.text] objectAtIndex:0]];
+            [[self sections] replaceObjectAtIndex:2 withObject:[[[GlobalData specialTypeOverrides] objectForKey:self.TextField.text] objectAtIndex:1]];
+            [[self sections] replaceObjectAtIndex:3 withObject:[[[GlobalData specialTypeOverrides] objectForKey:self.TextField.text] objectAtIndex:2]];
+        }
+        
         self.TextField.text = @"";
         self.typePicker.hidden = YES;
         self.TextField.hidden = NO;
@@ -39,7 +47,12 @@
         self.TitleText.title = self.sections[self.currentSection];
     } else {
         // Handle other logic
-        if(self.currentSection == [self.sections count]-1){
+        if (self.currentSection == [self.sections count]-1) {
+            [self.entryData addObject:self.TextField.text];
+            [Entry entryOfType:self.entryData[0] withHeader:self.entryData[1] andPrimary:self.entryData[2] andSecondary:    self.entryData[3]];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else if (self.sections[self.currentSection+1] == @"NULL") {
+            [self.entryData addObject:self.TextField.text];
             [self.entryData addObject:self.TextField.text];
             // Get the date from addDate which will unwind to root
             [self performSegueWithIdentifier:@"addDateSegue" sender:sender];
@@ -47,8 +60,7 @@
             [self.entryData addObject:self.TextField.text];
             self.TextField.text = @"";
             self.currentSection++;
-            self.TitleText.title = self.sections[self.currentSection];
-        }
+            self.TitleText.title = self.sections[self.currentSection];        }
     }
 }
 

@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *TextField;
 @property (weak, nonatomic) IBOutlet UINavigationItem *TitleText;
 @property int currentSection;
-@property NSArray *sections;
+@property NSMutableArray *sections;
 @property NSMutableArray *entryData;
 @property (weak, nonatomic) IBOutlet UIPickerView *typePicker;
 
