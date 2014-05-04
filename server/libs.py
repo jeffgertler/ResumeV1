@@ -31,6 +31,8 @@ Developed iall IFPS programs used for financial reports.}}{{type:Awards},{dateti
 
 inputString5 = "{{template:2},{p_email:(null)},{secondaries:(0)},{{type:Skills},{starttime:February - 2014},{endtime:January - -},{header:alckej},{primary:caesojf},{secondary:}}}"
 
+inputString6 = ""
+
 
 
 # Splits input into array with elements of size given
