@@ -107,6 +107,22 @@
     [goodString appendString:[self type]];
     [goodString appendString:@"},"];
     
+    // Other information
+    if (addressIsTemporary) {
+        [goodString appendString:@"{address:temporary},"];
+    }
+    
+    // Datetime
+    [goodString appendString:@"{datetime:"];
+    [goodString appendString:@"},"];
+    /*
+     NSLog([NSString stringWithFormat:@"%d\n", [_times count]]);
+     for (int i=0; i<[_times count]; i++) {
+     NSLog(@"asdf");
+     NSLog([NSString stringWithFormat:@"%d\n", _times[i]]);
+     } */
+    //[goodString]
+    
     // Header
     [goodString appendString:@"{header:"];
     [goodString appendString:[self header]];
