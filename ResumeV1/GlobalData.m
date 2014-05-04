@@ -173,7 +173,6 @@
         [GlobalData addType:@"Education"];
         [GlobalData addType:@"Employment"];
         [GlobalData addType:@"Skills"];
-        [GlobalData addType:@"Publications"];
         [GlobalData addType:@"Awards"];
         [GlobalData addType:@"Honors"];
         
