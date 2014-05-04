@@ -165,14 +165,6 @@
         [goodString appendString:@"{address:temporary},"];
     }
     
-    // Datetime
-    [goodString appendString:@"{starttime:"];
-    [goodString appendString:[self getStartTimeString]];
-    [goodString appendString:@"},"];
-    [goodString appendString:@"{endtime:"];
-    [goodString appendString:[self getEndTimeString]];
-    [goodString appendString:@"},"];
-    
     // Header
     [goodString appendString:@"{header:"];
     [goodString appendString:[self header]];
@@ -186,6 +178,14 @@
     // Secondary
     [goodString appendString:@"{secondary:"];
     [goodString appendString:[self secondary]];
+    [goodString appendString:@"},"];
+    
+    // Datetime
+    [goodString appendString:@"{starttime:"];
+    [goodString appendString:[self getStartTimeString]];
+    [goodString appendString:@"},"];
+    [goodString appendString:@"{endtime:"];
+    [goodString appendString:[self getEndTimeString]];
     [goodString appendString:@"}}"];
     
     // [NSString stringWithString:goodString]
