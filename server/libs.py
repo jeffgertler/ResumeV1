@@ -31,7 +31,9 @@ Developed iall IFPS programs used for financial reports.}}{{type:Awards},{dateti
 
 inputString5 = "{{template:2},{p_email:(null)},{secondaries:(0)},{{type:Skills},{starttime:February - 2014},{endtime:January - -},{header:alckej},{primary:caesojf},{secondary:}}}"
 
-inputString6 = ""
+inputString6 = "{{template:1},{p_email:(null)},{secondaries:(0,1,3,2,4,5,6,7)},{{type:Contact},{header:Roger Darling},{primary:johnsmith@gmail.com \
+(111) 111-1111},{secondary:123 Broadway \
+ New York, NY, 12345},{starttime:  },{endtime:  }}{{type:Education},{header:Rensselaer Polytechnic Institute, Troy, NY},{primary:B.S., Electrical Engineering},{secondary:},{starttime:  },{endtime:  }}{{type:Employment},{header:A & P Supermarket, Madison, NJ},{primary:Meat Department Assistant},{secondary:Assisted department manager with ordering, pricing, and maintaining department inventory.},{starttime:  },{endtime:  }}{{type:Skills},{header:Languages and Software},{primary:COBOL, IFPS, Focus, Megacalc, Pascal, Modula2, C, APL, SNOBOL, FORTRAN, LISP, SPIRES, BASIC, VSPC Autotab},{secondary:},{starttime:  },{endtime:  }}{{type:Awards},{header:Salutatorian Medal},{primary:Mayfield Central School, NY},{secondary:2010, 2011, 2012},{starttime:  },{endtime:  }}{{type:Honors},{header:Dean's List},{primary:Rensselaer Polytechnic Institute},{secondary:},{starttime:  },{endtime:  }}{{type:Honors},{header:United Food and Commercial Workers Union Scholarship},{primary:National Honor Society},{secondary:},{starttime:  },{endtime:  }}{{type:Honors},{header:Clayton and Mary Shelley Scholarship},{primary:Rensselaer Polytechnic Institute},{secondary:},{starttime:  },{endtime:  }}}"
 
 
 

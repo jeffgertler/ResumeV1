@@ -14,5 +14,12 @@
 
 - (IBAction)unwindToRoot:(UIStoryboardSegue *)segue;
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
-    
+
+// Just for graphics
+@property (weak, nonatomic) IBOutlet UIButton *addNewInfoBtn;
+@property (weak, nonatomic) IBOutlet UIButton *reviewEntriesBtn;
+@property (weak, nonatomic) IBOutlet UIButton *makeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *settingsBtn;
+
+
 @end
