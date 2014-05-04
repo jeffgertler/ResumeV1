@@ -186,6 +186,7 @@
                 withHeader:@"Roger Darling"
                 andPrimary:@"johnsmith@gmail.com\n(111) 111-1111"
               andSecondary:@"19 Tibbits Avenue\n Troy, NY, 12180"];
+        [[Entry getObjectAt:[Entry entriesSize]-1] setTime:@[@"1", @"January", @"2004", @"1", @"January", @"2010"]];
         
         [Entry entryOfType:@"Education"
                 withHeader:@"Rensselaer Polytechnic Institute, Troy, NY"

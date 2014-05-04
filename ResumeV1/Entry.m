@@ -82,7 +82,13 @@
     return count;
 }
 -(NSString *) getTitle {
-    return self.header;
+    if(self.times[2] == nil){
+        return self.header;
+    }
+    if([self.header length] > 30){
+            return [NSString stringWithFormat:@"%@, %@", [self.header substringWithRange:NSMakeRange(0, 30)], self.times[2]];
+    }
+    return [NSString stringWithFormat:@"%@, %@", self.header, self.times[2]];
 }
 
 -(NSString *) getStartTimeString{

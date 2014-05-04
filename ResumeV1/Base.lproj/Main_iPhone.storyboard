@@ -813,6 +813,11 @@
                                                 <segue destination="4fy-zj-Tdk" kind="unwind" unwindAction="unwindToTemplateDetail:" id="zdE-Df-aAg"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="qIA-dr-e2F">
+                                            <connections>
+                                                <segue destination="4fy-zj-Tdk" kind="unwind" unwindAction="unwindToRoot:" id="zAd-Ni-tty"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

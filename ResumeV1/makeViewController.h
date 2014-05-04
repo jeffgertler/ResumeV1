@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property UINavigationBar *navBar;
 
+- (void)resetCheckmarks;
+
 @end

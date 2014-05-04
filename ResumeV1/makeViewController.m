@@ -39,10 +39,19 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     self.navBar.frame = CGRectMake(0, 20, self.view.frame.size.width, 44);
+    [self resetCheckmarks];
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    self.navBar.frame = CGRectMake(0, 20, self.view.frame.size.width, 44);
+- (void)resetCheckmarks{
+    NSArray *cells = [tableView visibleCells];
+    for (UITableViewCell *cell in cells){
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        for(Entry *entry in self.addedEntries){
+            if([cell.textLabel.text isEqualToString:[entry getTitle]]){
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+        }
+    }
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
@@ -67,7 +76,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:indexPath];
     BOOL isSelected = (tableCell.accessoryType == UITableViewCellAccessoryCheckmark);
     if (isSelected) {
