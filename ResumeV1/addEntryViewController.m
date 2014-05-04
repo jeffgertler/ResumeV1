@@ -59,11 +59,17 @@
             [self.entryData addObject:self.TextField.text];
             // Get the date from addDate which will unwind to root
             [self performSegueWithIdentifier:@"addDateSegue" sender:sender];
+        } else if (self.sections[self.currentSection+1] == @"NULL") {
+            [self.entryData addObject:self.TextField.text];
+            self.TextField.text = @"";
+            [self.entryData addObject:self.TextField.text];
+            [self performSegueWithIdentifier:@"addDateSegue" sender:sender];
         } else if (![self.TextField.text isEqualToString:nil]){
             [self.entryData addObject:self.TextField.text];
             self.TextField.text = @"";
             self.currentSection++;
-            self.TitleText.title = self.sections[self.currentSection];        }
+            self.TitleText.title = self.sections[self.currentSection];
+        }
     }
 }
 

@@ -44,11 +44,35 @@
 
 
 // Editing
-+(void) removeEntry: (Entry *) entry{
++ (void)removeEntry: (Entry *) entry{
     [_entries removeObject:entry];
 }
-+(void) clearEntries {
++ (void)clearEntries {
     _entries = [[NSMutableArray alloc] init];
+}
+- (void)formatTimes {
+    if (self.times[0] == NULL) {
+        [self setTimes:@[@"", @"", @"", @"", @"", @""]];
+    }
+    
+    if (self.times[0] == @"-") {
+        [self setTimes:@[@"", self.times[1], self.times[2], self.times[3], self.times[4], self.times[5]]];
+    }
+    if (self.times[1] == @"-") {
+        [self setTimes:@[self.times[0], @"", self.times[2], self.times[3], self.times[4], self.times[5]]];
+    }
+    if (self.times[2] == @"-") {
+        [self setTimes:@[self.times[0], self.times[1], @"", self.times[3], self.times[4], self.times[5]]];
+    }
+    if (self.times[3] == @"-") {
+        [self setTimes:@[self.times[0], self.times[1], self.times[2], @"", self.times[4], self.times[5]]];
+    }
+    if (self.times[4] == @"-") {
+        [self setTimes:@[self.times[0], self.times[1], self.times[2], self.times[3], @"", self.times[5]]];
+    }
+    if (self.times[5] == @"-") {
+        [self setTimes:@[self.times[0], self.times[1], self.times[2], self.times[3], self.times[4], @""]];
+    }
 }
 
 
@@ -91,14 +115,15 @@
     return [NSString stringWithFormat:@"%@, %@", self.header, self.times[2]];
 }
 
--(NSString *) getStartTimeString{
+- (NSString *)getStartTimeString {
+    [self formatTimes];
     return [NSString stringWithFormat:@"%@ %@ %@", self.times[1], self.times[0], self.times[2]];
 }
 
--(NSString *) getEndTimeString{
+- (NSString *)getEndTimeString {
+    [self formatTimes];
     return [NSString stringWithFormat:@"%@ %@ %@", self.times[4], self.times[3], self.times[5]];
 }
-
 
 // I/O
 - (NSString *)entryString {
@@ -119,15 +144,12 @@
     }
     
     // Datetime
-    [goodString appendString:@"{datetime:"];
+    [goodString appendString:@"{starttime:"];
+    [goodString appendString:[self getStartTimeString]];
     [goodString appendString:@"},"];
-    /*
-     NSLog([NSString stringWithFormat:@"%d\n", [_times count]]);
-     for (int i=0; i<[_times count]; i++) {
-     NSLog(@"asdf");
-     NSLog([NSString stringWithFormat:@"%d\n", _times[i]]);
-     } */
-    //[goodString]
+    [goodString appendString:@"{endtime:"];
+    [goodString appendString:[self getEndTimeString]];
+    [goodString appendString:@"},"];
     
     // Header
     [goodString appendString:@"{header:"];
