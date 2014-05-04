@@ -196,49 +196,75 @@
         [GlobalData addType:@"Honors"];
         
         [Entry entryOfType:@"Contact"
-                withHeader:@"Roger Darling"
-                andPrimary:@"johnsmith@gmail.com\n(111) 111-1111"
-              andSecondary:@"123 Broadway\n New York, NY, 12345"];
-        
-        [Entry entryOfType:@"Contact"
-                withHeader:@"Roger Darling"
-                andPrimary:@"johnsmith@gmail.com\n(111) 111-1111"
-              andSecondary:@"19 Tibbits Avenue\n Troy, NY, 12180"];
+                withHeader:@"Kelly Tripathi"
+                andPrimary:@"kpt230@nyu.edu (516)233-0016"
+              andSecondary:@"110 E 7th Street Apt 13, New York NY 10009"];
         
         [Entry entryOfType:@"Education"
-                withHeader:@"Rensselaer Polytechnic Institute, Troy, NY"
-                andPrimary:@"B.S., Electrical Engineering"
-              andSecondary:@""];
+                withHeader:@"New York University"
+                andPrimary:@"Bachelor of Science, Chemistry Major; Bachelor of Arts, Honors Politics Major"
+              andSecondary:@"Cummulative GPA 3.8/4.0"
+                  andTimes:@[@"", @"September", @"2011", @"", @"May", @"2015"]];
         
         [Entry entryOfType:@"Employment"
-                withHeader:@"A & P Supermarket, Madison, NJ"
-                andPrimary:@"Meat Department Assistant"
-              andSecondary:@"Assisted department manager with ordering, pricing, and maintaining department inventory."];
+                withHeader:@"Brown and Whalen, LLP"
+                andPrimary:@"Legal Assistant"
+              andSecondary:@"Assisted assosiates in legal research, fact checking, and organization of documents. Prepared, electronically filed and hand delivered motions to New York Supreme Court. Perfromed various administrative tasks such as answering phone calls, copying, filing and scanning documents."
+                  andTimes:@[@"", @"January", @"2013", @"", @"", @""]];
+        
+        [Entry entryOfType:@"Employment"
+                withHeader:@"Forensic Panel"
+                andPrimary:@"Active Casework Intern"
+              andSecondary:@"Responsible for background research on psychology reports, appeals, and witness statements to aid an official expert testimony regarding an active death penalty case. Researched various forensic psychology research articles to form an online database."
+                  andTimes:@[@"", @"September", @"2013", @"", @"December", @"2013"]];
+        
+        [Entry entryOfType:@"Employment"
+                withHeader:@"Forensic Panel"
+                andPrimary:@"Deprevity Research Intern"
+              andSecondary:@"Assisted in research in project to create an objective sentencing tool to define what constitutes a deprave crime under the direction of Dr. Michael Welner. Responsible for marking the presence of deprave acts through research of witness statements, police reports, defendant statements, and autopsy/medical reports of resolved cases."
+                  andTimes:@[@"", @"June", @"2013", @"", @"September", @"2013"]];
+        
+        [Entry entryOfType:@"Research"
+                withHeader:@"Kahr Group - New York University Department of Chemistry"
+                andPrimary:@"Individual Chemistry Research"
+              andSecondary:@"Designed and managed research project in coordination with a graduate student. Observed the effects of changing dye impurities, within achiral crystalline structures, on crystal florescence."
+                  andTimes:@[@"", @"June", @"2013", @"", @"August", @"2013"]];
+        
+        [Entry entryOfType:@"Research"
+                withHeader:@"Kahr Group - New York University Department of Chemistry"
+                andPrimary:@"Chemistry Research Assistant to Graduate Student"
+              andSecondary:@"Placed in charge of data collection and analysis of research disproving the effect of chirality on optically active substances."
+                  andTimes:@[@"", @"May", @"2013", @"", @"August", @"2013"]];
+        
+        [Entry entryOfType:@"Volunteer Work"
+                withHeader:@"SHINE Program"
+                andPrimary:@"Worked with underprivileged youth in London weekly. Taught Class 4 (9-10 year old children) reading and writing."
+              andSecondary:@""
+                  andTimes:@[@"", @"February", @"2013", @"", @"May", @"2013"]];
+        
+        [Entry entryOfType:@"Honors"
+                withHeader:@"College of Arts and Science Presidential Honors Scholar"
+                andPrimary:@"Selected for program which invites the top five percent of entering class, targeted for students who intend to graduate with honors in their major."
+              andSecondary:@""
+                  andTimes:@[@"", @"September", @"2011", @"", @"", @""]];
+        
+        [Entry entryOfType:@"Honors"
+                withHeader:@"Julius Silver Scholarship"
+                andPrimary:@"Recipient of merit and need based scholarship provided to students who excel in a scientific major."
+              andSecondary:@""
+                  andTimes:@[@"", @"September", @"2011", @"", @"", @""]];
+        
+        [Entry entryOfType:@"Honors"
+                withHeader:@"Lawyer Alumni Mentoring Program"
+                andPrimary:@"Selected based on academic achievement and interest in a legal career to be mentored by Christopher Hughes of Cadwalader, Wickersham & Taft LLP."
+              andSecondary:@""
+                  andTimes:@[@"", @"November", @"2013", @"", @"", @""]];
         
         [Entry entryOfType:@"Skills"
-                withHeader:@"Languages and Software"
-                andPrimary:@"COBOL, IFPS, Focus, Megacalc, Pascal, Modula2, C, APL, SNOBOL, FORTRAN, LISP, SPIRES, BASIC, VSPC Autotab"
-              andSecondary:@""];
-        
-        [Entry entryOfType:@"Honors"
-                withHeader:@"Dean's List"
-                andPrimary:@"Rensselaer Polytechnic Institute"
-              andSecondary:@""];
-        
-        [Entry entryOfType:@"Honors"
-                withHeader:@"Clayton and Mary Shelley Scholarship"
-                andPrimary:@"Rensselaer Polytechnic Institute"
-              andSecondary:@""];
-        
-        [Entry entryOfType:@"Honors"
-                withHeader:@"United Food and Commercial Workers Union Scholarship"
-                andPrimary:@"National Honor Society"
-              andSecondary:@""];
-        
-        [Entry entryOfType:@"Awards"
-                withHeader:@"Salutatorian Medal"
-                andPrimary:@"Mayfield Central School, NY"
-              andSecondary:@"2010, 2011, 2012"];
+                withHeader:@""
+                andPrimary:@"Proficient in French, Microsoft Office Suite, STATA, Database Research, Python Programming"
+              andSecondary:@""
+                  andTimes:@[@"", @"", @"", @"", @"", @""]];
     }
 }
 

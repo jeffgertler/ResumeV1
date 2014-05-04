@@ -63,7 +63,7 @@
 - (IBAction)unwindToReview:(UIStoryboardSegue *)segue{
     //[networkComm sendMessage:@"test message"];
     
-    NSLog(@"%@", [NetworkComm sendMessage:@"TST MSG SYS"]);
+    //NSLog(@"%@", [NetworkComm sendMessage:@"TST MSG SYS"]);
     
 }
 
