@@ -33,8 +33,9 @@ static NSMutableArray *_entries;
 - (void)setTime:(NSArray *)times;
 
 // Editing
-+(void) removeEntry: (Entry *) entry;
-+(void) clearEntries;
++ (void)removeEntry: (Entry *) entry;
++ (void)clearEntries;
+- (void)formatTimes;
 
 // Getters
 +(int) entriesSize;

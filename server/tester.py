@@ -14,7 +14,7 @@ from formats import *
 ### Main test environment
 
 # Parse the input string we've saved in libs.py
-parsedJSON = parseJson(inputString3[1:-1])
+parsedJSON = parseJson(inputString5[1:-1])
 print parsedJSON
 
 """
