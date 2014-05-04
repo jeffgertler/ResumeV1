@@ -20,5 +20,6 @@
 @property NSMutableArray *years;
 @property Entry *entry;
 @property NSMutableArray *times; //this is modified throughout and returned to Entry
+@property BOOL cameFromEditEntry;
 
 @end

@@ -357,6 +357,7 @@
                     <connections>
                         <outlet property="SectionLabel" destination="f2s-e5-atU" id="YSk-YV-Ybb"/>
                         <outlet property="TextField" destination="3YV-Uf-gmE" id="AAb-6x-NWC"/>
+                        <segue destination="SlV-uP-eIj" kind="modal" identifier="editDateSegue" id="oc3-yy-lAR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MEX-Ku-RHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -476,7 +477,6 @@
                                 </state>
                                 <connections>
                                     <action selector="donePressed:" destination="SlV-uP-eIj" eventType="touchUpInside" id="kWO-96-hv1"/>
-                                    <segue destination="DoD-e9-iaJ" kind="unwind" unwindAction="unwindToRoot:" id="aK3-5L-0d7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -488,7 +488,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ha2-Id-2Ib" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="DoD-e9-iaJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="860" y="85"/>
         </scene>
@@ -874,4 +873,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="oc3-yy-lAR"/>
+    </inferredMetricsTieBreakers>
 </document>

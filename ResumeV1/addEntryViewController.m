@@ -20,6 +20,14 @@
     self.TitleText.title = self.sections[self.currentSection];
     self.TextField.hidden = YES;
     self.typePicker.hidden = NO;
+    self.dateRecieved = NO;
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    if(self.dateRecieved){
+        [self dismissViewControllerAnimated: YES completion: nil];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -66,6 +74,8 @@
         
         addDateViewController *destViewController = (addDateViewController *)segue.destinationViewController;
         destViewController.entry = [Entry getObjectAt:[Entry entriesSize]-1];
+        destViewController.cameFromEditEntry = NO;
+        self.dateRecieved = YES;
     }
 }
 
