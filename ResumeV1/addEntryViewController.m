@@ -49,11 +49,6 @@
         // Handle other logic
         if (self.currentSection == [self.sections count]-1) {
             [self.entryData addObject:self.TextField.text];
-            [Entry entryOfType:self.entryData[0] withHeader:self.entryData[1] andPrimary:self.entryData[2] andSecondary:    self.entryData[3]];
-            [self dismissViewControllerAnimated:YES completion:nil];
-        } else if (self.sections[self.currentSection+1] == @"NULL") {
-            [self.entryData addObject:self.TextField.text];
-            [self.entryData addObject:self.TextField.text];
             // Get the date from addDate which will unwind to root
             [self performSegueWithIdentifier:@"addDateSegue" sender:sender];
         } else if (![self.TextField.text isEqualToString:nil]){

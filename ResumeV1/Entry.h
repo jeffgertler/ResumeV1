@@ -18,6 +18,7 @@ static NSMutableArray *_entries;
 @property NSString *primary;
 @property NSString *secondary;
 @property NSArray *times; // [startingDay, startingMonth, startingYear, endDay, endMonth, endYear] empty fields will have a "-" instead of a normal string
+@property BOOL addressIsTemporary;
 
 // Initialization and adding
 +(BOOL) entryOfType: (NSString *) type
