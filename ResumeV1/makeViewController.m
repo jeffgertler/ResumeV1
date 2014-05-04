@@ -18,6 +18,7 @@
 @end
 
 @implementation makeViewController
+
 @synthesize tableView;
 
 
@@ -41,18 +42,6 @@
     self.navBar.frame = CGRectMake(0, 20, self.view.frame.size.width, 44);
     //[self resetCheckmarks];
 }
-
-//- (void)resetCheckmarks{
-//    NSArray *cells = [tableView visibleCells];
-//    for (UITableViewCell *cell in cells){
-//        cell.accessoryType = UITableViewCellAccessoryNone;
-//        for(Entry *entry in self.addedEntries){
-//            if([cell.textLabel.text isEqualToString:[entry getTitle]]){
-//                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//            }
-//        }
-//    }
-//}
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
     return [GlobalData typesSize];

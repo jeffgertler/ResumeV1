@@ -21,8 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.primaryEmailTextField.delegate = self;
-    self.secondaryEmailTextField.delegate = self;
+    self.primaryEmailTextField.delegate = (id)self;
+    self.secondaryEmailTextField.delegate = (id)self;
     
     self.primaryEmailTextField.text = [GlobalData primaryEmail];
     self.secondaryEmailTextField.text = [GlobalData secondaryEmail];
