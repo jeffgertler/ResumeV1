@@ -85,6 +85,14 @@
     return self.header;
 }
 
+-(NSString *) getStartTimeString{
+    return [NSString stringWithFormat:@"%@ %@ %@", self.times[1], self.times[0], self.times[2]];
+}
+
+-(NSString *) getEndTimeString{
+    return [NSString stringWithFormat:@"%@ %@ %@", self.times[4], self.times[3], self.times[5]];
+}
+
 
 // I/O
 - (NSString *)entryString {

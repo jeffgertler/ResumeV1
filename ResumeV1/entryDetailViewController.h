@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *headerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *primaryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *secondaryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
 
 - (IBAction)unwindToEntryDetail:(UIStoryboardSegue *)segue;
 - (void)setLabels;
