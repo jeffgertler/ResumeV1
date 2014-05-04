@@ -11,33 +11,32 @@
 @implementation webPreviewViewController
 
 @synthesize rootURL;
+@synthesize URLresource;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-
+    // Allow zoom
+    //self.webViewView.scalesPageToFit = YES;
     
     // Ideally, we want to do this before arriving at this page; however,
     // we also want to make sure we have access to the "root" webpage (as
     // returned by the server)
+    URLresource = [NetworkComm sendMessage:[GlobalData stringForServer]];
+    NSLog(URLresource);
+    URLresource = [URLresource substringWithRange:NSMakeRange(6, [URLresource length]-8)];
     
-    //[networkComm sendMessage:@"test message"];
+    rootURL = @"http://latex.wong1275.com/";
+    rootURL = [rootURL stringByAppendingString:URLresource];
+    rootURL = [rootURL stringByAppendingString:@"/"];
+    //rootURL = [rootURL stringByAppendingString:@"resume.tex"];
     
-    //NSLog(@"%@", [NetworkComm sendMessage:@"TST MSG SYS"]);
-    
-
-    //NSLog([GlobalData stringForServer]);
-    
-    rootURL = [NetworkComm sendMessage:[GlobalData stringForServer]];
-    
-    //NSLog([[GlobalData getReadyObjectAt:1] stringWithFullInformationForSendingToServer]);
-//           entry stringWithFullInformationForSendingToServer]);
-    
-    [self changeURLTo:@"http://latex.wong1275.com/"];
+    [self changeURLTo:rootURL];
 }
 
 - (void)changeURLTo:(NSString *)url {
+    sleep(2);
     [self.webViewView loadRequest:
      [NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }

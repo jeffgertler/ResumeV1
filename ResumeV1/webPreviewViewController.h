@@ -12,6 +12,7 @@
 @interface webPreviewViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIWebView *webViewView;
 @property (weak, nonatomic) NSString *rootURL;
+@property (weak, nonatomic) NSString *URLresource;
 
 - (void)changeURLTo:(NSString *)url;
 
