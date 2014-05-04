@@ -8,12 +8,14 @@
 
 #import "editEntryViewController.h"
 #import "Entry.h"
+#import "addDateViewController.h"
 
 @interface editEntryViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *SectionLabel;
 @property (weak, nonatomic) IBOutlet UITextView *TextField;
 @property int currentSection;
 @property NSArray *sections;
+@property BOOL dateRecieved;
 
 @end
 
@@ -27,6 +29,14 @@
     self.currentSection = 0;
     self.SectionLabel.text = self.sections[self.currentSection];
     self.TextField.text = self.entry.type;
+    self.dateRecieved = NO;
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    if(self.dateRecieved){
+        [self dismissViewControllerAnimated: YES completion: nil];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -48,7 +58,17 @@
         self.currentSection++;
     } else if(self.currentSection == 3){
         self.entry.secondary = self.TextField.text;
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self performSegueWithIdentifier:@"editDateSegue" sender:self];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"editDateSegue"]) {
+        addDateViewController *destViewController = (addDateViewController *)segue.destinationViewController;
+        destViewController.entry = self.entry;
+        destViewController.cameFromEditEntry = YES;
+        self.dateRecieved = YES;
     }
 }
 

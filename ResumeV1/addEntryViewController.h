@@ -18,6 +18,7 @@
 @property NSMutableArray *sections;
 @property NSMutableArray *entryData;
 @property (weak, nonatomic) IBOutlet UIPickerView *typePicker;
+@property BOOL dateRecieved;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 

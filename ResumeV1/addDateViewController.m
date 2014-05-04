@@ -80,8 +80,10 @@
         }
     }
 }
+
 - (IBAction)donePressed:(id)sender {
     [self.entry setTime:self.times];
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
