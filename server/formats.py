@@ -286,12 +286,15 @@ def styleFour(secondaries, contact, education, experience, skills, publications,
     text += "\n% Experience section\n\\section{EXPERIENCE}\n"
     for l in experience:
       date = []
-      if (len(l[3].replace(' ','')) != 0):
-        if (len(l[4].replace(' ','')) != 0):
-          date.append(l[3] + " $-$")
-          date.append(l[4])
-        else:
-          date.append(l[3])
+      try:
+        if (len(l[3].replace(' ','')) != 0):
+          if (len(l[4].replace(' ','')) != 0):
+            date.append(l[3] + " $-$")
+            date.append(l[4])
+          else:
+            date.append(l[3])
+      except:
+        pass
       position = splitToArray(l[1], 32)
       text += "  {\\bf " + l[0] + "} \\\\ \n"
       text += "  \\begin{ncolumn}{2}\n  \\underline{"
@@ -310,12 +313,15 @@ def styleFour(secondaries, contact, education, experience, skills, publications,
     text += "\n% Skills section\n\\section{SKILLS}\n"
     for l in skills:
       date = []
-      if (len(l[3].replace(' ','')) != 0):
-        if (len(l[4].replace(' ','')) != 0):
-          date.append(l[3] + " $-$")
-          date.append(l[4])
-        else:
-          date.append(l[3])
+      try:
+        if (len(l[3].replace(' ','')) != 0):
+          if (len(l[4].replace(' ','')) != 0):
+            date.append(l[3] + " $-$")
+            date.append(l[4])
+          else:
+            date.append(l[3])
+      except:
+        pass
       text += "  " + l[0] + " \\vspace{0.1em} \n  \\begin{itemize}"
       text += "\n    \item[] " + l[1] + "\n  \\end{itemize}\n\n"
       #text += "      " + l[2] + " \n\n"

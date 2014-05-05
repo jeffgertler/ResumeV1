@@ -6,19 +6,14 @@
 #  Copyright (c) 2014 Jeffrey Gertler & George Wong. All rights reserved.
 #
 
-
-#john smith, nyu
-
 inputString1 = "{{template:2},{p_email:(null)},{secondaries:(1,2,3,4,5,6,7,8)},{{type:Contact},{header:John Smith},{primary:johnsmith@gmail.com \
 (111)111-1111},{secondary:123 Broadway \
  New York, NY, 12345}}{{type:Education},{header:Bachelor of Science, Computer Science},{primary:New York University, New York, NY, expected May 2014},{secondary:Minor: Management}}{{type:Employment},{header:Buisiness Applications Programmer, Fall 2013},{primary:Allied-Signal Bendix Friction Material Division, Financial Planning Dept, Latham, NY},{secondary:*Developed forcasting systems which produce individual reports. \
 * Developed iall IFPS programs used for financial reports.}}}"
-
 inputString2 = "{{template:2},{p_email:(null)},{secondaries:(6,4,5,2,3,0,1)},{{type:Contact},{header:John Smith},{primary:johnsmith@gmail.com \
 (111) 111-1111},{secondary:123 Broadway \
  New York, NY, 12345}},{{type:Awards},{header:Dean's List},{primary:2014, 2015},{secondary:}}{{type:Awards},{header:Salutatorian Medal},{primary:Mayfield Central School, NY},{secondary:2010, 2011, 2012}}{{type:Skills},{header:Operating Systems},{primary:MTS, TSO, UNIX},{secondary:}}{{type:Skills},{header:Languages and Software},{primary:COBOL, IFPS, Focus, Megacalc, Pascal, Modula2, C, APL, SNOBOL, FORTRAN, LISP, SPIRES, BASIC, VSPC Autotab},{secondary:}}{{type:Employment},{header:Allied-Signal Bendix Friction Material Division, Financial Planning Dept, Latham, NY},{primary:Buisiness Applications Programmer, Fall 2013},{secondary:Developed forcasting systems which produce individual reports. \
 Developed iall IFPS programs used for financial reports.}}{{type:Employment},{header:Psychology Department, Rensselaer Polytechnic Institute},{primary:Research Programmer, Summer 2013},{secondary:Performed Computer Aided Statistical analysis of data}}{{type:Education},{header:New York University, New York, NY, expected May 2014},{primary:Bachelor of Science, Computer Science},{secondary:Minor: Management}}}"
-
 inputString3 = "{{template:2},{p_email:(null)},{secondaries:(2,0)},{{type:Contact},{header:John Smith},{primary:johnsmith@gmail.com \
 (111) 111-1111},{secondary:123 Broadway \
  New York, NY, 12345}}{{type:Contact},{header:Roger Darling},{primary:johnsmith@gmail.com \
@@ -36,9 +31,17 @@ inputString6 = "{{template:1},{p_email:(null)},{secondaries:(0,1,3,2,4,5,6,7)},{
  New York, NY, 12345},{starttime:  },{endtime:  }}{{type:Education},{header:Rensselaer Polytechnic Institute, Troy, NY},{primary:B.S., Electrical Engineering},{secondary:},{starttime:  },{endtime:  }}{{type:Employment},{header:A & P Supermarket, Madison, NJ},{primary:Meat Department Assistant},{secondary:Assisted department manager with ordering, pricing, and maintaining department inventory.},{starttime:  },{endtime:  }}{{type:Skills},{header:Languages and Software},{primary:COBOL, IFPS, Focus, Megacalc, Pascal, Modula2, C, APL, SNOBOL, FORTRAN, LISP, SPIRES, BASIC, VSPC Autotab},{secondary:},{starttime:  },{endtime:  }}{{type:Awards},{header:Salutatorian Medal},{primary:Mayfield Central School, NY},{secondary:2010, 2011, 2012},{starttime:  },{endtime:  }}{{type:Honors},{header:Dean's List},{primary:Rensselaer Polytechnic Institute},{secondary:},{starttime:  },{endtime:  }}{{type:Honors},{header:United Food and Commercial Workers Union Scholarship},{primary:National Honor Society},{secondary:},{starttime:  },{endtime:  }}{{type:Honors},{header:Clayton and Mary Shelley Scholarship},{primary:Rensselaer Polytechnic Institute},{secondary:},{starttime:  },{endtime:  }}}"
 
 testTemplate1 = "{{template:4},{p_email:(null)},{secondaries:(0,4,2,1,3,5,6,7)},{{type:Contact},{header:Kelly Tripathi},{primary:kpt230@nyu.edu (516)233-0016},{secondary:110 E 7th Street Apt 13, New York NY 10009},{starttime:  },{endtime:  }}{{type:Employment},{header:Forensic Panel},{primary:Active Casework Intern},{secondary:Responsible for background research on psychology reports, appeals, and witness statements to aid an official expert testimony regarding an active death penalty case. Researched various forensic psychology research articles to form an online database.},{starttime:September  2013},{endtime:December  2013}}{{type:Employment},{header:Forensic Panel},{primary:Deprevity Research Intern},{secondary:Assisted in research in project to create an objective sentencing tool to define what constitutes a deprave crime under the direction of Dr. Michael Welner. Responsible for marking the presence of deprave acts through research of witness statements, police reports, defendant statements, and autopsy/medical reports of resolved cases.},{starttime:June  2013},{endtime:September  2013}}{{type:Employment},{header:Brown and Whalen, LLP},{primary:Legal Assistant},{secondary:Assisted assosiates in legal research, fact checking, and organization of documents. Prepared, electronically filed and hand delivered motions to New York Supreme Court. Perfromed various administrative tasks such as answering phone calls, copying, filing and scanning documents.},{starttime:January  2013},{endtime:  }}{{type:Education},{header:New York University},{primary:Bachelor of Science, Chemistry Major; Bachelor of Arts, Honors Politics Major},{secondary:Cummulative GPA 3.8/4.0},{starttime:September  2011},{endtime:May  2015}}{{type:Honors},{header:College of Arts and Science Presidential Honors Scholar},{primary:Selected for program which invites the top five percent of entering class, targeted for students who intend to graduate with honors in their major.},{secondary:},{starttime:September  2011},{endtime:  }}{{type:Honors},{header:Julius Silver Scholarship},{primary:Recipient of merit and need based scholarship provided to students who excel in a scientific major.},{secondary:},{starttime:September  2011},{endtime:  }}{{type:Honors},{header:Lawyer Alumni Mentoring Program},{primary:Selected based on academic achievement and interest in a legal career to be mentored by Christopher Hughes of Cadwalader, Wickersham & Taft LLP.},{secondary:},{starttime:November  2013},{endtime:  }}}"
-
 testTemplate2 = "{{template:2},{p_email:(null)},{secondaries:(0,1,3,4)},{{type:Contact},{header:Kelly Tripathi},{primary:kpt230@nyu.edu (516)233-0016},{secondary:110 E 7th Street Apt 13, New York NY 10009},{starttime:  },{endtime:  }}{{type:Education},{header:New York University},{primary:Bachelor of Science, Chemistry Major; Bachelor of Arts, Honors Politics Major},{secondary:Cummulative GPA 3.8/4.0},{starttime:September  2011},{endtime:May  2015}}{{type:Employment},{header:Forensic Panel},{primary:Deprevity Research Intern},{secondary:Assisted in research in project to create an objective sentencing tool to define what constitutes a deprave crime under the direction of Dr. Michael Welner. Responsible for marking the presence of deprave acts through research of witness statements, police reports, defendant statements, and autopsy/medical reports of resolved cases.},{starttime:June  2013},{endtime:September  2013}}{{type:Employment},{header:Forensic Panel},{primary:Active Casework Intern},{secondary:Responsible for background research on psychology reports, appeals, and witness statements to aid an official expert testimony regarding an active death penalty case. Researched various forensic psychology research articles to form an online database.},{starttime:September  2013},{endtime:December  2013}}{{type:Honors},{header:Julius Silver Scholarship},{primary:Recipient of merit and need based scholarship provided to students who excel in a scientific major.},{secondary:},{starttime:September  2011},{endtime:  }}}"
 testTemplate3 = "{{template:2},{p_email:(null)},{secondaries:(0,1,3,4)},{{type:Contact},{header:Kelly Tripathi},{primary:kpt230@nyu.edu (516)233-0016},{secondary:110 E 7th Street Apt 13, New York NY 10009},{starttime:  },{endtime:  }}{{type:Education},{header:New York University},{primary:Bachelor of Science, Chemistry Major; Bachelor of Arts, Honors Politics Major},{secondary:Cummulative GPA 3.8/4.0},{starttime:September  2011},{endtime:May  2015}}{{type:Employment},{header:Forensic Panel},{primary:Deprevity Research Intern},{secondary:Assisted in research in project to create an objective sentencing tool to define what constitutes a deprave crime under the direction of Dr. Michael Welner. Responsible for marking the presence of deprave acts through research of witness statements, police reports, defendant statements, and autopsy/medical reports of resolved cases.},{starttime:June  2013},{endtime:September  2013}}{{type:Employment},{header:Forensic Panel},{primary:Active Casework Intern},{secondary:Responsible for background research on psychology reports, appeals, and witness statements to aid an official expert testimony regarding an active death penalty case. Researched various forensic psychology research articles to form an online database.},{starttime:September  2013},{endtime:December  2013}}{{type:Honors},{header:Julius Silver Scholarship},{primary:Recipient of merit and need based scholarship provided to students who excel in a scientific major.},{secondary:},{starttime:September  2011},{endtime:  }}}"
+testTemplate4 = "{{template:4},{p_email:(null)},{secondaries:(0,1,2,3,4,5,7,6,8)},{{type:Contact},{header:Kelly Tripathi},{primary:kpt230@nyu.edu (516)233-0016},{secondary:110 E 7th Street Apt 13, New York NY 10009},{starttime:  },{endtime:  }}{{type:Education},{header:New York University},{primary:Bachelor of Science, Chemistry Major; Bachelor of Arts, Honors Politics Major},{secondary:Cummulative GPA 3.8/4.0},{starttime:September  2011},{endtime:May  2015}}{{type:Employment},{header:Brown and Whalen, LLP},{primary:Legal Assistant},{secondary:Assisted assosiates in legal research, fact checking, and organization of documents. Prepared, electronically filed and hand delivered motions to New York Supreme Court. Perfromed various administrative tasks such as answering phone calls, copying, filing and scanning documents.},{starttime:January  2013},{endtime:  }}{{type:Employment},{header:Forensic Panel},{primary:Active Casework Intern},{secondary:Responsible for background research on psychology reports, appeals, and witness statements to aid an official expert testimony regarding an active death penalty case. Researched various forensic psychology research articles to form an online database.},{starttime:September  2013},{endtime:December  2013}}{{type:Employment},{header:Forensic Panel},{primary:Deprevity Research Intern},{secondary:Assisted in research in project to create an objective sentencing tool to define what constitutes a deprave crime under the direction of Dr. Michael Welner. Responsible for marking the presence of deprave acts through research of witness statements, police reports, defendant statements, and autopsy/medical reports of resolved cases.},{starttime:June  2013},{endtime:September  2013}}{{type:Skills},{header:Proficient in French, Microsoft Office Suite, STATA, Database Research, Python Programming},{primary:},{secondary:},{starttime:  },{endtime:  }}{{type:Honors},{header:Lawyer Alumni Mentoring Program},{primary:Selected based on academic achievement and interest in a legal career to be mentored by Christopher Hughes of Cadwalader, Wickersham & Taft LLP.},{secondary:},{starttime:November  2013},{endtime:  }}{{type:Honors},{header:Julius Silver Scholarship},{primary:Recipient of merit and need based scholarship provided to students who excel in a scientific major.},{secondary:},{starttime:September  2011},{endtime:  }}{{type:Honors},{header:College of Arts and Science Presidential Honors Scholar},{primary:Selected for program which invites the top five percent of entering class, targeted for students who intend to graduate with honors in their major.},{secondary:},{starttime:September  2011},{endtime:  }}}"
+
+# Imports
+import smtplib
+import logging
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEBase import MIMEBase
+from email.mime.text import MIMEText
+from email import Encoders
 
 
 # Splits input into array with elements of size given
@@ -86,9 +89,6 @@ def parseJson(working):
       working = working[endIndex+2:]
 
   return json_array
-
-#print parseJson(inputString[1:-1])
-
 
 
 ### Take JSON, sort, and format according to style
@@ -146,6 +146,12 @@ def populateTypes(s):
           tmp.append(m[1])
         else:
           continue # TODO
+      # If no header, but yes to primary, switch them.
+      if (len(tmp[1]) == 0):
+        tmp.append("")
+        swtch = tmp[0]
+        tmp[0] = ""
+        tmp[1] = swtch
       skills.append(tmp)
     elif (l[0][1] == "Experience" or l[0][1] == "Employment"):
       # company,position,responsibility,sdate,edate
@@ -190,5 +196,26 @@ def populateTypes(s):
   return [secondaries, contact, education, experience, skills, publications, others]
 
 
+### Given sender & receiver information, returns
+### a triple of what needs to be sent
+def makeEmail(senderEmail, senderDetail,        \
+              receiverEmails, subject, body,    \
+              attachmentPath):
 
+  # Create vanilla message
+  msg = MIMEMultipart()
+  msg['Subject'] = subject
+  msg['From'] = senderDetail
+  msg['To'] = ', '.join(receiverEmails)
+  msg.attach(MIMEText(body, 'plain'))
 
+  # Set up attachment
+  part = MIMEBase('application', "octet-stream")
+  part.set_payload(open(attachmentPath, "rb").read())
+  Encoders.encode_base64(part)
+  part.add_header('Content-Disposition', 'attachment; filename="resume.pdf"')
+
+  # Attach attachment
+  msg.attach(part)
+
+  return [senderEmail, receiverEmails, msg.as_string()]

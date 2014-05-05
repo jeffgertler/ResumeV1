@@ -17,12 +17,9 @@ from formats import *
 inputToParser = testTemplate3[1:-1]
 inputToParser = inputToParser.replace('&','\&')
 parsedJSON = parseJson(inputToParser)
-#print parsedJSON
 
 # Generate the text
 types = populateTypes(parsedJSON)
-
-#print types
 
 text = ""
 text = styleOne(types[0], types[1], types[2], types[3], types[4], types[6]) # For obvious reasons
