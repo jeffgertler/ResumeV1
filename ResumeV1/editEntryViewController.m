@@ -16,6 +16,9 @@
 @property int currentSection;
 @property NSArray *sections;
 @property BOOL dateRecieved;
+@property (weak, nonatomic) IBOutlet UIButton *temporaryButton;
+@property (weak, nonatomic) IBOutlet UIButton *permanentButton;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 @end
 
@@ -30,6 +33,8 @@
     self.SectionLabel.text = self.sections[self.currentSection];
     self.TextField.text = self.entry.type;
     self.dateRecieved = NO;
+    self.temporaryButton.hidden = YES;
+    self.permanentButton.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -59,8 +64,25 @@
         self.currentSection++;
     } else if(self.currentSection == 3){
         self.entry.secondary = self.TextField.text;
-        [self performSegueWithIdentifier:@"editDateSegue" sender:self];
+        if([self.entry.type isEqualToString:@"Contact"]){
+            self.TextField.hidden = YES;
+            self.SectionLabel.hidden = YES;
+            self.nextButton.hidden = YES;
+            self.permanentButton.hidden = NO;
+            self.temporaryButton.hidden = NO;
+        } else {
+            [self performSegueWithIdentifier:@"editDateSegue" sender:self];
+        }
     }
+}
+
+- (IBAction)temporaryPressed:(id)sender {
+    [self.entry setTime:@[@"", @"Permanent", @"", @"", @"", @""]];
+    [self dismissViewControllerAnimated: YES completion: nil];
+}
+- (IBAction)permanentPressed:(id)sender {
+    [self.entry setTime:@[@"", @"Temporary", @"", @"", @"", @""]];
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
