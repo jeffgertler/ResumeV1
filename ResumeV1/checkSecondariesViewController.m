@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.entriesNeedingSecondaries = [[NSMutableArray alloc] init];
-    for(Entry *entry in _readyEntries){
+    for(Entry *entry in [GlobalData getReadyEntries]){
         [self.entriesNeedingSecondaries addObject:entry];
     }
 }
@@ -50,7 +50,7 @@
         cell.textLabel.text = [[[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row] getTitle];
         cell.accessoryType = UITableViewCellAccessoryNone;
         for(Entry *entry in self.entriesNeedingSecondaries){
-            if([cell.textLabel.text isEqualToString:[entry getTitle]]){
+            if([[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row] == entry){
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }
         }
@@ -81,7 +81,10 @@
 }
 
 -(BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    return ![self errorsInData];
+    if([identifier isEqualToString:@"SelectTemplateSegue"]){
+        return ![self errorsInData];
+    }
+    return YES;
 }
 
 // This is a really nasty jumble of conditionals but IT IS FOR THE GOOD OF THE USER.

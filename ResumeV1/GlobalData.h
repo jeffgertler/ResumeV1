@@ -40,6 +40,7 @@ static NSArray *_typesNeedingSecondaries;
 + (Entry *)getReadyObjectAt:(int)index;
 + (NSArray *)readyEntriesWithType:(NSString *)type;
 + (int)numReadyEntriesWithType:(NSString *)type;
++ (NSMutableArray *)getReadyEntries;
 + (int)getTemplateNumber;
 + (NSString *)primaryEmail;
 + (NSString *)secondaryEmail;

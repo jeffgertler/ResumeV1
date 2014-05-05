@@ -84,6 +84,10 @@
     return count;
 }
 
++ (NSMutableArray *)getReadyEntries {
+    return _readyEntries;
+}
+
 + (void)setTemplateNumber:(int)number{
     _templateNumber = number;
 }

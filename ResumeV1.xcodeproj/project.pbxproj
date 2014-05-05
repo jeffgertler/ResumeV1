@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6447D2A218F5E37B00FDF629 /* editEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6447D2A118F5E37B00FDF629 /* editEntryViewController.m */; };
-		6447D2A518F60E3A00FDF629 /* checkSecondariesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6447D2A418F60E3A00FDF629 /* checkSecondariesViewController.m */; };
 		644D707118E350840081B378 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644D707018E350840081B378 /* Foundation.framework */; };
 		644D707318E350840081B378 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644D707218E350840081B378 /* CoreGraphics.framework */; };
 		644D707518E350840081B378 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644D707418E350840081B378 /* UIKit.framework */; };
@@ -416,7 +415,6 @@
 				644D70B318E380940081B378 /* reviewEntriesViewController.m in Sources */,
 				6447D2A218F5E37B00FDF629 /* editEntryViewController.m in Sources */,
 				64CB4CC318EC969F00563966 /* makeViewController.m in Sources */,
-				6447D2A518F60E3A00FDF629 /* checkSecondariesViewController.m in Sources */,
 				644D70AD18E36BA20081B378 /* addEntryViewController.m in Sources */,
 				64778FA818E6923A00BBABDB /* entryDetailViewController.m in Sources */,
 				644D708118E350840081B378 /* myClassAppDelegate.m in Sources */,
