@@ -12,6 +12,9 @@
 
 @interface settingsViewController : UIViewController
 
+- (IBAction)switchTouched:(id)sender;
+- (IBAction)secondaryEmailTouched:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UILabel *offBtn;
 @property (weak, nonatomic) IBOutlet UILabel *onBtn;
 @property (weak, nonatomic) IBOutlet UITextField *primaryEmailTextField;

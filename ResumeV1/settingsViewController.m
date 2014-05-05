@@ -66,5 +66,16 @@
     }
 }
 
+- (IBAction)switchTouched:(id)sender {
+    if (self.secondaryEmailTextField.text.length == 0){
+        [[self secondaryEmailUseSwitch] setOn:NO animated:YES];
+    }
+}
+
+- (IBAction)secondaryEmailTouched:(id)sender {
+    if (self.secondaryEmailTextField.text.length == 0){
+        [[self secondaryEmailUseSwitch] setOn:NO animated:YES];
+    }
+}
 
 @end
