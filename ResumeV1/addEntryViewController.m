@@ -15,9 +15,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = Rgb2UIColor(244, 77, 255);
-    
     self.typePicker.delegate = self;
     self.sections  = [[NSMutableArray alloc] initWithObjects:@"Type", @"Header", @"Primary", @"Secondary", nil];
     self.entryData = [[NSMutableArray alloc] initWithCapacity:self.sections.count];

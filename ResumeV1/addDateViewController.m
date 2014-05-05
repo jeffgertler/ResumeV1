@@ -17,9 +17,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = Rgb2UIColor(244, 77, 255);
-    
     self.datePicker.delegate = self;
     self.secondaryDatePicker.delegate = self;
     

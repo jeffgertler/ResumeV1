@@ -31,7 +31,7 @@
 		64778FA818E6923A00BBABDB /* entryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64778FA718E6923A00BBABDB /* entryDetailViewController.m */; };
 		647FB97A18F2089400185596 /* GlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 647FB97918F2089400185596 /* GlobalData.m */; };
 		6496AD4B1917405F008E434A /* introScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6496AD4A1917405F008E434A /* introScreenViewController.m */; };
-		6496AD4D19174B48008E434A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6496AD4F19174B48008E434A /* Icon.png */; };
+		6496AD5119174D38008E434A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6496AD5019174D38008E434A /* Icon.png */; };
 		64A526CC190DBBC9009D85E4 /* templateDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A526CB190DBBC9009D85E4 /* templateDetailViewController.m */; };
 		64AEC3E71914A73900A997CE /* addDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AEC3E61914A73900A997CE /* addDateViewController.m */; };
 		64CB4CC318EC969F00563966 /* makeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64CB4CC218EC969F00563966 /* makeViewController.m */; };
@@ -94,7 +94,7 @@
 		647FB97918F2089400185596 /* GlobalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalData.m; sourceTree = "<group>"; };
 		6496AD491917405F008E434A /* introScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = introScreenViewController.h; path = ../introScreenViewController.h; sourceTree = "<group>"; };
 		6496AD4A1917405F008E434A /* introScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = introScreenViewController.m; path = ../introScreenViewController.m; sourceTree = "<group>"; };
-		6496AD4E19174B48008E434A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/Icon.png; sourceTree = "<group>"; };
+		6496AD5019174D38008E434A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ResumeV1/Icon.png; sourceTree = SOURCE_ROOT; };
 		64A526CA190DBBC9009D85E4 /* templateDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateDetailViewController.h; sourceTree = "<group>"; };
 		64A526CB190DBBC9009D85E4 /* templateDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = templateDetailViewController.m; sourceTree = "<group>"; };
 		64AEC3E51914A73900A997CE /* addDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addDateViewController.h; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 				64EA798118FF246C00C36A3A /* template2.png */,
 				64EA798018FF246C00C36A3A /* template3.png */,
 				64EA797E18FF246C00C36A3A /* template4.png */,
-				6496AD4F19174B48008E434A /* Icon.png */,
+				6496AD5019174D38008E434A /* Icon.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -375,7 +375,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6496AD4D19174B48008E434A /* Icon.png in Resources */,
+				6496AD5119174D38008E434A /* Icon.png in Resources */,
 				64EA798518FF246C00C36A3A /* template2.png in Resources */,
 				644D708718E350840081B378 /* Main_iPad.storyboard in Resources */,
 				644D708C18E350840081B378 /* Images.xcassets in Resources */,
@@ -473,15 +473,6 @@
 				64589323190850EA00474CBE /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		6496AD4F19174B48008E434A /* Icon.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6496AD4E19174B48008E434A /* Base */,
-			);
-			name = Icon.png;
-			path = ../../../Desktop;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

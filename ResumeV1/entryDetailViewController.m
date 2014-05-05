@@ -80,8 +80,8 @@
 
 - (IBAction)removeEntry:(id)sender {
     [Entry removeEntry:self.entry];
+    [GlobalData saveState];
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 - (IBAction)unwindToEntryDetail:(UIStoryboardSegue *)segue {

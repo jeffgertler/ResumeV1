@@ -21,8 +21,6 @@
     [super viewDidLoad];
     self.myTextField.delegate = self;
     
-    self.view.backgroundColor = Rgb2UIColor(230, 230, 230);
-    
     // Color buttons etc.
     [self.addNewInfoBtn setBackgroundColor:Rgb2UIColor(255, 255, 255)];
     [self.addNewInfoBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
