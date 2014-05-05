@@ -63,6 +63,12 @@
         self.primaryLabel.text = @"Primary";
         self.secondaryLabel.text = @"Secondary";
     }
+    if([self.entry.type isEqualToString:@"Contact"]){
+        self.startSectionLabel.text = @"Address:";
+        self.endSectionLabel.hidden = YES;
+        self.endDateLabel.hidden = YES;
+        self.startDateLabel.text = [self.entry getTimes][1];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
