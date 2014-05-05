@@ -132,13 +132,13 @@ def styleTwo(secondaries, contact, education, experience, skills, publications, 
       text += "    \\item[] " + l[2] + "\n"
       text += "  \\end{itemize}\n\n"
 
-  # Skill section
+  # Write Skills section
   if (len(skills) != 0):
     text += "\n% Skills section\n\\section{SKILLS}\n"
     for l in skills:
-      print l    # TODO
-      pass
-      #print l
+      text += "  \emph{" + l[0] + "} \\\\"
+      text += "  " + l[1] + " \n\n"
+      #text += "  " + l[2] + " \n\n"
 
   # Add custom fields
   text += "\n\n% Other sections"
