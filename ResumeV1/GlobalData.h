@@ -70,3 +70,5 @@ static NSArray *_typesNeedingSecondaries;
 
 #define INT2STR(I) ([NSString stringWithFormat:@"%d",I])
 #define Rgb2UIColor(r, g, b)  [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:1.0]
+#define Blue1 Rgb2UIColor(48, 175, 255)
+#define Blue2 Rgb2UIColor(49, 174, 222)
