@@ -11,6 +11,7 @@
 
 @implementation addEntryViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.typePicker.delegate = self;
@@ -21,6 +22,8 @@
     self.TextField.hidden = YES;
     self.typePicker.hidden = NO;
     self.dateRecieved = NO;
+    self.temporaryButton.hidden = YES;
+    self.permenantButton.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -59,12 +62,30 @@
         if (self.currentSection == [self.sections count]-1) {
             [self.entryData addObject:self.TextField.text];
             // Get the date from addDate which will unwind to root
-            [self performSegueWithIdentifier:@"addDateSegue" sender:sender];
+            if([self.entryData[0] isEqualToString:@"Contact"]){
+                self.TextField.hidden = YES;
+                self.TitleText.title = @"Address Type";
+                self.typePicker.hidden = YES;
+                self.nextButton.hidden = YES;
+                self.temporaryButton.hidden = NO;
+                self.permenantButton.hidden = NO;
+            } else {
+                [self performSegueWithIdentifier:@"addDateSegue" sender:sender];
+            }
         } else if ([self.sections[self.currentSection+1]  isEqual: @"NULL"]) {
             [self.entryData addObject:self.TextField.text];
             self.TextField.text = @"";
             [self.entryData addObject:self.TextField.text];
-            [self performSegueWithIdentifier:@"addDateSegue" sender:sender];
+            if([self.entryData[0] isEqualToString:@"Contact"]){
+                self.TextField.hidden = YES;
+                self.TitleText.title = @"Address Type";
+                self.typePicker.hidden = YES;
+                self.nextButton.hidden = YES;
+                self.temporaryButton.hidden = NO;
+                self.permenantButton.hidden = NO;
+            } else {
+                [self performSegueWithIdentifier:@"addDateSegue" sender:sender];
+            }
         } else if (![self.TextField.text isEqualToString:nil]){
             [self.entryData addObject:self.TextField.text];
             self.TextField.text = @"";
@@ -74,11 +95,20 @@
     }
 }
 
+- (IBAction)temporaryPressed:(id)sender {
+    [Entry entryOfType:self.entryData[0] withHeader:self.entryData[1] andPrimary:self.entryData[2] andSecondary:self.entryData[3] andTimes:@[@"", @"Permanent", @"", @"", @"", @""]];
+    [self dismissViewControllerAnimated: YES completion: nil];
+}
+
+- (IBAction)permanentPressed:(id)sender {
+    [Entry entryOfType:self.entryData[0] withHeader:self.entryData[1] andPrimary:self.entryData[2] andSecondary:self.entryData[3] andTimes:@[@"", @"Temporary", @"", @"", @"", @""]];
+    [self dismissViewControllerAnimated: YES completion: nil];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"addDateSegue"]) {
-        [Entry entryOfType:self.entryData[0] withHeader:self.entryData[1] andPrimary:self.entryData[2] andSecondary:    self.entryData[3]];
-        
+        [Entry entryOfType:self.entryData[0] withHeader:self.entryData[1] andPrimary:self.entryData[2] andSecondary:self.entryData[3]];
         addDateViewController *destViewController = (addDateViewController *)segue.destinationViewController;
         destViewController.entry = [Entry getObjectAt:[Entry entriesSize]-1];
         destViewController.cameFromEditEntry = NO;

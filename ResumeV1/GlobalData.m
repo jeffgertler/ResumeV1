@@ -201,7 +201,8 @@
         [Entry entryOfType:@"Contact"
                 withHeader:@"Kelly Tripathi"
                 andPrimary:@"kpt230@nyu.edu (516)233-0016"
-              andSecondary:@"110 E 7th Street Apt 13, New York NY 10009"];
+              andSecondary:@"110 E 7th Street Apt 13, New York NY 10009"
+                  andTimes:@[@"", @"Temporary", @"", @"", @"", @""]];
         
         [Entry entryOfType:@"Education"
                 withHeader:@"New York University"

@@ -19,6 +19,9 @@
 @property NSMutableArray *entryData;
 @property (weak, nonatomic) IBOutlet UIPickerView *typePicker;
 @property BOOL dateRecieved;
+@property (weak, nonatomic) IBOutlet UIButton *temporaryButton;
+@property (weak, nonatomic) IBOutlet UIButton *permenantButton;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
