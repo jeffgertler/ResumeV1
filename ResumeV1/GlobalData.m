@@ -163,7 +163,7 @@
     _types =[[NSMutableArray alloc] init];
     _primaryEmail = nil;
     _secondaryEmail = nil;
-    _useSecondaryEmail = nil;
+    _useSecondaryEmail = NO;
 }
 
 

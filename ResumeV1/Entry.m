@@ -57,7 +57,7 @@
 }
 
 - (void)setTime:(NSArray *)times{
-    self.times = times;
+    self.times = [times copy];
 }
 
 

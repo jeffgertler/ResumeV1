@@ -54,7 +54,7 @@
         self.headerLabel.text = [[[GlobalData specialTypeOverrides] objectForKey:self.entry.type] objectAtIndex:0];
         self.primaryLabel.text  = [[[GlobalData specialTypeOverrides] objectForKey:self.entry.type] objectAtIndex:1];
         self.secondaryLabel.text = [[[GlobalData specialTypeOverrides] objectForKey:self.entry.type] objectAtIndex:2];
-        if (self.secondaryLabel.text == @"NULL") {
+        if ([self.secondaryLabel.text  isEqual: @"NULL"]) {
             self.secondaryLabel.hidden = YES;
             self.SecondaryText.hidden = YES;
         }

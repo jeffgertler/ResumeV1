@@ -10,11 +10,10 @@
 
 @interface makeViewController : UIViewController <UINavigationBarDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-- (IBAction)unwindToMake:(UIStoryboardSegue *)segue;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property UINavigationBar *navBar;
 
-- (void)resetCheckmarks;
+- (IBAction)unwindToMake:(UIStoryboardSegue *)segue;
 
 @end

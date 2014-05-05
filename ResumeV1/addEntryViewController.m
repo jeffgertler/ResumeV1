@@ -60,7 +60,7 @@
             [self.entryData addObject:self.TextField.text];
             // Get the date from addDate which will unwind to root
             [self performSegueWithIdentifier:@"addDateSegue" sender:sender];
-        } else if (self.sections[self.currentSection+1] == @"NULL") {
+        } else if ([self.sections[self.currentSection+1]  isEqual: @"NULL"]) {
             [self.entryData addObject:self.TextField.text];
             self.TextField.text = @"";
             [self.entryData addObject:self.TextField.text];

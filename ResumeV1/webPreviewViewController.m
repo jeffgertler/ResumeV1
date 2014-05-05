@@ -18,19 +18,17 @@
     [super viewDidLoad];
     
     // Allow zoom
-    //self.webViewView.scalesPageToFit = YES;
+    self.webViewView.scalesPageToFit = YES;
     
     // Ideally, we want to do this before arriving at this page; however,
     // we also want to make sure we have access to the "root" webpage (as
     // returned by the server)
     URLresource = [NetworkComm sendMessage:[GlobalData stringForServer]];
-    NSLog(URLresource);
     URLresource = [URLresource substringWithRange:NSMakeRange(6, [URLresource length]-8)];
     
     rootURL = @"http://latex.wong1275.com/";
     rootURL = [rootURL stringByAppendingString:URLresource];
-    rootURL = [rootURL stringByAppendingString:@"/"];
-    //rootURL = [rootURL stringByAppendingString:@"resume.tex"];
+    rootURL = [rootURL stringByAppendingString:@"/resume.pdf"];
     
     [self changeURLTo:rootURL];
 }
