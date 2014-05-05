@@ -46,7 +46,7 @@
     [self.settingsBtn.layer setBorderWidth:1.0];
     [self.settingsBtn.layer setCornerRadius:2.0];
     
-    [self.view.layer setBackgroundColor:[Rgb2UIColor(255,255,252) CGColor]];
+    [self.view.layer setBackgroundColor:[Rgb2UIColor(255,255,255) CGColor]];
     //self.titleLabel.textAlignment
     //self.titleLabel.textAlignment = NSTextAlignmentCenter;
     //[self.titleLabel setBackgroundColor:Rgb2UIColor(48, 175, 226)];

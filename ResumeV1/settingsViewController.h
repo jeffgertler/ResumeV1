@@ -12,6 +12,8 @@
 
 @interface settingsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *offBtn;
+@property (weak, nonatomic) IBOutlet UILabel *onBtn;
 @property (weak, nonatomic) IBOutlet UITextField *primaryEmailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *secondaryEmailTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *secondaryEmailUseSwitch;
