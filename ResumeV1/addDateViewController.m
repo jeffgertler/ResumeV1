@@ -52,7 +52,7 @@
     } else {
         [self.datePicker selectRow:114 inComponent:2 animated:YES];
         [self.secondaryDatePicker selectRow:121 inComponent:2 animated:YES];
-        self.times = [[NSMutableArray alloc] initWithObjects:@"-", @"-", @"2014", @"-", @"-", @"-", nil];
+        self.times = [[NSMutableArray alloc] initWithObjects:@"—", @"—", @"2014", @"—", @"—", @"—", nil];
     }
 }
 
@@ -80,8 +80,6 @@
     }
 }
 
-
-
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
 {
     UILabel* tView = (UILabel*)view;
@@ -89,7 +87,6 @@
     {
         tView = [[UILabel alloc] init];
         [tView setFont:[UIFont fontWithName:@"Helvetica" size:14]];
-        //[tView setTextAlignment:UITextAlignmentLeft];
         tView.numberOfLines=3;
     }
     
@@ -105,18 +102,6 @@
     
     return tView;
 }
-
-/*
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component {
-    if(component == 0){
-        return [self.days objectAtIndex:row];
-    } else if(component == 1) {
-        return [self.months objectAtIndex:row];
-    } else {
-        return [self.years objectAtIndex:row];
-    }
-} */
-
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component {
     if(pickerView.tag == 1){
@@ -140,7 +125,7 @@
 
 - (IBAction)donePressed:(id)sender {
     for(int i=0; i<[self.times count]; i++){
-        if([self.times[i] isEqualToString:@"-"]){
+        if([self.times[i] isEqualToString:@"—"]){
             self.times[i] = @"";
         }
     }

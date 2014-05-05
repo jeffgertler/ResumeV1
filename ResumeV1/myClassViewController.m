@@ -22,25 +22,25 @@
     self.myTextField.delegate = self;
     
     // Color buttons etc.
-    [self.addNewInfoBtn setBackgroundColor:Rgb2UIColor(255,255,253)];
+    [self.addNewInfoBtn setBackgroundColor:Rgb2UIColor(255,255,255)];
     [self.addNewInfoBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.addNewInfoBtn.layer setBorderColor:[Rgb2UIColor(178,178,178) CGColor]];
     [self.addNewInfoBtn.layer setBorderWidth:1.0];
     [self.addNewInfoBtn.layer setCornerRadius:2.0];
     
-    [self.reviewEntriesBtn setBackgroundColor:Rgb2UIColor(255,255,253)];
+    [self.reviewEntriesBtn setBackgroundColor:Rgb2UIColor(255,255,255)];
     [self.reviewEntriesBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.reviewEntriesBtn.layer setBorderColor:[Rgb2UIColor(178,178,178) CGColor]];
     [self.reviewEntriesBtn.layer setBorderWidth:1.0];
     [self.reviewEntriesBtn.layer setCornerRadius:2.0];
     
-    [self.makeBtn setBackgroundColor:Rgb2UIColor(255,255,253)];
+    [self.makeBtn setBackgroundColor:Rgb2UIColor(255,255,255)];
     [self.makeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.makeBtn.layer setBorderColor:[Rgb2UIColor(178,178,178) CGColor]];
     [self.makeBtn.layer setBorderWidth:1.0];
     [self.makeBtn.layer setCornerRadius:2.0];
     
-    [self.settingsBtn setBackgroundColor:Rgb2UIColor(255,255,523)];
+    [self.settingsBtn setBackgroundColor:Rgb2UIColor(255,255,525)];
     [self.settingsBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.settingsBtn.layer setBorderColor:[Rgb2UIColor(178,178,178) CGColor]];
     [self.settingsBtn.layer setBorderWidth:1.0];

@@ -27,6 +27,11 @@
     self.temporaryButton.hidden = YES;
     self.permenantButton.hidden = YES;
     self.shouldDisplayCustomTypeEntry = NO;
+    
+    [self.TextField.layer setBackgroundColor:[Rgb2UIColor(255,255,255) CGColor]];
+    [self.TextField.layer setBorderColor:[Rgb2UIColor(210,210,210) CGColor]];
+    [self.TextField.layer setBorderWidth:1.0];
+    [self.TextField.layer setCornerRadius:3.0];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
