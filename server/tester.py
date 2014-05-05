@@ -14,7 +14,7 @@ from formats import *
 ### Main test environment
 
 # Parse the input string we've saved in libs.py
-inputToParser = testTemplate1[1:-1]
+inputToParser = testTemplate3[1:-1]
 inputToParser = inputToParser.replace('&','\&')
 parsedJSON = parseJson(inputToParser)
 #print parsedJSON
