@@ -35,6 +35,7 @@ inputString6 = "{{template:1},{p_email:(null)},{secondaries:(0,1,3,2,4,5,6,7)},{
 (111) 111-1111},{secondary:123 Broadway \
  New York, NY, 12345},{starttime:  },{endtime:  }}{{type:Education},{header:Rensselaer Polytechnic Institute, Troy, NY},{primary:B.S., Electrical Engineering},{secondary:},{starttime:  },{endtime:  }}{{type:Employment},{header:A & P Supermarket, Madison, NJ},{primary:Meat Department Assistant},{secondary:Assisted department manager with ordering, pricing, and maintaining department inventory.},{starttime:  },{endtime:  }}{{type:Skills},{header:Languages and Software},{primary:COBOL, IFPS, Focus, Megacalc, Pascal, Modula2, C, APL, SNOBOL, FORTRAN, LISP, SPIRES, BASIC, VSPC Autotab},{secondary:},{starttime:  },{endtime:  }}{{type:Awards},{header:Salutatorian Medal},{primary:Mayfield Central School, NY},{secondary:2010, 2011, 2012},{starttime:  },{endtime:  }}{{type:Honors},{header:Dean's List},{primary:Rensselaer Polytechnic Institute},{secondary:},{starttime:  },{endtime:  }}{{type:Honors},{header:United Food and Commercial Workers Union Scholarship},{primary:National Honor Society},{secondary:},{starttime:  },{endtime:  }}{{type:Honors},{header:Clayton and Mary Shelley Scholarship},{primary:Rensselaer Polytechnic Institute},{secondary:},{starttime:  },{endtime:  }}}"
 
+testTemplate1 = "{{template:4},{p_email:(null)},{secondaries:(0,4,2,1,3,5,6,7)},{{type:Contact},{header:Kelly Tripathi},{primary:kpt230@nyu.edu (516)233-0016},{secondary:110 E 7th Street Apt 13, New York NY 10009},{starttime:  },{endtime:  }}{{type:Employment},{header:Forensic Panel},{primary:Active Casework Intern},{secondary:Responsible for background research on psychology reports, appeals, and witness statements to aid an official expert testimony regarding an active death penalty case. Researched various forensic psychology research articles to form an online database.},{starttime:September  2013},{endtime:December  2013}}{{type:Employment},{header:Forensic Panel},{primary:Deprevity Research Intern},{secondary:Assisted in research in project to create an objective sentencing tool to define what constitutes a deprave crime under the direction of Dr. Michael Welner. Responsible for marking the presence of deprave acts through research of witness statements, police reports, defendant statements, and autopsy/medical reports of resolved cases.},{starttime:June  2013},{endtime:September  2013}}{{type:Employment},{header:Brown and Whalen, LLP},{primary:Legal Assistant},{secondary:Assisted assosiates in legal research, fact checking, and organization of documents. Prepared, electronically filed and hand delivered motions to New York Supreme Court. Perfromed various administrative tasks such as answering phone calls, copying, filing and scanning documents.},{starttime:January  2013},{endtime:  }}{{type:Education},{header:New York University},{primary:Bachelor of Science, Chemistry Major; Bachelor of Arts, Honors Politics Major},{secondary:Cummulative GPA 3.8/4.0},{starttime:September  2011},{endtime:May  2015}}{{type:Honors},{header:College of Arts and Science Presidential Honors Scholar},{primary:Selected for program which invites the top five percent of entering class, targeted for students who intend to graduate with honors in their major.},{secondary:},{starttime:September  2011},{endtime:  }}{{type:Honors},{header:Julius Silver Scholarship},{primary:Recipient of merit and need based scholarship provided to students who excel in a scientific major.},{secondary:},{starttime:September  2011},{endtime:  }}{{type:Honors},{header:Lawyer Alumni Mentoring Program},{primary:Selected based on academic achievement and interest in a legal career to be mentored by Christopher Hughes of Cadwalader, Wickersham & Taft LLP.},{secondary:},{starttime:November  2013},{endtime:  }}}"
 
 
 # Splits input into array with elements of size given
@@ -55,6 +56,8 @@ def splitToArray(longString, n):
 
 # Parse the input string
 def parseJson(working):
+  working = working.replace('&','&')
+
   json_array = []
 
   while (len(working)>1):
@@ -142,7 +145,8 @@ def populateTypes(s):
           continue # TODO
       skills.append(tmp)
     elif (l[0][1] == "Experience" or l[0][1] == "Employment"):
-      tmp = ["company","position","responsibliy","dat?"]
+      # company,position,responsibility,sdate,edate
+      tmp = ["company","position","responsibliy","start","end"]
       for m in l:
         if (m[0] == "header"):
           tmp[0] = m[1]
@@ -151,6 +155,10 @@ def populateTypes(s):
           tmp[1] = m[1]
         elif ((m[0] == "secondary") and (indexOfElement in secondaries)):
           tmp[2] = m[1]
+        elif (m[0] == "starttime"):
+          tmp[3] = m[1]
+        elif (m[0] == "endtime"):
+          tmp[4] = m[1]
         else:
           continue  # TODO
       experience.append(tmp)
@@ -159,7 +167,7 @@ def populateTypes(s):
       if (not l[0][1] in others):
         others[l[0][1]] = []
       # Add as always
-      tmp = ["","","","",""]
+      tmp = ["","","","","",""]
       myType = ""
       for m in l:
         if (m[0] == "type"):
@@ -170,6 +178,10 @@ def populateTypes(s):
           tmp[1] = m[1]
         elif ((m[0] == "secondary") and (indexOfElement in secondaries)):
           tmp[2] = m[1]
+        elif (m[0] == "starttime"):
+          tmp[3] = m[1]
+        elif (m[0] == "endtime"):
+          tmp[4] = m[1]
       others[myType].append(tmp)
 
   return [secondaries, contact, education, experience, skills, publications, others]

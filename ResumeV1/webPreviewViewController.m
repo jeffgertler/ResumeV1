@@ -30,6 +30,9 @@
     rootURL = [rootURL stringByAppendingString:URLresource];
     rootURL = [rootURL stringByAppendingString:@"/resume.pdf"];
     
+    // For debugging purposes only
+    NSLog( rootURL );
+    
     [self changeURLTo:rootURL];
 }
 
