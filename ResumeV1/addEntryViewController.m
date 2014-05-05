@@ -20,6 +20,7 @@
     self.currentSection = 0;
     self.TitleText.title = self.sections[self.currentSection];
     self.TextField.hidden = YES;
+    self.TextField.text = @"Contact";
     self.typePicker.hidden = NO;
     self.dateRecieved = NO;
     self.temporaryButton.hidden = YES;
