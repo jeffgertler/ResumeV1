@@ -44,7 +44,15 @@
         [[self sections] replaceObjectAtIndex:3 withObject:[[[GlobalData specialTypeOverrides] objectForKey:self.TextField.text] objectAtIndex:2]];
     }
     
+    [self.TextField.layer setBorderColor:[Rgb2UIColor(210,210,210) CGColor]];
+    [self.TextField.layer setBorderWidth:1.0];
+    [self.TextField.layer setCornerRadius:3.0];
+    
     self.headingLabel.text = self.sections[self.currentSection];}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.TextField resignFirstResponder];
+}
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];

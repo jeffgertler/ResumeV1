@@ -14,5 +14,7 @@
 @property Entry *entry;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UITextView *mainTextField;
 
 @end
