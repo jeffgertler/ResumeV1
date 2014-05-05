@@ -23,9 +23,9 @@ types = populateTypes(parsedJSON)
 
 text = ""
 text = styleOne(types[0], types[1], types[2], types[3], types[4], types[6]) # For obvious reasons
-text = styleTwo(types[0], types[1], types[2], types[3], types[4], types[5], types[6])
-text = styleThree(types[0], types[1], types[2], types[3], types[4], types[5], types[6])
-text = styleFour(types[0], types[1], types[2], types[3], types[4], types[5], types[6])
+#text = styleTwo(types[0], types[1], types[2], types[3], types[4], types[5], types[6])
+#text = styleThree(types[0], types[1], types[2], types[3], types[4], types[5], types[6])
+#text = styleFour(types[0], types[1], types[2], types[3], types[4], types[5], types[6])
 
 # Open file to write output to
 fptr = open("temp.tex",'w')
