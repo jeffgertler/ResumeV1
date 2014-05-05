@@ -20,6 +20,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Graphics
+    [self.HeaderText.layer setBorderColor:[Rgb2UIColor(210,210,210) CGColor]];
+    [self.HeaderText.layer setBorderWidth:1.0];
+    [self.HeaderText.layer setCornerRadius:3.0];
+    [self.PrimaryText.layer setBorderColor:[Rgb2UIColor(210,210,210) CGColor]];
+    [self.PrimaryText.layer setBorderWidth:1.0];
+    [self.PrimaryText.layer setCornerRadius:3.0];
+    [self.SecondaryText.layer setBorderColor:[Rgb2UIColor(210,210,210) CGColor]];
+    [self.SecondaryText.layer setBorderWidth:1.0];
+    [self.SecondaryText.layer setCornerRadius:3.0];
+    
+    // Logic
     self.HeaderText.text = self.entry.header;
     self.PrimaryText.text = self.entry.primary;
     self.SecondaryText.text = self.entry.secondary;
@@ -76,6 +89,12 @@
         editEntryViewController *destViewController = segue.destinationViewController;
         destViewController.entry = self.entry;
     }
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.HeaderText resignFirstResponder];
+    [self.PrimaryText resignFirstResponder];
+    [self.SecondaryText resignFirstResponder];
 }
 
 - (IBAction)removeEntry:(id)sender {

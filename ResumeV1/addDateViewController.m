@@ -21,18 +21,18 @@
     self.secondaryDatePicker.delegate = self;
     
     // Creating and populating arrays for display
-    self.days = [[NSMutableArray alloc] initWithObjects:@"-", nil];
+    self.days = [[NSMutableArray alloc] initWithObjects:@"—", nil];
     self.months = [[NSMutableArray alloc] init];
     self.years = [[NSMutableArray alloc] init];
     for(int i=1; i<=31; i++){
         [self.days addObject:[NSString stringWithFormat:@"%d", i]];
     }
-    self.months = @[@"-", @"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November", @"December"];
+    self.months = @[@"—", @"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November", @"December"];
 	
     for(int i=1900; i<=2020; i++){
         [self.years addObject:[NSString stringWithFormat:@"%d", i]];
     }
-    [self.years addObject:@"-"];
+    [self.years addObject:@"—"];
     
     // Moving the date selector to the correct starting positions
     if(self.cameFromEditEntry){
@@ -56,7 +56,7 @@
     }
 }
 
--(void) viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
     //Checking to see if the entry doesn't need a date
     if([self.entry.type isEqualToString:@"Contact"]){
@@ -64,7 +64,6 @@
         [self dismissViewControllerAnimated: YES completion: nil];
     }
 }
-
 
 // Handle type picker
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -81,7 +80,34 @@
     }
 }
 
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component {
+
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+    UILabel* tView = (UILabel*)view;
+    if (!tView)
+    {
+        tView = [[UILabel alloc] init];
+        [tView setFont:[UIFont fontWithName:@"Helvetica" size:14]];
+        //[tView setTextAlignment:UITextAlignmentLeft];
+        tView.numberOfLines=3;
+    }
+    
+    if(component == 0){
+        tView.text = [self.days objectAtIndex:row];
+        tView.textAlignment = NSTextAlignmentRight;
+    } else if(component == 1) {
+        tView.text = [self.months objectAtIndex:row];
+        tView.textAlignment = NSTextAlignmentCenter;
+    } else {
+        tView.text = [self.years objectAtIndex:row];
+    }
+    
+    return tView;
+}
+
+/*
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component {
     if(component == 0){
         return [self.days objectAtIndex:row];
     } else if(component == 1) {
@@ -89,7 +115,9 @@
     } else {
         return [self.years objectAtIndex:row];
     }
-}
+} */
+
+
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component {
     if(pickerView.tag == 1){
         if(component == 0){
