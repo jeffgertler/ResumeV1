@@ -134,7 +134,6 @@
     
     if ([[defaults objectForKey:@"isDataSaved"] isEqualToString:@"yes"]) {
         [Entry clearEntries];
-        [Entry printEntries];
         [self clearData];
         // Loading entries
         for (int i=0; i<[[defaults objectForKey:@"numEntries"] intValue]; i++) {
@@ -158,7 +157,6 @@
         _primaryEmail = [defaults objectForKey:@"primaryEmail"];
         _secondaryEmail = [defaults objectForKey:@"secondaryEmail"];
         _useSecondaryEmail = [[defaults objectForKey:@"useSecondaryEmail"] isEqual:@"YES"];
-        [Entry printEntries];
     } else {
         NSLog(@"Nothing saved");
     }
@@ -267,8 +265,8 @@
                   andTimes:@[@"", @"November", @"2013", @"", @"", @""]];
         
         [Entry entryOfType:@"Skills"
-                withHeader:@""
-                andPrimary:@"Proficient in French, Microsoft Office Suite, STATA, Database Research, Python Programming"
+                withHeader:@"Proficient in French, Microsoft Office Suite, STATA, Database Research, Python Programming"
+                andPrimary:@""
               andSecondary:@""
                   andTimes:@[@"", @"", @"", @"", @"", @""]];
     }

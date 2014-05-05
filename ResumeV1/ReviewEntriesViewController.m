@@ -37,6 +37,9 @@
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if([Entry numEntriesWithType: [GlobalData getTypeAt:section]] == 0){
+        return 1;
+    }
     return [Entry numEntriesWithType: [GlobalData getTypeAt:section]];
 }
 
@@ -45,7 +48,13 @@
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tableCell"];
     }
-    cell.textLabel.text = [[[Entry entriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row] getTitle];
+    if([Entry entriesWithType:[GlobalData getTypeAt:indexPath.section]].count == 0){
+        cell.textLabel.text = @"No entries of this type";
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.textLabel.textColor = [UIColor grayColor];
+    } else {
+        cell.textLabel.text = [[[Entry entriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row] getTitle];
+    }
     return cell;
 }
 
@@ -57,9 +66,20 @@
     if ([segue.identifier isEqualToString:@"DetailSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         entryDetailViewController *destViewController = segue.destinationViewController;
-        Entry *entry = [[Entry entriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row];
-        destViewController.entry = entry;
+        if(![Entry numEntriesWithType:[GlobalData getTypeAt:indexPath.section]] == 0){
+            Entry *entry = [[Entry entriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row];
+            destViewController.entry = entry;
+        }
     }
+}
+
+-(BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+    if([identifier isEqualToString: @"DetailSegue"]){
+        return !([cell.textLabel.text isEqualToString:@"No entries of this type"]);
+    }
+    return YES;
 }
 
 - (IBAction)unwindToReview:(UIStoryboardSegue *)segue{

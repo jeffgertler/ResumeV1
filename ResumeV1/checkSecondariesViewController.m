@@ -23,6 +23,9 @@
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if([GlobalData numReadyEntriesWithType: [GlobalData getTypeAt:section]] == 0){
+        return 1;
+    }
     return [GlobalData numReadyEntriesWithType: [GlobalData getTypeAt:section]];
 }
 
@@ -31,14 +34,19 @@
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tableCell"];
     }
-    cell.textLabel.text = [[[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row] getTitle];
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    for(Entry *entry in self.entriesNeedingSecondaries){
-        if([cell.textLabel.text isEqualToString:[entry getTitle]]){
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    if([GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]].count == 0){
+        cell.textLabel.text = @"No entries of this type";
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.textLabel.textColor = [UIColor grayColor];
+    } else {
+        cell.textLabel.text = [[[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row] getTitle];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        for(Entry *entry in self.entriesNeedingSecondaries){
+            if([cell.textLabel.text isEqualToString:[entry getTitle]]){
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
         }
     }
-    
     return cell;
 }
 
@@ -50,15 +58,17 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:indexPath];
     BOOL isSelected = (tableCell.accessoryType == UITableViewCellAccessoryCheckmark);
-    if (isSelected) {
-        [self.entriesNeedingSecondaries removeObject:[[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row]];
-        [GlobalData setEntriesNeedingSecondaries:self.entriesNeedingSecondaries];
-        tableCell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    else {
-        [self.entriesNeedingSecondaries addObject:[[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row]];
-        [GlobalData setEntriesNeedingSecondaries:self.entriesNeedingSecondaries];
-        tableCell.accessoryType = UITableViewCellAccessoryCheckmark;
+    if(![tableCell.textLabel.text isEqualToString:@"No entries of this type"]){
+        if (isSelected) {
+            [self.entriesNeedingSecondaries removeObject:[[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row]];
+            [GlobalData setEntriesNeedingSecondaries:self.entriesNeedingSecondaries];
+            tableCell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        else {
+            [self.entriesNeedingSecondaries addObject:[[GlobalData readyEntriesWithType:[GlobalData getTypeAt:indexPath.section]] objectAtIndex:indexPath.row]];
+            [GlobalData setEntriesNeedingSecondaries:self.entriesNeedingSecondaries];
+            tableCell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
     }
 }
 
