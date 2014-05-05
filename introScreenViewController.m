@@ -31,7 +31,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    sleep(2);
+    sleep(1);
     [self performSegueWithIdentifier:@"IntroSegue" sender:self];
 }
 

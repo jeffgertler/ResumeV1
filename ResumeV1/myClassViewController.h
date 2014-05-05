@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *reviewEntriesBtn;
 @property (weak, nonatomic) IBOutlet UIButton *makeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *settingsBtn;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 
 @end
