@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1ye-9u-9AO">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -412,6 +412,7 @@
                     <connections>
                         <outlet property="SectionLabel" destination="f2s-e5-atU" id="YSk-YV-Ybb"/>
                         <outlet property="TextField" destination="3YV-Uf-gmE" id="AAb-6x-NWC"/>
+                        <outlet property="headingLabel" destination="f2s-e5-atU" id="vSY-K0-dQI"/>
                         <outlet property="nextButton" destination="mn9-jv-Jba" id="t9n-YD-K5n"/>
                         <outlet property="permanentButton" destination="qge-0i-twe" id="8P4-Az-Eid"/>
                         <outlet property="temporaryButton" destination="YKu-bQ-xWa" id="M3q-tp-EgB"/>
@@ -975,6 +976,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="13A-9q-SY1"/>
+        <segue reference="oc3-yy-lAR"/>
     </inferredMetricsTieBreakers>
 </document>

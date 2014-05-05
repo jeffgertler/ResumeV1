@@ -110,11 +110,13 @@
         [defaults setObject:[Entry getObjectAt:i].times[4] forKey:[NSString stringWithFormat:@"entry%dtime4", i]];
         [defaults setObject:[Entry getObjectAt:i].times[5] forKey:[NSString stringWithFormat:@"entry%dtime5", i]];
     }
+    
     // Saving _types
     [defaults setObject:[NSString stringWithFormat:@"%d", [self typesSize]] forKey:@"numTypes"];
     for (int i=0; i<[self typesSize]; i++){
         [defaults setObject:[self getTypeAt:i] forKey:[NSString stringWithFormat:@"type%d", i]];
     }
+    
     //Saving _primaryEmail, _secondaryEmail, _useSecondaryEmail
     [defaults setObject:_primaryEmail forKey:@"primaryEmail"];
     [defaults setObject:_secondaryEmail forKey:@"secondaryEmail"];

@@ -14,11 +14,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *SectionLabel;
 @property (weak, nonatomic) IBOutlet UITextView *TextField;
 @property int currentSection;
-@property NSArray *sections;
+@property NSMutableArray *sections;
 @property BOOL dateRecieved;
 @property (weak, nonatomic) IBOutlet UIButton *temporaryButton;
 @property (weak, nonatomic) IBOutlet UIButton *permanentButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
+@property (weak, nonatomic) IBOutlet UILabel *headingLabel;
 
 @end
 
@@ -28,33 +29,41 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.sections = [[NSArray alloc] initWithObjects:@"Type", @"Header", @"Primary", @"Secondary", nil];
-    self.currentSection = 0;
+	self.sections = [[NSMutableArray alloc] initWithObjects:@"Type", @"Header", @"Primary", @"Secondary", nil];
+    self.currentSection = 1;
     self.SectionLabel.text = self.sections[self.currentSection];
     self.TextField.text = self.entry.type;
     self.dateRecieved = NO;
     self.temporaryButton.hidden = YES;
     self.permanentButton.hidden = YES;
-}
+    
+    // Handle special information for default types
+    if ([[GlobalData specialTypes] containsObject:self.entry.type]) {
+        [[self sections] replaceObjectAtIndex:1 withObject:[[[GlobalData specialTypeOverrides] objectForKey:self.TextField.text] objectAtIndex:0]];
+        [[self sections] replaceObjectAtIndex:2 withObject:[[[GlobalData specialTypeOverrides] objectForKey:self.TextField.text] objectAtIndex:1]];
+        [[self sections] replaceObjectAtIndex:3 withObject:[[[GlobalData specialTypeOverrides] objectForKey:self.TextField.text] objectAtIndex:2]];
+    }
+    
+    self.headingLabel.text = self.sections[self.currentSection];}
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
-    if(self.dateRecieved){
+    if (self.dateRecieved) {
         [self dismissViewControllerAnimated: YES completion: nil];
         [GlobalData saveState];
     }
+    self.TextField.text = self.entry.header;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return NO;
 }
+
 - (IBAction)nextPressed:(id)sender {
-    if(self.currentSection == 0){
-        self.entry.type = self.TextField.text;
-        self.TextField.text = self.entry.header;
-        self.currentSection++;
-    } else if(self.currentSection == 1){
+    
+    // Set as edited & advance
+    if(self.currentSection == 1){
         self.entry.header = self.TextField.text;
         self.TextField.text = self.entry.primary;
         self.currentSection++;
@@ -74,6 +83,7 @@
             [self performSegueWithIdentifier:@"editDateSegue" sender:self];
         }
     }
+    self.headingLabel.text = self.sections[self.currentSection];
 }
 
 - (IBAction)temporaryPressed:(id)sender {
