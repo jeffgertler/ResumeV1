@@ -39,12 +39,6 @@
     [self.settingsBtn.layer setCornerRadius:5.0];
     
 }
-- (IBAction)saveData:(id)sender {
-    [GlobalData saveState];
-}
-- (IBAction)loadData:(id)sender {
-    [GlobalData loadState];
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];

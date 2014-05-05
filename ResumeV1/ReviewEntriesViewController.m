@@ -23,11 +23,13 @@
 {
     [super viewDidLoad];
     [self.tableView reloadData];
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     [self.tableView reloadData];
     [super viewDidAppear:YES];
+    
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{

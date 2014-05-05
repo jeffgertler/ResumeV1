@@ -86,28 +86,6 @@
                                     <segue destination="dUM-yD-ECy" kind="modal" id="NmI-Sw-xUh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d85-QS-7jU">
-                                <rect key="frame" x="105" y="353" width="106" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="IowanOldStyle-Roman" family="Iowan Old Style" pointSize="20"/>
-                                <state key="normal" title="Save Data">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveData:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5ZG-zA-WEn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yw-dE-n0L">
-                                <rect key="frame" x="103" y="417" width="111" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="IowanOldStyle-Roman" family="Iowan Old Style" pointSize="20"/>
-                                <state key="normal" title="Load Data">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loadData:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Hbu-dS-8Bd"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWs-o8-erf">
                                 <rect key="frame" x="103" y="469" width="111" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -163,7 +141,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a2V-WN-ewX" id="H3S-2t-sOv">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" cyan="0.078431367874145508" magenta="0.037842392921447754" yellow="0.023270010948181152" black="0.11678832116788321" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="dX6-jg-oTc" kind="modal" identifier="DetailSegue" id="rxX-9N-34X"/>
@@ -671,24 +648,6 @@
                 <exit id="YIz-mK-SMf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="460" y="1460"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="OPK-Fp-oCL">
-            <objects>
-                <viewController id="FIT-pu-GgV" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="M64-Ga-2V7"/>
-                        <viewControllerLayoutGuide type="bottom" id="GOp-S6-aGx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CSL-36-CiC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oR1-7t-52f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="860" y="1460"/>
         </scene>
         <!--Make View Controller-->
         <scene sceneID="9Ue-Pw-Aid">
