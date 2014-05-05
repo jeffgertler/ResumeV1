@@ -37,7 +37,8 @@
     _specialTypeOverrides = @{@"Contact"    : @[@"Name", @"Email and Phone Number", @"Address"],
                               @"Education"  : @[@"Institution Name", @"Degree", @"More Info"],
                               @"Employment" : @[@"Company", @"Position", @"Other Info"],
-                              @"Skills"     : @[@"Header", @"Other Info", @"NULL"]
+                              @"Skills"     : @[@"Header", @"Other Info", @"NULL"],
+                              @"Research"   : @[@"Organization", @"Position", @"Other Info"]
                               };
     
     _typesNeedingSecondaries = @[@"Contact"];
@@ -198,6 +199,7 @@
         [GlobalData addType:@"Contact"];
         [GlobalData addType:@"Education"];
         [GlobalData addType:@"Employment"];
+        [GlobalData addType:@"Research"];
         [GlobalData addType:@"Skills"];
         [GlobalData addType:@"Awards"];
         [GlobalData addType:@"Honors"];

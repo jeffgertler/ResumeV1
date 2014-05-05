@@ -31,6 +31,7 @@
 		647FB97A18F2089400185596 /* GlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 647FB97918F2089400185596 /* GlobalData.m */; };
 		6496AD4B1917405F008E434A /* introScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6496AD4A1917405F008E434A /* introScreenViewController.m */; };
 		6496AD5119174D38008E434A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6496AD5019174D38008E434A /* Icon.png */; };
+		6496AD5319179209008E434A /* checkSecondariesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6447D2A418F60E3A00FDF629 /* checkSecondariesViewController.m */; };
 		64A526CC190DBBC9009D85E4 /* templateDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A526CB190DBBC9009D85E4 /* templateDetailViewController.m */; };
 		64AEC3E71914A73900A997CE /* addDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64AEC3E61914A73900A997CE /* addDateViewController.m */; };
 		64CB4CC318EC969F00563966 /* makeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64CB4CC218EC969F00563966 /* makeViewController.m */; };
@@ -411,6 +412,7 @@
 				6678B6201912057C009A36C4 /* webPreviewViewController.m in Sources */,
 				64EA797D18FF094F00C36A3A /* settingsViewController.m in Sources */,
 				66A5426018F4C8B3003A295C /* NetworkComm.m in Sources */,
+				6496AD5319179209008E434A /* checkSecondariesViewController.m in Sources */,
 				64A526CC190DBBC9009D85E4 /* templateDetailViewController.m in Sources */,
 				644D70B318E380940081B378 /* reviewEntriesViewController.m in Sources */,
 				6447D2A218F5E37B00FDF629 /* editEntryViewController.m in Sources */,
