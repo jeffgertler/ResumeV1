@@ -18,6 +18,14 @@
 
 @implementation checkSecondariesViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.entriesNeedingSecondaries = [[NSMutableArray alloc] init];
+    for(Entry *entry in _readyEntries){
+        [self.entriesNeedingSecondaries addObject:entry];
+    }
+}
+
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
     return [GlobalData typesSize];
 }
@@ -72,6 +80,19 @@
     }
 }
 
+-(BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    return ![self errorsInData];
+}
+
+// This is a really nasty jumble of conditionals but IT IS FOR THE GOOD OF THE USER.
+- (BOOL) errorsInData{
+    // Checking that all entries requiring secondaries have them
+    
+    
+    return NO;
+}
+
+
 - (IBAction)unwindToCheckSecondaries:(UIStoryboardSegue *)segue{
 }
 
@@ -85,19 +106,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.entriesNeedingSecondaries = [[NSMutableArray alloc] init];
-    for(NSString *type in _typesNeedingSecondaries){
-        for(Entry *entry in [GlobalData readyEntriesWithType:type]){
-            if([entry.type isEqualToString:type]){
-                [self.entriesNeedingSecondaries addObject:entry];
-            }
-        }
-    }
-    
-}
+
 
 - (void)didReceiveMemoryWarning
 {

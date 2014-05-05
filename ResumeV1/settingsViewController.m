@@ -40,7 +40,6 @@
     return NO;
 }
 
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.primaryEmailTextField resignFirstResponder];
     [self.secondaryEmailTextField resignFirstResponder];
@@ -64,6 +63,7 @@
     } else {
         [GlobalData setUseSecondaryEmail:NO];
     }
+    [GlobalData saveState];
 }
 
 

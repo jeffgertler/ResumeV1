@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)unwindToCheckSecondaries:(UIStoryboardSegue *)segue;
+- (BOOL) errorsInData;
 
 @end

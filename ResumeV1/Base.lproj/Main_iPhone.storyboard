@@ -736,7 +736,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Next" id="b84-IP-5bc">
                                             <connections>
-                                                <segue destination="pPX-C4-CCi" kind="modal" id="sEp-Qk-Awe"/>
+                                                <segue destination="pPX-C4-CCi" kind="modal" identifier="SelectTemplateSegue" id="sEp-Qk-Awe"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

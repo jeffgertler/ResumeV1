@@ -95,9 +95,55 @@
     }
 }
 
+// This is a really nasty jumble of conditionals but IT IS FOR THE GOOD OF THE USER.
+- (BOOL) errorsInData{
+    //Checking for at most two contacts with one temporary and one permenant address
+    BOOL temporary = NO;
+    BOOL permenant = NO;
+    for(Entry *entry in self.addedEntries){
+        if([entry.type isEqualToString:@"Contact"]){
+            if([entry.times[1] isEqualToString: @"Temporary"] && temporary){
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Error"
+                                                                message:@"Too many contacts with temporary addresses. There can only be one."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                return YES;
+            } else if ([entry.times[1] isEqualToString: @"Temporary"]){
+                temporary = YES;
+            } else if([entry.times[1] isEqualToString: @"Permenant"] && permenant){
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Error"
+                                                                message:@"Too many contacts with permenant addresses. There can only be one."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                return YES;
+            } else if([entry.times[1] isEqualToString: @"Permenant"]){
+                permenant = YES;
+            }
+        }
+    }
+    
+    if([GlobalData primaryEmail] == nil || [[GlobalData primaryEmail] isEqualToString:@""]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data Error"
+                                                        message:@"No primary email. Go to settings and input one please."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return YES;
+    }
+    
+    return NO;
+}
+
 - (IBAction)nextPressed:(id)sender {
-    [GlobalData setReadyEntries:self.addedEntries];
-    [self performSegueWithIdentifier:@"secondariesSegue" sender:sender];
+    if(![self errorsInData]){
+        [GlobalData setReadyEntries:self.addedEntries];
+        [self performSegueWithIdentifier:@"secondariesSegue" sender:sender];
+    }
 }
 
 - (IBAction)backPressed:(id)sender {

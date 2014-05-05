@@ -15,5 +15,6 @@
 @property UINavigationBar *navBar;
 
 - (IBAction)unwindToMake:(UIStoryboardSegue *)segue;
+- (BOOL) errorsInData;
 
 @end

@@ -106,13 +106,13 @@
 }
 
 - (IBAction)temporaryPressed:(id)sender {
-    [Entry entryOfType:self.entryData[0] withHeader:self.entryData[1] andPrimary:self.entryData[2] andSecondary:self.entryData[3] andTimes:@[@"", @"Permanent", @"", @"", @"", @""]];
+    [Entry entryOfType:self.entryData[0] withHeader:self.entryData[1] andPrimary:self.entryData[2] andSecondary:self.entryData[3] andTimes:@[@"", @"Temporary", @"", @"", @"", @""]];
     [GlobalData saveState];
     [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 - (IBAction)permanentPressed:(id)sender {
-    [Entry entryOfType:self.entryData[0] withHeader:self.entryData[1] andPrimary:self.entryData[2] andSecondary:self.entryData[3] andTimes:@[@"", @"Temporary", @"", @"", @"", @""]];
+    [Entry entryOfType:self.entryData[0] withHeader:self.entryData[1] andPrimary:self.entryData[2] andSecondary:self.entryData[3] andTimes:@[@"", @"Permanent", @"", @"", @"", @""]];
     [GlobalData saveState];
     [self dismissViewControllerAnimated: YES completion: nil];
 }
