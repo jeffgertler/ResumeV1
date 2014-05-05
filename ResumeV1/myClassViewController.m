@@ -21,28 +21,24 @@
     [super viewDidLoad];
     self.myTextField.delegate = self;
     
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = self.view.bounds;
-    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor yellowColor] CGColor], (id)[[UIColor orangeColor] CGColor], nil];
-    [self.view.layer insertSublayer:gradient atIndex:0];
+    self.view.backgroundColor = Rgb2UIColor(230, 230, 230);
     
     // Color buttons etc.
-    [self.addNewInfoBtn.layer setBorderWidth:3.0];
-    [self.addNewInfoBtn.layer setBackgroundColor:[[UIColor greenColor] CGColor]];
-    [self.addNewInfoBtn.layer setBorderColor:[[UIColor blackColor] CGColor]];
-    [self.addNewInfoBtn.layer setShadowOffset:CGSizeMake(5, 5)];
-    [self.addNewInfoBtn.layer setShadowColor:[[UIColor blackColor] CGColor]];
-    [self.addNewInfoBtn.layer setShadowOpacity:0.5];
+    [self.addNewInfoBtn setBackgroundColor:Rgb2UIColor(255, 255, 255)];
+    [self.addNewInfoBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.addNewInfoBtn.layer setCornerRadius:5.0];
     
-    [self.reviewEntriesBtn.layer setBorderWidth:3.0];
-    [self.reviewEntriesBtn.layer setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.reviewEntriesBtn setBackgroundColor:Rgb2UIColor(255, 255, 255)];
+    [self.reviewEntriesBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.reviewEntriesBtn.layer setCornerRadius:5.0];
     
-    [self.makeBtn.layer setBorderWidth:3.0];
-    [self.makeBtn.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    [self.makeBtn setBackgroundColor:Rgb2UIColor(255, 255, 255)];
+    [self.makeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.makeBtn.layer setCornerRadius:5.0];
     
-    [self.settingsBtn.layer setBorderWidth:3.0];
-    [self.settingsBtn.layer setBorderColor:[[UIColor redColor] CGColor]];
+    [self.settingsBtn setBackgroundColor:Rgb2UIColor(255, 255, 255)];
+    [self.settingsBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.settingsBtn.layer setCornerRadius:5.0];
     
 }
 - (IBAction)saveData:(id)sender {
