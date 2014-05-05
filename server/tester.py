@@ -14,19 +14,21 @@ from formats import *
 ### Main test environment
 
 # Parse the input string we've saved in libs.py
-parsedJSON = parseJson(inputString6[1:-1])
+inputToParser = testTemplate3[1:-1]
+inputToParser = inputToParser.replace('&','\&')
+parsedJSON = parseJson(inputToParser)
 #print parsedJSON
 
 # Generate the text
 types = populateTypes(parsedJSON)
 
-print types
+#print types
 
 text = ""
-#text = styleOne(types[0], types[1], types[2], types[3], types[4], types[6]) # For obvious reasons
-#text = styleTwo(types[0], types[1], types[2], types[3], types[4], types[5], types[6])
-#text = styleThree(types[0], types[1], types[2], types[3], types[4], types[5], types[6])
-#text = styleFour(types[0], types[1], types[2], types[3], types[4], types[5], types[6])
+text = styleOne(types[0], types[1], types[2], types[3], types[4], types[6]) # For obvious reasons
+text = styleTwo(types[0], types[1], types[2], types[3], types[4], types[5], types[6])
+text = styleThree(types[0], types[1], types[2], types[3], types[4], types[5], types[6])
+text = styleFour(types[0], types[1], types[2], types[3], types[4], types[5], types[6])
 
 # Open file to write output to
 fptr = open("temp.tex",'w')

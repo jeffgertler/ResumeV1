@@ -21,7 +21,7 @@ def styleOne(secondaries, contact, education, experience, skills, others):
   text += "\n% Name section\n\\name{"
   text += contact[0]
   text += "}\n"
-  text += "\\address{"
+  text += "\n\\address{"
   text += contact[1][0]
   text += " \\\\ "
   text += contact[1][1]
@@ -51,19 +51,33 @@ def styleOne(secondaries, contact, education, experience, skills, others):
   if (len(experience) != 0):
     text += "\n% Experience section\n\\section{EXPERIENCE}\n"
     for l in experience:
-      text += "\\begin{tabular}{p{3.8in} r} \n  "
-      text += l[0] + " & " + "TODO DATE" + "\n\\end{tabular} \n\\begin{itemize}\n  \\vspace{1em}\n"
-      text += "  \\item[] \\textbf{" + l[1] + "} \n"
-      text += "  \\item[] " + l[2] + " \n\\end{itemize}"
+      date = ""
+      if (len(l[3].replace(' ','')) != 0):
+        if (len(l[4].replace(' ','')) != 0):
+          date = l[3] + " $-$ " + l[4]
+        else:
+          date = l[3]
+      text += l[0] + "\n\\vspace{0.2em} \n\\begin{itemize} \n"
+      text += "  \\item[] \\textbf{" + l[1] + "} \hfill " + date + "\n"
+      text += "  \\item[] " + l[2] + " \n\\end{itemize} \n\n"
+
 
   # Add custom fields
   text += "\n\n% Other sections"  # \n\\section{EXPERIENCE}\n"
   for l in others:
     text += "\n\\section{" + l.upper() + "}\n"
     for m in others[l]:
+
+      date = ""
+      if (len(m[3].replace(' ','')) != 0):
+        if (len(m[4].replace(' ','')) != 0):
+          date = m[3] + " $-$ " + m[4]
+        else:
+          date = m[3]
+
       if (len(m[0]) != 0):
-        text += "\n\\begin{tabular}{p{3in} r}\n"
-        text += m[0]
+        text += "\n\\begin{tabular}{p{4in} r}\n"
+        text += m[0] + " & " + date
         text += "\n\\end{tabular}\n"
       if (len(m[1]) != 0):
         text += "\\begin{itemize}\n  \\vspace{0.2em}\n"
@@ -95,10 +109,16 @@ def styleTwo(secondaries, contact, education, experience, skills, publications, 
   if (len(experience) != 0):
     text += "\n% Experience section\n\\section{BUSINESS EXPERIENCE}\n"
     for l in experience:
+      date = ""
+      if (len(l[3].replace(' ','')) != 0):
+        if (len(l[4].replace(' ','')) != 0):
+          date = l[3] + " $-$ " + l[4]
+        else:
+          date = l[3]
       text += "  " + l[0] + " \\\\ \n"
-      text += "    \\textbf{ " + l[1] + "}\n"   # TODO (date goes here)
+      text += "    \\textbf{ " + l[1] + "} \hfill " + date + " \n"   # TODO (date goes here)
       text += "    \\begin{itemize} \\itemsep -4pt\n"
-      text += "      \\item[$\\Box$] " + l[2] + "\n"
+      text += "      \\item[] " + l[2] + "\n"
       text += "    \\end{itemize}\n\n"
 
   # Write education section
@@ -113,20 +133,26 @@ def styleTwo(secondaries, contact, education, experience, skills, publications, 
       text += "  \\end{itemize}\n\n"
 
   # Skill section
-  text += "\n% Skills section\n\\section{SKILLS}\n"
-  for l in skills:
-    pass
-    #print l
+  if (len(skills) != 0):
+    text += "\n% Skills section\n\\section{SKILLS}\n"
+    for l in skills:
+      print l    # TODO
+      pass
+      #print l
 
   # Add custom fields
   text += "\n\n% Other sections"
   for l in others:
     text += "\n\\section{" + l.upper() + "}\n"
     for m in others[l]:
+      date = ""
+      if (len(m[3].replace(' ','')) != 0):
+        if (len(m[4].replace(' ','')) != 0):
+          date = m[3] + " $-$ " + m[4]
+        else:
+          date = m[3]
       if (len(m[0]) != 0):
-        text += "\n\\begin{tabular}{p{3in} r}\n"
-        text += m[0]
-        text += "\n\\end{tabular}\n"
+        text += "\n" + m[0] + " \hfill " + date + " \n" 
       if (len(m[1]) != 0):
         text += "\\begin{itemize}\n  \\vspace{0.2em}\n"
         text += "  \\item[] " + m[1]
@@ -166,11 +192,19 @@ def styleThree(secondaries, contact, education, experience, skills, publications
   if (len(experience) != 0):
     text += "\n% Experience section\n\\section{EXPERIENCE}\n\\vspace{-0.1in}\n"
     for l in experience:
+      date = []
+      if (len(l[3].replace(' ','')) != 0):
+        if (len(l[4].replace(' ','')) != 0):
+          date.append(l[3] + " $-$")
+          date.append(l[4])
+        else:
+          date.append(l[3])
       position = splitToArray(l[1], 22)
       company = splitToArray(l[0], 32)
       text += "  \\begin{tabbing}\n  \\hspace{2.3in}\\= \\hspace{2.6in}\\= \\kill\n"
-      text += "  {\\bf " + position[0] + "} \\>" + company[0] + " \\> TODO DATE "
-      for m in range(max(len(position),len(company))-1):
+      #text += "  {\\bf " + position[0] + " \\hfill " + company[0] + " \\hfill " + date + "\\ \n"
+      text += "  {\\bf " + position[0] + "} \\>" + company[0] + " \\> " + date[0]
+      for m in range(max(len(position),len(company),len(date))-1):
         text += " \\\\ \n  {\\bf "
         try:
           text += position[m+1]
@@ -181,25 +215,36 @@ def styleThree(secondaries, contact, education, experience, skills, publications
           text += company[m+1]
         except:
           pass
+        text += " \\>"
+        try:
+          text += date[m+1]
+        except:
+          pass
       text += " \n  \\end{tabbing}\\vspace{-20pt}\n"
       text += "  " + l[2] + "\n\n"
 
   # Write Skills section
-  text += "\n% Skills section\n\\section{SKILLS}\n"
-  for l in skills:
-    text += "  \emph{" + l[0] + "} \\\\"
-    text += "  " + l[1] + " \n\n"
-    #text += "  " + l[2] + " \n\n"
+  if (len(skills) != 0):
+    text += "\n% Skills section\n\\section{SKILLS}\n"
+    for l in skills:
+      text += "  \emph{" + l[0] + "} \\\\"
+      text += "  " + l[1] + " \n\n"
+      #text += "  " + l[2] + " \n\n"
 
   # Add custom fields
   text += "\n\n% Other sections"  # \n\\section{EXPERIENCE}\n"
   for l in others:
     text += "\n\\section{" + l.upper() + "}\n"
+    text += "\n\\vspace{0.2em} \n"
     for m in others[l]:
+      date = ""
+      if (len(m[3].replace(' ','')) != 0):
+        if (len(m[4].replace(' ','')) != 0):
+          date = m[3] + " $-$ " + m[4]
+        else:
+          date = m[3]
       if (len(m[0]) != 0):
-        text += "\n\\begin{tabular}{p{3in} r}\n"
-        text += m[0]
-        text += "\n\\end{tabular}\n"
+        text += "\n" + m[0] + " \hfill " + date + "\n"
       if (len(m[1]) != 0):
         text += "\\begin{itemize}\n  \\vspace{0.2em}\n"
         text += "  \\item[] " + m[1]
@@ -233,26 +278,44 @@ def styleFour(secondaries, contact, education, experience, skills, publications,
     for l in education:
       text += "  " + l[1] + " \\\\ \n"
       text += "  " + l[0] + " \\\\ \n"
-      text += "  " + l[2] + " \\\\ \n"
+      text += "  " + l[2] + " \n"
       text += "\n" # TODO (date)
 
   # Write Experience section
   if (len(experience) != 0):
     text += "\n% Experience section\n\\section{EXPERIENCE}\n"
     for l in experience:
+      date = []
+      if (len(l[3].replace(' ','')) != 0):
+        if (len(l[4].replace(' ','')) != 0):
+          date.append(l[3] + " $-$")
+          date.append(l[4])
+        else:
+          date.append(l[3])
       position = splitToArray(l[1], 32)
       text += "  {\\bf " + l[0] + "} \\\\ \n"
       text += "  \\begin{ncolumn}{2}\n  \\underline{"
-      text += position[0] + "} & " + "TODO DATE "  # TODO (date)
+      text += position[0] + "} & " + date[0]
+      try:
+        text += date[1]
+      except:
+        pass
       for m in range(len(position)-1):
-        text += "\\\\\n  \\underline{" + position[m+1] + "}"
-      text += "\n  \\end{ncolumn}\n\n"
+        text += "\n  \\underline{" + position[m+1] + "}"
+      text += "\n  \\end{ncolumn} \n\\vspace{-0.1em}\n"
       text += l[2] + "\n\n"
   
   # Write Skills section
   if (len(skills) != 0):
     text += "\n% Skills section\n\\section{SKILLS}\n"
     for l in skills:
+      date = []
+      if (len(l[3].replace(' ','')) != 0):
+        if (len(l[4].replace(' ','')) != 0):
+          date.append(l[3] + " $-$")
+          date.append(l[4])
+        else:
+          date.append(l[3])
       text += "  " + l[0] + " \\vspace{0.1em} \n  \\begin{itemize}"
       text += "\n    \item[] " + l[1] + "\n  \\end{itemize}\n\n"
       #text += "      " + l[2] + " \n\n"
@@ -262,10 +325,16 @@ def styleFour(secondaries, contact, education, experience, skills, publications,
   for l in others:
     text += "\n\\section{" + l.upper() + "}\n"
     for m in others[l]:
+      date = ""
+      if (len(m[3].replace(' ','')) != 0):
+        if (len(m[4].replace(' ','')) != 0):
+          date = m[3] + " $-$ " + date[4]
+        else:
+          date = m[3]
       if (len(m[0]) != 0):
-        text += "\n\\begin{tabular}{p{3in} r}\n"
-        text += m[0]
-        text += "\n\\end{tabular}\n"
+        #text += "\n\\begin{tabular}{p{3in} r}\n"
+        text += " \n" + m[0] + " \hfill " + date + " \n"
+        #text += "\n\\end{tabular}\n"
       if (len(m[1]) != 0):
         text += "\\begin{itemize}\n  \\vspace{0.2em}\n"
         text += "  \\item[] " + m[1]
