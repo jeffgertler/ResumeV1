@@ -77,11 +77,13 @@
 }
 
 - (IBAction)temporaryPressed:(id)sender {
-    [self.entry setTime:@[@"", @"Permanent", @"", @"", @"", @""]];
+    [self.entry setTime:@[@"", @"Temporary", @"", @"", @"", @""]];
+    [GlobalData saveState];
     [self dismissViewControllerAnimated: YES completion: nil];
 }
 - (IBAction)permanentPressed:(id)sender {
-    [self.entry setTime:@[@"", @"Temporary", @"", @"", @"", @""]];
+    [self.entry setTime:@[@"", @"Permanent", @"", @"", @"", @""]];
+    [GlobalData saveState];
     [self dismissViewControllerAnimated: YES completion: nil];
 }
 

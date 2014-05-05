@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *secondaryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startSectionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endSectionLabel;
 
 - (IBAction)unwindToEntryDetail:(UIStoryboardSegue *)segue;
 - (void)setLabels;
