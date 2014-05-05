@@ -20,6 +20,7 @@ static BOOL _useSecondaryEmail;
 
 static NSArray *_specialTypes;
 static NSDictionary *_specialTypeOverrides;
+static NSArray *_typesNeedingSecondaries;
 
 
 @interface GlobalData : NSObject

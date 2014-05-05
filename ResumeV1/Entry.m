@@ -134,12 +134,14 @@
 }
 
 - (NSString *)getStartTimeString {
-    //[self formatTimes];
-    return [NSString stringWithFormat:@"%@ %@ %@", self.times[1], self.times[0], self.times[2]];
+    if([self.times[1] isEqualToString: @"Temporary"] || [self.times[1] isEqualToString:@"Permanent"]){
+        return [NSString stringWithFormat:@"%@ %@ %@", @"", self.times[0], self.times[2]];
+    } else {
+        return [NSString stringWithFormat:@"%@ %@ %@", self.times[1], self.times[0], self.times[2]];
+    }
 }
 
 - (NSString *)getEndTimeString {
-    //[self formatTimes];
     return [NSString stringWithFormat:@"%@ %@ %@", self.times[4], self.times[3], self.times[5]];
 }
 

@@ -79,6 +79,14 @@
 {
     [super viewDidLoad];
     self.entriesNeedingSecondaries = [[NSMutableArray alloc] init];
+    for(NSString *type in _typesNeedingSecondaries){
+        for(Entry *entry in [GlobalData readyEntriesWithType:type]){
+            if([entry.type isEqualToString:type]){
+                [self.entriesNeedingSecondaries addObject:entry];
+            }
+        }
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

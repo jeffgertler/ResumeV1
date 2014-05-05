@@ -39,6 +39,9 @@
                               @"Employment" : @[@"Company", @"Position", @"Other Info"],
                               @"Skills"     : @[@"Header", @"Other Info", @"NULL"]
                               };
+    
+    _typesNeedingSecondaries = @[@"Contact"];
+    
 }
 
 + (int)messageSize {
