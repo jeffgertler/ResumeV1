@@ -169,25 +169,31 @@
     
     // Header
     [goodString appendString:@"{header:"];
-    [goodString appendString:[self header]];
+    @try { [goodString appendString:[self header]]; }
+    @catch (NSException *e) { [goodString appendString:@" "]; }
     [goodString appendString:@"},"];
     
     // Primary
     [goodString appendString:@"{primary:"];
-    [goodString appendString:[self primary]];
+    @try { [goodString appendString:[self primary]]; }
+    @catch (NSException *e) { [goodString appendString:@" "]; }
     [goodString appendString:@"},"];
     
     // Secondary
     [goodString appendString:@"{secondary:"];
-    [goodString appendString:[self secondary]];
+    @try { [goodString appendString:[self secondary]]; }
+    @catch (NSException *e) { [goodString appendString:@" "]; }
     [goodString appendString:@"},"];
     
     // Datetime
     [goodString appendString:@"{starttime:"];
-    [goodString appendString:[self getStartTimeString]];
+    @try { [goodString appendString:[self getStartTimeString]]; }
+    @catch (NSException *e) { [goodString appendString:@" "]; }
+    
     [goodString appendString:@"},"];
     [goodString appendString:@"{endtime:"];
-    [goodString appendString:[self getEndTimeString]];
+    @try { [goodString appendString:[self getEndTimeString]]; }
+    @catch (NSException *e) { [goodString appendString:@" "]; }
     [goodString appendString:@"}}"];
     
     // [NSString stringWithString:goodString]
