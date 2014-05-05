@@ -146,6 +146,12 @@ def populateTypes(s):
           tmp.append(m[1])
         else:
           continue # TODO
+      # If no header, but yes to primary, switch them.
+      if (len(tmp) == 1):
+        tmp.append("")
+        swtch = tmp[0]
+        tmp[0] = ""
+        tmp[1] = swtch
       skills.append(tmp)
     elif (l[0][1] == "Experience" or l[0][1] == "Employment"):
       # company,position,responsibility,sdate,edate
