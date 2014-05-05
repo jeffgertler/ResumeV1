@@ -24,6 +24,7 @@
     for(Entry *entry in [GlobalData getReadyEntries]){
         [self.entriesNeedingSecondaries addObject:entry];
     }
+    [GlobalData setEntriesNeedingSecondaries:self.entriesNeedingSecondaries];
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{

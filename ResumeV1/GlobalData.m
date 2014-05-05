@@ -295,12 +295,7 @@
         [s appendString:[NSString stringWithFormat:@"{S_email:%@},", [GlobalData secondaryEmail]]];
     }
     [s appendString:@"{secondaries:("];
-    @try {
-        [s appendString:[_entriesNeedingSecondaries componentsJoinedByString:@","]];
-    }
-    @catch (NSException *e) {
-        [s appendString:@" "];
-    }
+    [s appendString:[_entriesNeedingSecondaries componentsJoinedByString:@","]];
     [s appendString:@")},"];
     
     // Add relevant entries
