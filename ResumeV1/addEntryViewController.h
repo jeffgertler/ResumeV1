@@ -22,7 +22,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *temporaryButton;
 @property (weak, nonatomic) IBOutlet UIButton *permenantButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
+@property BOOL shouldDisplayCustomTypeEntry;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
+
 
 @end
