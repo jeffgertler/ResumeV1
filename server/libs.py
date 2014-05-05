@@ -147,7 +147,7 @@ def populateTypes(s):
         else:
           continue # TODO
       # If no header, but yes to primary, switch them.
-      if (len(tmp) == 1):
+      if (len(tmp[1]) == 0):
         tmp.append("")
         swtch = tmp[0]
         tmp[0] = ""
