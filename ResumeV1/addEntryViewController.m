@@ -11,6 +11,7 @@
 
 @implementation addEntryViewController
 
+@synthesize shouldDisplayCustomTypeEntry;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,6 +26,7 @@
     self.dateRecieved = NO;
     self.temporaryButton.hidden = YES;
     self.permenantButton.hidden = YES;
+    self.shouldDisplayCustomTypeEntry = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -41,6 +43,13 @@
 }
 
 - (IBAction)nextPressed:(id)sender {
+    if ([self shouldDisplayCustomTypeEntry]) {
+        self.shouldDisplayCustomTypeEntry = NO;
+        self.typePicker.hidden = YES;
+        self.TextField.hidden = NO;
+        return;
+    }
+    
     // Handle "type" picker
     if ([self currentSection] == 0) {
         [GlobalData addType:self.TextField.text];
@@ -137,9 +146,8 @@
     if (row < ([GlobalData typesSize])) {
         self.TextField.text = [GlobalData getTypeAt:row];
     } else {
+        self.shouldDisplayCustomTypeEntry = YES;
         self.TextField.text = @"";
-        self.typePicker.hidden = YES;
-        self.TextField.hidden = NO;
     }
 }
 
