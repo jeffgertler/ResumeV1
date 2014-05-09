@@ -1,0 +1,39 @@
+/*
+ *  style.css
+ *  ResumeV1 (server/public)
+ * 
+ *  Created by George Wong on 5/9/14
+ *  Copyright (c) 2014 Jeffrey Gertler & George Wong. All rights reserved.
+ * 
+ */
+
+entry {
+  font-size:20;
+  line-height:1.4em;
+}
+entry:hover {
+  font-weight:bold;
+}
+
+.detailModal {
+  position:absolute;
+  top:8%;
+  width:40%;
+  height:60%;
+  left:30%;
+  background-color:#ffffff;
+  border:1px solid;
+  border-radius:2px;
+  padding:12px;
+}
+
+.closeBtn {
+  top:10px;
+  right:10px;
+  position:absolute;
+}
+.closeBtn:hover {
+  cursor:hand;
+  font-weight:bold;
+}
+

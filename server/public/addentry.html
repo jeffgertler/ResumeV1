@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<!--
+   addscript.html
+   ResumeV1 (server/public)
+  
+   Created by George Wong on 5/9/14
+   Copyright (c) 2014 Jeffrey Gertler & George Wong. All rights reserved.
+-->
+<head>
+<title>Online Input | ResuMake</title>
+<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+</head>
+
+<body onload="getHTMLElements()">
+
+<!-- javascript imports -->
+<script type="text/javascript" src="addscript.js"></script>
+
+<!-- Entered data list -->
+<div style="left:0px; width:25%; top:0px; height:100%; position:absolute; outline: 1px solid #ddd;
+    border-right: 1px solid #fff; background-color:#dedede">
+<div style="position:relative; width:80%; left:10%; top:10%; background-color:blue; padding:5px;" id="entriesID">
+<entry onclick="displayDetail();">George Wong</entry><br>
+<entry>New York University</entry><br><br>
+<center><input type="button" value="Get Code"></center>
+</div>
+</div>
+
+<!-- Actual data entry section -->
+<div style="right:0px; width:75%; top:0px; margin:0px -10px; height:100%; position:absolute; background-color:white;">
+<form>
+
+<! TYPE >
+<br>
+
+<table style="">
+<col width="180">
+<col width="80">
+<tr>
+  <td><span id="typeLabelID">TYPE</span></td>
+  <td><select id="typesID" onchange="updateByType();">
+    <option name="Contact">Contact</option>
+    <option name="Education">Education</option>
+    <option name="Employment">Employment</option>
+    <option name="Research">Reseach</option>
+    <option name="Skills">Skills</option>
+    <option name="Awards">Awards</option>
+    <option name="Honors">Honors</option>
+    <option name="Custom...">Custom...</option>
+  </select></td>
+</tr>
+<tr><td></td></tr>
+<tr>
+  <td><span id="headerLabelID">HEADER</span></td>
+  <td><input type="input" placeholder="asdf" id="headerID" onchange="inputChanged();"></td>
+</tr>
+<tr>
+  <td><span id="primaryLabelID">PRIMARY</span></td>
+  <td><input type="input" placeholder="asdf" id="primaryID" onchange="inputChanged();"></td>
+</tr>
+<tr>
+  <td><span id="secondaryLabelID">SECONDARY</span></td>
+  <td><input type="input" placeholder="asdf" id="secondaryID" onchange="inputChanged();"></td>
+</tr>
+<tr>
+  <td>start date</td>
+  <td><input type="date" id="stimeID" value="2014-05-08" onchange="inputChanged();"></td>
+</tr>
+<tr>
+  <td>end date</td>
+  <td><input type="date" id="etimeID" value="1012-02-23" onchange="inputChanged();"></td>
+</tr>
+
+</table>
+
+<! CONFIG >
+<br><br>
+<input type="button" value="sub" id="configBtnID" onclick="addEntry();">
+
+</form>
+
+
+</div>
+
+<!-- "modal" with details about a selected entry -->
+<div id="entryDetail" hidden=true class="detailModal">
+
+<table style="">
+<col width="180">
+<col width="80">
+<tr>
+  <td><span id="detail_header">a</span></td>
+  <td><input type="input" id="detail_header_field" value="header detail"></td>
+</tr>
+<tr>
+  <td><span id="detail_primary">b</span></td>
+  <td><input type="input" id="detail_primary_field"></td>
+</tr>
+<tr>
+  <td><span id="detail_secondary">c</span></td>
+  <td><input type="input" id="detail_secondary_field"></td>
+</tr>
+<tr>
+  <td><span id="detail_stime">d</span></td>
+  <td><input type="input" id="detail_stime_field"></td>
+</tr>
+<tr>
+  <td><span id="detail_etime">e</span></td>
+  <td><input type="input" id="detail_etime_field"></td>
+</tr>
+</table>
+<div class="closeBtn" style="right:55px;" onclick="document.getElementById('entryDetail').hidden=true;">edit</div>
+<div class="closeBtn" onclick="document.getElementById('entryDetail').hidden=true;clearFields();">close</div>
+</div>
+
+</body>
+</html>
