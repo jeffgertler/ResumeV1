@@ -35,11 +35,11 @@
 <br>
 
 <table style="">
-<col width="180">
+<col width="200">
 <col width="80">
 <tr>
-  <td><span id="typeLabelID">TYPE</span></td>
-  <td><select id="typesID" onchange="updateByType();">
+  <td><span id="typeLabelID">Type</span></td>
+  <td><select class="selectBox" id="typesID" onchange="updateByType();">
     <option name="Contact">Contact</option>
     <option name="Education">Education</option>
     <option name="Employment">Employment</option>
@@ -51,33 +51,34 @@
   </select></td>
 </tr>
 <tr><td></td></tr>
+<tr id="customTypeRow" hidden>
+  <td><span id="typeLabelID">Custom type</span></td>
+  <td><input type="input" placeholder="Required" id="typeID" onchange="inputChanged();"></td>
+</tr>
 <tr>
   <td><span id="headerLabelID">HEADER</span></td>
-  <td><input type="input" placeholder="asdf" id="headerID" onchange="inputChanged();"></td>
+  <td><input type="input" placeholder="Required" id="headerID" onchange="inputChanged();"></td>
 </tr>
 <tr>
   <td><span id="primaryLabelID">PRIMARY</span></td>
-  <td><input type="input" placeholder="asdf" id="primaryID" onchange="inputChanged();"></td>
+  <td><input type="input" placeholder="Optional" id="primaryID" onchange="inputChanged();"></td>
 </tr>
 <tr>
   <td><span id="secondaryLabelID">SECONDARY</span></td>
-  <td><input type="input" placeholder="asdf" id="secondaryID" onchange="inputChanged();"></td>
+  <td><input type="input" placeholder="Optional" id="secondaryID" onchange="inputChanged();"></td>
 </tr>
 <tr>
-  <td>start date</td>
-  <td><input type="date" id="stimeID" value="2014-05-08" onchange="inputChanged();"></td>
+  <td><span id="sdateID">Start Date</span></td>
+  <td><input type="date" id="stimeID" value="0-0-0" onchange="inputChanged();"></td>
 </tr>
 <tr>
-  <td>end date</td>
-  <td><input type="date" id="etimeID" value="1012-02-23" onchange="inputChanged();"></td>
+  <td><span id="edateID">End Date</span></td>
+  <td><input type="date" id="etimeID" value="0-0-0" onchange="inputChanged();"></td>
 </tr>
-
 </table>
 
-<! CONFIG >
 <br><br>
-<input type="button" value="sub" id="configBtnID" onclick="addEntry();">
-
+<input class="btn" type="button" value="Submit" id="configBtnID" onclick="addEntry();">
 </form>
 
 
@@ -87,8 +88,12 @@
 <div id="entryDetail" hidden=true class="detailModal">
 
 <table style="">
-<col width="180">
+<col width="200">
 <col width="80">
+<tr id="detail_type_row" hidden>
+  <td><span id="detail_type">Custom type</span></td>
+  <td><input type="input" id="detail_type_field" value="header type"></td>
+</tr>
 <tr>
   <td><span id="detail_header">a</span></td>
   <td><input type="input" id="detail_header_field" value="header detail"></td>

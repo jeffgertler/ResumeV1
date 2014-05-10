@@ -29,7 +29,7 @@ secondary_type = null;
 stime = null;
 etime = null;
 
-// TODO 
+// Run at body.onload 
 function getHTMLElements () {
   
   // Load fields
@@ -50,6 +50,17 @@ function getHTMLElements () {
   updateEntries();
 }
 
+
+// Defines non-custom types
+var defaultTypes = { 
+          "Contact" : 1,
+          "Education" : 1, 
+          "Employment" : 1, 
+          "Research" : 1, 
+          "Skills" : 1, 
+          "Awards" : 1, 
+          "Honors" : 1 };
+
 // Update as desired
 var customHeadings = {
   "NONE"        :   ["Header", "Primary", "Secondary"],
@@ -61,14 +72,20 @@ var customHeadings = {
 };
 
 
-// TODO
+// Every time a field is updated, run this
 function inputChanged () {
-  entry_type      = HTML_list.value;
+  entry_type      = HTML_type_field.value;
   header_type     = HTML_header_field.value;
   primary_type    = HTML_primary_field.value;
   secondary_type  = HTML_secondary_field.value;
   stime           = document.getElementById("stimeID").value;
   etime           = document.getElementById("etimeID").value;
+
+  if (entry_type == "Custom...") {
+    document.getElementById("customTypeRow").hidden = false;
+  } else {
+    document.getElementById("customTypeRow").hidden = true;
+  }
 }
 
 // TODO
@@ -104,11 +121,6 @@ function DEBUG_addEntry () {
   });
 }
 
-// TODO
-function addType () {
-
-}
-
 // Updates field labels by type
 function updateByType () {
   var type = HTML_type_field.value;
@@ -128,11 +140,6 @@ function updateByType () {
   }
 
   inputChanged();
-}
-
-// TODO
-function updateTypes () {
-
 }
 
 // TODO 
@@ -162,6 +169,9 @@ function addEntry () {
     };
 
     newEntry["type"] = HTML_type_field.value;
+    if (newEntry["type"] == "Custom...") {
+      newEntry["type"] = document.getElementById("typeID").value;
+    }
     newEntry["header"] = HTML_header_field.value;
     newEntry["primary"] = HTML_primary_field.value;
     newEntry["secondary"] = HTML_secondary_field.value;
@@ -181,25 +191,26 @@ function addEntry () {
   updateEntries();
 }
 
-// TODO
+// Resets all input data field
 function clearFields () {
   current_entry_index = -1;
+  HTML_type_field.value = "";
   HTML_header_field.value = "";
   HTML_primary_field.value = "";
   HTML_secondary_field.value = "";
+  document.getElementById("typeID").value = "";
   inputChanged();
 }
 
 // TODO
 function reset () {
-
+  // RESET IT ALL!
 }
 
 // TODO
 function getCode () {
 
 }
-
 
 // TODO
 function displayDetail (n) {
@@ -221,28 +232,42 @@ function displayDetail (n) {
     HTML_secondary_label.hidden = false;
     HTML_secondary_field.hidden = false;
   }
-  HTML_type_field.value = ENTRY_LIST[n]["type"];
+  if (ENTRY_LIST[n]["type"] in defaultTypes) {
+    HTML_type_field.value = ENTRY_LIST[n]["type"];
+    document.getElementById("customTypeRow").hidden = true;
+  } else {
+    document.getElementById("typeID").value = ENTRY_LIST[n]["type"];
+    HTML_type_field.value = "Custom...";
+    document.getElementById("customTypeRow").hidden = false;
+  }
   HTML_header_field.value = ENTRY_LIST[n]["header"];
   HTML_primary_field.value = ENTRY_LIST[n]["primary"];
   HTML_secondary_field.value = ENTRY_LIST[n]["secondary"];
   document.getElementById("stimeID").value = ENTRY_LIST[n]["starttime"];
   document.getElementById("etimeID").value = ENTRY_LIST[n]["endtime"];
+  document.getElementById("typeID").value = ENTRY_LIST[n]["type"];
   inputChanged();
 
   // Take care of modal
-  document.getElementById("detail_header").innerHTML = customHeadings[type][0];
-  document.getElementById("detail_primary").innerHTML = customHeadings[type][1];
-  document.getElementById("detail_secondary").innerHTML = customHeadings[type][2];
-  document.getElementById("detail_stime").innerHTML = "";
-  document.getElementById("detail_etime").innerHTML = "";
-  document.getElementById("detail_header_field").value = ENTRY_LIST[n]["header"];
-  document.getElementById("detail_primary_field").value = ENTRY_LIST[n]["primary"];
-  document.getElementById("detail_secondary_field").value = ENTRY_LIST[n]["secondary"];
-  document.getElementById("detail_stime_field").value = ENTRY_LIST[n]["starttime"];
-  document.getElementById("detail_etime_field").value = ENTRY_LIST[n]["endtime"];
-  
-  //console.log(n);
-  //console.log(ENTRY_LIST[n]);
+  document.getElementById("detail_header").innerHTML       = customHeadings[type][0];
+  document.getElementById("detail_primary").innerHTML      = customHeadings[type][1];
+  document.getElementById("detail_secondary").innerHTML    = customHeadings[type][2];
+  document.getElementById("detail_stime").innerHTML        = "Start Date";
+  document.getElementById("detail_etime").innerHTML        = "End Date";
+  document.getElementById("detail_header_field").value     = ENTRY_LIST[n]["header"];
+  document.getElementById("detail_primary_field").value    = ENTRY_LIST[n]["primary"];
+  document.getElementById("detail_secondary_field").value  = ENTRY_LIST[n]["secondary"];
+  document.getElementById("detail_stime_field").value      = ENTRY_LIST[n]["starttime"];
+  document.getElementById("detail_etime_field").value      = ENTRY_LIST[n]["endtime"];
+
+  // Appropriate changing
+  console.log(ENTRY_LIST[n]["type"]);
+  if (ENTRY_LIST[n]["type"] in defaultTypes) {
+    document.getElementById("detail_type_row").hidden = true;
+  } else {
+    document.getElementById("detail_type_row").hidden = false;
+    document.getElementById("detail_type_field").value = ENTRY_LIST[n]["type"];
+  }
 
   document.getElementById("entryDetail").hidden = false;
 }

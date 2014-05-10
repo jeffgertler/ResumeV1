@@ -8,11 +8,27 @@
  */
 
 entry {
-  font-size:20;
-  line-height:1.4em;
+  font-size:1.2em;
+  line-height:1.4em;  
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+
 }
 entry:hover {
   font-weight:bold;
+}
+
+.selectBox {
+  background-color:#ffffff;
+  width: 150px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  height: 34px;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+}
+
+option {
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
 }
 
 .detailModal {
@@ -30,10 +46,42 @@ entry:hover {
 .closeBtn {
   top:10px;
   right:10px;
+  display:block; 
+  width:120px; 
+  height:40px; 
+  margin-left:140px;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
   position:absolute;
 }
 .closeBtn:hover {
   cursor:hand;
   font-weight:bold;
+}
+
+input {
+  font-size:1.1em;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+}
+
+span {
+  font-size:1em;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+}
+
+.btn {
+  display:block; 
+  width:120px; 
+  height:40px; 
+  margin-left:140px;
+  background: #fff; 
+  box-shadow: inset 0px 0px 6px #fff;
+  -webkit-box-shadow: inset 0px 0px 6px #fff;
+  border: 1px solid #aaaaaa;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  border: 1px solid #000000;
+  cursor:pointer;
 }
 
