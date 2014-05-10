@@ -18,25 +18,16 @@
 <script type="text/javascript" src="addscript.js"></script>
 
 <!-- Entered data list -->
-<div style="left:0px; width:25%; top:0px; height:100%; position:absolute; outline: 1px solid #ddd;
-    border-right: 1px solid #fff; background-color:#dedede">
-<div style="position:relative; width:80%; left:10%; top:10%; background-color:blue; padding:5px;" id="entriesID">
+<div class="leftSideBar"><div class="innerEntryList" id="entriesID">
 <entry onclick="displayDetail();">George Wong</entry><br>
 <entry>New York University</entry><br><br>
 <center><input type="button" value="Get Code"></center>
-</div>
-</div>
+</div></div>
 
 <!-- Actual data entry section -->
 <div style="right:0px; width:75%; top:0px; margin:0px -10px; height:100%; position:absolute; background-color:white;">
-<form>
-
-<! TYPE >
-<br>
-
-<table style="">
-<col width="200">
-<col width="80">
+<form><br>
+<table style=""><col width="200"><col width="200">
 <tr>
   <td><span id="typeLabelID">Type</span></td>
   <td><select class="selectBox" id="typesID" onchange="updateByType();">
@@ -61,11 +52,11 @@
 </tr>
 <tr>
   <td><span id="primaryLabelID">PRIMARY</span></td>
-  <td><input type="input" placeholder="Optional" id="primaryID" onchange="inputChanged();"></td>
+  <td><textarea type="input" placeholder="Optional" id="primaryID" onchange="inputChanged();"></textarea></td>
 </tr>
 <tr>
   <td><span id="secondaryLabelID">SECONDARY</span></td>
-  <td><input type="input" placeholder="Optional" id="secondaryID" onchange="inputChanged();"></td>
+  <td><textarea type="input" placeholder="Optional" id="secondaryID" onchange="inputChanged();"></textarea></td>
 </tr>
 <tr>
   <td><span id="sdateID">Start Date</span></td>
@@ -80,39 +71,34 @@
 <br><br>
 <input class="btn" type="button" value="Submit" id="configBtnID" onclick="addEntry();">
 </form>
-
-
 </div>
 
 <!-- "modal" with details about a selected entry -->
-<div id="entryDetail" hidden=true class="detailModal">
-
-<table style="">
-<col width="200">
-<col width="80">
+<div id="entryDetail" hidden=true class="detailModal"><br>
+<table style=""><col width="200"><col width="80">
 <tr id="detail_type_row" hidden>
   <td><span id="detail_type">Custom type</span></td>
-  <td><input type="input" id="detail_type_field" value="header type"></td>
+  <td><input type="input" readonly id="detail_type_field" value="header type"></td>
 </tr>
 <tr>
   <td><span id="detail_header">a</span></td>
-  <td><input type="input" id="detail_header_field" value="header detail"></td>
+  <td><input type="input" readonly id="detail_header_field" value="header detail"></td>
 </tr>
 <tr>
   <td><span id="detail_primary">b</span></td>
-  <td><input type="input" id="detail_primary_field"></td>
+  <td><textarea type="input" readonly style="outline:none;" id="detail_primary_field"></textarea></td>
 </tr>
 <tr>
   <td><span id="detail_secondary">c</span></td>
-  <td><input type="input" id="detail_secondary_field"></td>
+  <td><textarea type="input" readonly style="outline:none;" id="detail_secondary_field"></textarea></td>
 </tr>
 <tr>
   <td><span id="detail_stime">d</span></td>
-  <td><input type="input" id="detail_stime_field"></td>
+  <td><input type="input" readonly id="detail_stime_field"></td>
 </tr>
 <tr>
   <td><span id="detail_etime">e</span></td>
-  <td><input type="input" id="detail_etime_field"></td>
+  <td><input type="input" readonly id="detail_etime_field"></td>
 </tr>
 </table>
 <div class="closeBtn" style="right:55px;" onclick="document.getElementById('entryDetail').hidden=true;">edit</div>

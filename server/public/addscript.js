@@ -9,7 +9,7 @@
 
 var ENTRY_LIST = [];
 
-// TODO
+// Various data parameters
 var HTML_list = null;
 var HTML_type_label = "TYPE";
 var HTML_type_field = null;
@@ -50,7 +50,6 @@ function getHTMLElements () {
   updateEntries();
 }
 
-
 // Defines non-custom types
 var defaultTypes = { 
           "Contact" : 1,
@@ -88,25 +87,35 @@ function inputChanged () {
   }
 }
 
-// TODO
+// Parse a single entry
 function parseEntry (n) {
-  console.log(ENTRY_LIST[n]);
-
   var parsedString = "";
+  parsedString += "{{type:" + ENTRY_LIST[n]["type"] + "},{header:";
+  parsedString += ENTRY_LIST[n]["header"] + "},{primary:";
+  parsedString += ENTRY_LIST[n]["primary"] + "},{secondary:";
+  parsedString += ENTRY_LIST[n]["secondary"] + "},{starttime:";
+  parsedString += ENTRY_LIST[n]["starttime"] + "},{endtime:";
+  parsedString += ENTRY_LIST[n]["endtime"] + "}}";
 
+  return parsedString;
 }
 
-// TODO
+// Parse all entries
 function parseAllEntries () {
-
+  var parsedEntries = "";
+  for (entry in ENTRY_LIST) {
+    parsedEntries += parseEntry(entry);
+    parsedEntries += ",";
+  }
+  return parsedEntries.substring(0,parsedEntries.length-1);
 }
 
-// TODO
+// Soley for debugging purposes
 function DEBUG_addEntry () {
   ENTRY_LIST.push({
     "type"      : "Contact",
     "header"    : "George Wong",
-    "primary"   : "g@nyu.edu 800.555.5555",
+    "primary"   : "gw@nyu.edu 800.555.5555",
     "secondary" : "123 Main Street",
     "starttime" : "",
     "endtime"   : ""
@@ -116,7 +125,7 @@ function DEBUG_addEntry () {
     "header"    : "New York University",
     "primary"   : "B.A. Mathematics, Physics",
     "secondary" : "",
-    "starttime" : "",
+    "starttime" : "May 2015",
     "endtime"   : ""
   });
 }
@@ -142,19 +151,19 @@ function updateByType () {
   inputChanged();
 }
 
-// TODO 
+// Updates the left entry-bar list 
 function updateEntries () {
   entriesID.innerHTML = "";
   for (i in ENTRY_LIST) {
-    var newString = "<entry onclick=\"displayDetail(" + i + ");\">";
+    var newString = "<div class=\"entry\" onclick=\"displayDetail(" + i + ");\">";
     newString += ENTRY_LIST[i]["header"];
-    newString += "</entry><br>\n";
+    newString += "</div>\n";
     entriesID.innerHTML += newString;
   }
-  entriesID.innerHTML += "<br>\n<input type=\"button\" onclick=\"reset();\" value=\"Reset All\">\n<br><input type=\"button\" onclick=\"getCode();\" value=\"Get Code\"><br>";
+  entriesID.innerHTML += "\n<div class=\"entry\" type=\"button\" onclick=\"reset();\">Reset All</div>\n<div class=\"entry\" style=\"border-bottom-style:solid;\" type=\"button\" onclick=\"getCode();\">Get Code</div><br>";
 }
 
-// TODO
+// Adds an entry to the list from the addition information.
 function addEntry () {
 
   if (HTML_header_field.value == "") { }
@@ -187,14 +196,12 @@ function addEntry () {
   }
 
   clearFields();
-
   updateEntries();
 }
 
 // Resets all input data field
 function clearFields () {
   current_entry_index = -1;
-  HTML_type_field.value = "";
   HTML_header_field.value = "";
   HTML_primary_field.value = "";
   HTML_secondary_field.value = "";
@@ -202,17 +209,41 @@ function clearFields () {
   inputChanged();
 }
 
-// TODO
+// Resets everything
 function reset () {
-  // RESET IT ALL!
+  while (ENTRY_LIST.length != 0) ENTRY_LIST.pop();
+  document.getElementById("entryDetail").hidden = true;
+  updateEntries();
+  clearFields();
 }
 
-// TODO
+// Submits entered data to server and pops up a dialog with session code.
 function getCode () {
+  text = parseAllEntries();
 
+  var rqst;
+  if (window.XMLHttpRequest) {
+    rqst = new XMLHttpRequest();
+  } else {
+    rqst = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  rqst.onreadystatechange = function () {
+    if (rqst.readyState==4 && rqst.status==200) {
+      var response = rqst.responseText;
+      if (response.substring(0,4) == "GOOD") {
+        alert("Please use code " + response.substring(5,20) + " to retreive your entry.");
+      } else {
+        alert("We're sorry, but there was an error. Please try again.");
+      }
+    }
+  }
+
+  rqst.open("GET","http://latex.wong1275.com/.tmp/save_data.php?text="+text,true);
+  rqst.send();
 }
 
-// TODO
+// Pops open the detail "modal" and configures display options
 function displayDetail (n) {
 
   current_entry_index = n;
@@ -271,6 +302,3 @@ function displayDetail (n) {
 
   document.getElementById("entryDetail").hidden = false;
 }
-
-
-
