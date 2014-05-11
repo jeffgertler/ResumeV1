@@ -1,0 +1,137 @@
+/*
+ *  style.css
+ *  ResumeV1 (server/public)
+ * 
+ *  Created by George Wong on 5/9/14
+ *  Copyright (c) 2014 Jeffrey Gertler & George Wong. All rights reserved.
+ * 
+ */
+
+
+.btn {
+  background: #fff; 
+  border: 1px solid #aaaaaa;
+  border-radius: 10px;
+  display:block; 
+  height:40px; 
+  margin-left:300px;
+  width:120px;
+
+  box-shadow: inset 0px 0px 6px #fff;
+  -webkit-box-shadow: inset 0px 0px 6px #fff;
+}
+.btn:hover {
+  border: 1px solid #000000;
+  cursor:pointer;
+}
+
+.closeBtn {
+  display:block;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  height:40px;
+  margin-left:140px;
+  position:absolute;
+  right:10px;
+  top:10px;
+}
+.closeBtn:hover {
+  cursor:hand;
+  font-weight:bold;
+}
+
+.detailModal {
+  background-color:#ffffff;
+  border:1px solid;
+  border-radius:2px;
+  height:60%;
+  left:30%;
+  min-height:330px;
+  min-width:450px;
+  padding:12px;
+  position:absolute;
+  top:8%;
+  width:40%;
+}
+
+.entry {
+  background-color:#d3d3d3;
+  background: #ffffff; /* Old browsers */
+  background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+
+  border-bottom-style:none;
+  border-color:#a3a3a3;
+  border-style:solid;
+  border-width:1px;
+  height:1.4em;
+  left:0px;
+  line-height:1em;  
+  padding:2px;
+  position:relative;
+  text-align:center;
+  font-family:"Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  font-size:1.2em;
+}
+.entry:hover {
+  border-width:2px;
+  font-weight:bold;
+}
+
+.innerEntryList {
+  background-color:#dedede; 
+  left:10%; 
+  padding:5px;
+  position:relative; 
+  top:10%; 
+  width:80%; 
+}
+
+.leftSideBar {
+  background-color:#dedede;
+  border-right: 1px solid #fff; 
+  height:100%; 
+  left:0px; 
+  outline: 1px solid #ddd;
+  position:absolute;
+  top:0px; 
+  width:25%;
+}
+
+.selectBox {
+  background-color:#ffffff;
+  border:1px solid #ccc;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  font-size:16px;
+  height: 34px;
+  padding:5px;
+  width:150px; 
+}
+
+
+input {
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  font-size:1.1em;
+  width:20em;
+}
+
+option {
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+}
+
+span {
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  font-size:1em;
+}
+
+textarea {
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  font-size:1.1em;
+  height:5em;
+  resize:none;
+  width:20em;
+}
