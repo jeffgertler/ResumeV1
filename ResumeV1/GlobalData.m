@@ -205,9 +205,9 @@
         [GlobalData addType:@"Honors"];
         
         [Entry entryOfType:@"Contact"
-                withHeader:@"Kelly Tripathi"
-                andPrimary:@"kpt230@nyu.edu (516)233-0016"
-              andSecondary:@"110 E 7th Street Apt 13, New York NY 10009"
+                withHeader:@"John Smith"
+                andPrimary:@"js738@nyu.edu (513)231-0023"
+              andSecondary:@"190 E 3th Street Apt 3, New York NY 10003"
                   andTimes:@[@"", @"Temporary", @"", @"", @"", @""]];
         
         [Entry entryOfType:@"Education"
