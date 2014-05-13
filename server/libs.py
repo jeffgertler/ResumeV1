@@ -155,7 +155,7 @@ def populateTypes(s):
       skills.append(tmp)
     elif (l[0][1] == "Experience" or l[0][1] == "Employment"):
       # company,position,responsibility,sdate,edate
-      tmp = ["company","position","responsibliy","start","end"]
+      tmp = ["company","","","",""]
       for m in l:
         if (m[0] == "header"):
           tmp[0] = m[1]
