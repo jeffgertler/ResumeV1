@@ -334,7 +334,7 @@ def styleFour(secondaries, contact, education, experience, skills, publications,
       date = ""
       if (len(m[3].replace(' ','')) != 0):
         if (len(m[4].replace(' ','')) != 0):
-          date = m[3] + " $-$ " + date[4]
+          date = m[3] + " $-$ " + m[4]
         else:
           date = m[3]
       if (len(m[0]) != 0):
