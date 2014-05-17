@@ -70,26 +70,26 @@
 }
 - (void)formatTimes {
     if (self.times[0] == NULL) {
-        [self setTimes:@[@"", @"", @"", @"", @"", @""]];
+        [self setTimes:[NSMutableArray arrayWithArray:@[@"", @"", @"", @"", @"", @""]]];
     }
     
-    if (self.times[0] == @"-") {
-        [self setTimes:@[@"", self.times[1], self.times[2], self.times[3], self.times[4], self.times[5]]];
+    if ([self.times[0] isEqual:@"-"]) {
+        [self setTimes:[NSMutableArray arrayWithArray:@[@"", self.times[1], self.times[2], self.times[3], self.times[4], self.times[5]]]];
     }
-    if (self.times[1] == @"-") {
-        [self setTimes:@[self.times[0], @"", self.times[2], self.times[3], self.times[4], self.times[5]]];
+    if ([self.times[1] isEqual:@"-"]) {
+        [self setTimes:[NSMutableArray arrayWithArray:@[self.times[0], @"", self.times[2], self.times[3], self.times[4], self.times[5]]]];
     }
-    if (self.times[2] == @"-") {
-        [self setTimes:@[self.times[0], self.times[1], @"", self.times[3], self.times[4], self.times[5]]];
+    if ([self.times[2] isEqual:@"-"]) {
+        [self setTimes:[NSMutableArray arrayWithArray:@[self.times[0], self.times[1], @"", self.times[3], self.times[4], self.times[5]]]];
     }
-    if (self.times[3] == @"-") {
-        [self setTimes:@[self.times[0], self.times[1], self.times[2], @"", self.times[4], self.times[5]]];
+    if ([self.times[3] isEqual:@"-"]) {
+        [self setTimes:[NSMutableArray arrayWithArray:@[self.times[0], self.times[1], self.times[2], @"", self.times[4], self.times[5]]]];
     }
-    if (self.times[4] == @"-") {
-        [self setTimes:@[self.times[0], self.times[1], self.times[2], self.times[3], @"", self.times[5]]];
+    if ([self.times[4] isEqual:@"-"]) {
+        [self setTimes:[NSMutableArray arrayWithArray:@[self.times[0], self.times[1], self.times[2], self.times[3], @"", self.times[5]]]];
     }
-    if (self.times[5] == @"-") {
-        [self setTimes:@[self.times[0], self.times[1], self.times[2], self.times[3], self.times[4], @""]];
+    if ([self.times[5] isEqual:@"-"]) {
+        [self setTimes:[NSMutableArray arrayWithArray:@[self.times[0], self.times[1], self.times[2], self.times[3], self.times[4], @""]]];
     }
 }
 
@@ -203,7 +203,7 @@
 
 // Diagnostics
 - (void)printEntry {
-    NSLog([NSString stringWithFormat:@"%@, %@, %@, %@\n", self.type, self.header, self.primary, self.secondary]);
+    NSLog(@"%@", [NSString stringWithFormat:@"%@, %@, %@, %@\n", self.type, self.header, self.primary, self.secondary]);
 }
 
 + (void)printEntries {
